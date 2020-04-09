@@ -1,0 +1,2 @@
+module MyGymsHelper
+end

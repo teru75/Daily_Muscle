@@ -7,7 +7,7 @@ class Customer < ApplicationRecord
   has_many :my_supplements, dependent: :destroy
   has_many :my_menus, dependent: :destroy
   has_many :my_gyms, dependent: :destroy
-  has_many :groups, through: :group_customers
+  has_many :groups, through: :group_customers, dependent: :destroy
   has_many :group_customers
   has_many :event_likes, dependent: :destroy
   has_many :my_menu_likes, dependent: :destroy

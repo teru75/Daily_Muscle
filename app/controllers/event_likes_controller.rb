@@ -1,0 +1,2 @@
+class EventLikesController < ApplicationController
+end
