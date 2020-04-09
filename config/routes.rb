@@ -7,11 +7,17 @@ Rails.application.routes.draw do
       registrations: 'admins/registrations'
   }
   devise_for :customers, controllers: {
-      sessions:      'users/sessions',
-      passwords:     'users/passwords',
-      registrations: 'users/registrations'
+      sessions:      'customers/sessions',
+      passwords:     'customers/passwords',
+      registrations: 'customers/registrations'
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  namespace :admin do
+    resources :event_templates, only: [:index, :new, :create, :show, :edit, :update]
+    resources :menu_templates, only: [:create, :update, :destroy]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :events, only: [:index, :show]
+  end
 
   root to: 'homes#top'
 
@@ -24,6 +30,7 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
     get 'follows' => 'relationships#follower', as: 'follows'
     get 'followers' => 'relationships#followed', as: 'followers'
+    get 'groups' => 'groups#customer_index'
   end
 
   resources :events, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
@@ -33,13 +40,6 @@ Rails.application.routes.draw do
   resources :event_templates, only: [:index]
   resources :datas, only: [:index]
   resources :groups, only: [:new, :create, :index, :show, :update]
-  get 'customer/groups' => 'groups#customer_index'
   resources :group_customers, only: [:destroy]
 
-  namespace :admin do
-    resources :event_templates, only: [:index, :new, :create, :show, :edit, :update]
-    resources :menu_templates, only: [:create, :update, :destroy]
-    resources :customers, only: [:index, :show, :edit, :update]
-    resources :events, only: [:index, :show]
-  end
 end
