@@ -1,2 +1,35 @@
-<h1>MyMenus#index</h1>
-<p>Find me in app/views/my_menus/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8　my-menu-content">
+      <h3>マイメニュー　一覧</h3>
+      <%= link_to "新規登録する",new_customer_my_menu_path %>
+      <div class="my-menu-item">
+        <h4>上半身</h4>
+        <% @my_menus.each do |menu| %>
+        <%= menu.part_i18n %>
+        <% menu.my_menu_items.each do |item| %>
+        <%= item.name %>
+        <% end %>
+        <% end %>
+      </div>
+      <div class="my-menu-item">
+        <h4>腕</h4>
+      </div>
+      <div class="my-menu-item">
+        <h4>肩</h4>
+      </div>
+      <div class="my-menu-item">
+        <h4>胸</h4>
+      </div>
+      <div class="my-menu-item">
+        <h4>背中</h4>
+      </div>
+      <div class="my-menu-item">
+        <h4>下半身</h4>
+      </div>
+      <div class="my-menu-item">
+        <h4>体幹</h4>
+      </div>
+    </div>
+  </div>
+</div>
