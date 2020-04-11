@@ -1,7 +1,42 @@
-<div class="container">
+<div class="container-fruid">
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-xs-1">
+      
+    </div>
+    <div class="col-xs-5">
       <div id="calendar"></div>
+    </div>
+    <div class="col-xs-1">
+      
+    </div>
+    <div class="col-xs-5 customer-show-content">
+      <%= link_to datas_path, class:"stretched-link active" do  %>
+      <div class="customer-show-item">
+        <h3>データ→</h3>
+      </div>
+      <% end %>
+      <%= link_to customer_my_menus_path(@customer), class:"stretched-link active" do %>
+      <div class="customer-show-item">
+        <h3>マイメニュー</h3>
+      </div>
+      <% end %>
+      <%= link_to customer_my_supplements_path(@customer), class:"stretched-link active" do %>
+      <div class="customer-show-item">
+        <h3>マイサプリメント</h3>
+      </div>
+      <% end %>
+      <%= link_to customer_my_gyms_path(@customer), class:"stretched-link active" do %>
+      <div class="customer-show-item">
+        <h3>マイジム</h3>
+      </div>
+      <% end %>
+      <% if @customer.id == current_customer.id %>
+        <%= link_to edit_customer_path(@customer), class:"stretched-link active" do %>
+        <div class="customer-show-item">
+          <h3>ユーザー情報編集</h3>
+        </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -25,8 +25,8 @@ Rails.application.routes.draw do
     resources :my_menus, only: [:index, :create, :update, :destroy] do
       resource :my_menu_likes, only: [:create, :destroy]
     end
-    resource :my_supplements, only: [:index, :create, :update, :destroy]
-    resource :my_gyms, only: [:index, :create, :update, :destroy]
+    resources :my_supplements, only: [:index, :create, :update, :destroy]
+    resources :my_gyms, only: [:index, :create, :update, :destroy]
     resource :relationships, only: [:create, :destroy]
     get 'follows' => 'relationships#follower', as: 'follows'
     get 'followers' => 'relationships#followed', as: 'followers'

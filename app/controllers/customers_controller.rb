@@ -1,6 +1,7 @@
 class CustomersController < ApplicationController
   def show
      @events = Event.all
+     @customer = Customer.find(params[:id])
   end
 
   def edit
