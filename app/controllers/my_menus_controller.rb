@@ -27,8 +27,21 @@ class MyMenusController < ApplicationController
     @my_menu = MyMenu.find(params[:id])
   end
 
+  def edit
+    @my_menu = MyMenu.find(params[:id])
+    if @my_menu.customer_id != current_customer.id
+      flash[:danger] = "このアカウント以外の編集は出来ません。"
+      redirect_to customer_path(@customer)
+    end
+  end
+
   def update
-    
+    @my_menu = MyMenu.find(params[:id])
+    if @my_menu.update(my_menu_params)
+      redirect_to customer_my_menu_path(@my_menu)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -38,7 +51,7 @@ class MyMenusController < ApplicationController
   private
   def my_menu_params
     params.require(:my_menu).permit(:part, :theme,
-        my_menu_items_attributes:[:id, :name]
+        my_menu_items_attributes:[:id, :name, :_destroy]
       )
   end
 end

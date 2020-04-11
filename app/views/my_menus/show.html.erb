@@ -2,17 +2,17 @@
   <div class="row">
     <div class="col-xs-6">
       <h3>マイメニュー詳細</h3>
-      <table>
+      <%= link_to "編集する", edit_customer_my_menu_path, remote: true %>
+      <div id="myMenuEditRemote"></div>
+      <table class="table">
         <tr>
-          <th>テーマ</th>
-          <th>部位</th>
-          <th>メニュー</th>
-        </tr>
-        <tr>
-          <td><%= @my_menu.theme %></td>
+          <td ><%= @my_menu.theme %></td>
           <td><%= @my_menu.part %></td>
+        </tr>
+        
+        <% @my_menu.my_menu_items.each do |item| %>
+        <tr>
           <td>
-            <% @my_menu.my_menu_items.each do |item| %>
             <%= item.name %>
             <% end %>
           </td>
