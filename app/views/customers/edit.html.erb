@@ -1,2 +1,34 @@
-<h1>Customers#edit</h1>
-<p>Find me in app/views/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-offset-4 col-xs-4 customer-devise-box">
+      <%= form_with(model: @customer, local: true, url: customer_path, method: :put) do |f| %>
+      <div class="fields">
+        <label>名前</label>
+        <%= f.text_field :name, autofocus: true, class:"form-control" %>
+      </div>
+
+      <div class="fields">
+        <%= attachment_image_tag @customer, :profile_image, :fill, 100, 100, format: 'jpeg''jpg', fallback: "no_image.png" %>
+        <label>プロフィール画像</label>
+        <%= f.attachment_field :profile_image %>
+      </div>
+
+      <div class="fields">
+        <label>メールアドレス</label>
+        <%= f.text_field :email, autofocus: true, class:"form-control" %>
+      </div>
+
+      <div class="fields">
+        <label>データ公開ステータス</label><br>
+        <%= f.radio_button :is_data_available, true %> データを公開する
+        <%= f.radio_button :is_data_available, false %> データを公開しない
+      </div>
+
+      <div class="actions">
+        <%= f.submit "編集内容を保存する", class:"btn customer-update active" %>
+      </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -15,5 +15,9 @@ class Customer < ApplicationRecord
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following_customer, through: :follower, source: :followed
   has_many :follower_customer, through: :followed, source: :follower
+
   attachment :profile_image
+  validates :name, presence: true, length: {in: 2..50}
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, {presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }}
 end
