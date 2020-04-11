@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <h3>マイメニュー詳細</h3>
+      <table>
+        <tr>
+          <th>テーマ</th>
+          <th>部位</th>
+          <th>メニュー</th>
+        </tr>
+        <tr>
+          <td><%= @my_menu.theme %></td>
+          <td><%= @my_menu.part %></td>
+          <td>
+            <% @my_menu.my_menu_items.each do |item| %>
+            <%= item.name %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

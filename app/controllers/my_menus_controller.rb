@@ -9,6 +9,7 @@ class MyMenusController < ApplicationController
     @my_menu.customer_id = current_customer.id
 
     if @my_menu.save
+      flash[:success] = "マイメニューを登録しました！"
        redirect_to customer_my_menus_path(@my_menu)
     else
       render :new
@@ -17,8 +18,13 @@ class MyMenusController < ApplicationController
 
   def index
     @my_menus = MyMenu.all
+    # レイアウト作成時に部位別に分ける記述
     # @Upper_bodys = MyMenu.where(part: upper_body)
     
+  end
+
+  def show
+    @my_menu = MyMenu.find(params[:id])
   end
 
   def update
