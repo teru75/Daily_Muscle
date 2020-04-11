@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <h3>マイメニュー詳細</h3>
+      <%= link_to "編集する", edit_customer_my_menu_path, remote: true %>
+      <div id="myMenuEditRemote"></div>
+      <table class="table">
+        <tr>
+          <td ><%= @my_menu.theme %></td>
+          <td><%= @my_menu.part %></td>
+        </tr>
+        
+        <% @my_menu.my_menu_items.each do |item| %>
+        <tr>
+          <td>
+            <%= item.name %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

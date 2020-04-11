@@ -1,0 +1,12 @@
+ja:
+  enums:
+    my_menu:
+     part:
+        whole_body: "全身"
+        upper_body: "上半身"
+        arm: "腕"
+        breast: "胸"
+        shoulder: '肩'
+        back: "背中"
+        lower_body: "下半身"
+        trunk: "体幹"
