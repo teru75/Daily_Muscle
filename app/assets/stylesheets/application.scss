@@ -13,3 +13,49 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+body{
+  padding-top: 50px;
+}
+
+ .muscle-main{
+  background-image: image-url("IMG_8665.JPG");
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  color: white;
+ }
+
+ .start-content{
+  text-align: center;
+  height: 500px;
+  padding: 10px;
+ }
+
+ .start-content > start-item{
+
+ }
+
+ .start-item{
+  display: flex;
+ }
+
+ .navbar{
+  margin-bottom: 0px;
+ }
+
+ .navbar-nav > li{
+  margin-right: 40px;
+ }
+
+a.anchor{
+  display: block;
+  padding-top: 70px;
+  margin-top: -70px;
+}
+
+.customer-devise-box{
+  padding: 50px 0px;
+}
