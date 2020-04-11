@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
   def show
+     @events = Event.all
   end
 
   def edit
