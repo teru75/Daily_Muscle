@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-6">
-      <h3>マイメニュー詳細</h3>
+      <h3>マイサプリメント詳細</h3>
       <% if @my_supplement.customer_id == current_customer.id %>
       <button onclick="display()">編集する</button>
       <%= link_to "削除する", customer_my_supplement_path(@my_supplement), class:"btn active", method: :delete, "data-confirm" => "本当に消しますか？" %>

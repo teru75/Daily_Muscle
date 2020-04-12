@@ -9,7 +9,7 @@ class MySupplementsController < ApplicationController
 
     if @my_supplement.save
       flash[:success] = "マイサプリメントを登録しました！"
-       redirect_to customer_my_supplements_path(@my_supplement)
+       redirect_to customer_my_supplement_path(@my_supplement.customer_id, @my_supplement)
     else
       render :new
     end
@@ -17,9 +17,6 @@ class MySupplementsController < ApplicationController
 
   def index
     @my_supplements = MySupplement.all
-    # レイアウト作成時に部位別に分ける記述
-    # @Upper_bodys = MySupplement.where(part: upper_body)
-    
   end
 
   def show
