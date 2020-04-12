@@ -6,7 +6,7 @@
       <div class="my-menu-item">
         <h4>上半身</h4>
         <% @my_menus.each do |menu| %>
-        <%= link_to customer_my_menu_path(menu, menu.customer_id) do %>
+        <%= link_to customer_my_menu_path(menu.customer_id, menu) do %>
         <%= menu.part_i18n %>
         <% end %>
         <% menu.my_menu_items.each do |item| %>
