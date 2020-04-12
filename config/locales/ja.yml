@@ -10,3 +10,11 @@ ja:
         back: "背中"
         lower_body: "下半身"
         trunk: "体幹"
+
+    my_supplement:
+     genre:
+        whey: "ホエイプロテイン"
+        soy: "ソイプロテイン"
+        casein: "カゼインプロテイン"
+        amino: "アミノ酸系"
+        condition: "コンディション系"
