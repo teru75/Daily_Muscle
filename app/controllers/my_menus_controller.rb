@@ -24,19 +24,17 @@ class MyMenusController < ApplicationController
   end
 
   def show
-    @my_menu = MyMenu.find(params[:id])
+    @customer = Customer.find(params[:customer_id])
+    @my_menu = @customer.my_menus.find(params[:id])
   end
 
-  def edit
-    @my_menu = MyMenu.find(params[:id])
-    if @my_menu.customer_id != current_customer.id
-      flash[:danger] = "このアカウント以外の編集は出来ません。"
-      redirect_to customer_path(@customer)
-    end
-  end
 
   def update
     @my_menu = MyMenu.find(params[:id])
+    if @my_menu.customer_id != current_customer.id
+      flash[:danger] = "他アカウントの編集はできません。"
+      redirect_to customer_my_menus_path
+    end
     if @my_menu.update(my_menu_params)
       redirect_to customer_my_menu_path(@my_menu)
     else
@@ -45,7 +43,14 @@ class MyMenusController < ApplicationController
   end
 
   def destroy
-    
+    @my_menu = MyMenu.find(params[:id])
+    if @my_menu.customer_id != current_customer.id
+      flash[:danger] = "他アカウントの編集はできません。"
+      redirect_to customer_my_menus_path
+    end
+    @my_menu.destroy
+    flash[:notice] = "マイメニューを削除しました。"
+    redirect_to customer_my_menus_path
   end
 
   private
