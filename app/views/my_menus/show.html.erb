@@ -2,9 +2,8 @@
   <div class="row">
     <div class="col-xs-6">
       <h3>マイメニュー詳細</h3>
-      <%= link_to "編集する", edit_customer_my_menu_path, remote: true %>
-      <div id="myMenuEditRemote"></div>
-      <table class="table">
+      <button onclick="display()">編集する</button>
+      <table class="table" id="my_menu">
         <tr>
           <td ><%= @my_menu.theme %></td>
           <td><%= @my_menu.part %></td>
@@ -18,6 +17,30 @@
           </td>
         </tr>
       </table>
+    
+      <div id="my_menu_edit" style="display: none;">
+        <%= form_with(model: @my_menu, local: true, url: customer_my_menu_path(@my_menu), method: :put) do |f| %>
+          <%= f.label :theme, "テーマ" %>
+          <%= f.text_field :theme, class:"form-control" %>
+          <%= f.label :part, "部位" %>
+          <%= f.select :part, [["全身", :whole_body], ["上半身", :upper_body], ["腕", :arm], ["胸", :breast], ["肩", :shoulder],["背中", :back], ["下半身", :lower_body], ["体幹", :trunk]], class:"form-control" %>
+
+          <div class="my_menu_items">
+            <%= f.fields_for :my_menu_items do |i| %>
+              <%= render "my_menu_item_fields", f: i %>
+            <% end %>
+            <div class="links">
+              <br><%= link_to_add_association "メニューを追加", f, :my_menu_items %>
+            </div>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "登録" %>
+          </div>
+
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
+
