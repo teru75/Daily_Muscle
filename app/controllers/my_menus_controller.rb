@@ -10,7 +10,7 @@ class MyMenusController < ApplicationController
 
     if @my_menu.save
       flash[:success] = "マイメニューを登録しました！"
-       redirect_to customer_my_menus_path(@my_menu)
+       redirect_to customer_my_menu_path(@my_menu.customer_id, @my_menu)
     else
       render :new
     end

@@ -1,2 +1,16 @@
-<h1>MyGyms#index</h1>
-<p>Find me in app/views/my_gyms/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8　my-menu-content">
+      <h3>マイジム　一覧</h3>
+      <%= link_to "新規登録する",new_customer_my_gym_path %>
+      <div class="my-menu-item">
+        <h4></h4>
+        <% @my_gyms.each do |gym| %>
+        <%= link_to customer_my_gym_path(gym.customer_id, gym) do %>
+        <%= gym.name %>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
