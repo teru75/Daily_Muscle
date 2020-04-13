@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row" style="margin-top: 50px">
     <div class="col-xs-offset-3 col-xs-6">
-      <%= form_for(resource, as: resource_name, url: admin_session_path(resource_name)) do |f| %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <table class="admin_signup_table" width="100%">
           <tr>
             <td width="150"><%= f.label :メールアドレス %></td>
