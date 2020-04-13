@@ -28,7 +28,7 @@ class Admin::EventTemplatesController < ApplicationController
       flash[:success] = "メニューテンプレートが編集されました！"
       redirect_to admin_event_template_path(@event_template)
     else
-      render :edit
+      render :new
     end
   end
 

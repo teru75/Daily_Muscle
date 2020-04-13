@@ -11,7 +11,11 @@
         <% @customers.each do |customer| %>
         <tr>
           <td><%= attachment_image_tag customer, :profile_image, :fill,10, 10, format: 'jpeg',fallback: "no_image.png", size:'100x100' %></td>
-          <td><%= customer.name %></td>
+          <td>
+            <%= link_to admin_customer_path(customer) do %>
+            <%= customer.name %>
+            <% end %>
+          </td>
           <td><%= customer.email %></td>
         </tr>
         <% end %>
