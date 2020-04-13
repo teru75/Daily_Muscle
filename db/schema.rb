@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_13_081121) do
+ActiveRecord::Schema.define(version: 2020_04_13_084826) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2020_04_13_081121) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "theme"
+    t.boolean "is_enabled", default: true, null: false
   end
 
   create_table "events", force: :cascade do |t|
@@ -83,7 +84,6 @@ ActiveRecord::Schema.define(version: 2020_04_13_081121) do
   create_table "menu_templates", force: :cascade do |t|
     t.integer "event_template_id"
     t.string "name"
-    t.boolean "status", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

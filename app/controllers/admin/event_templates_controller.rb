@@ -31,7 +31,7 @@ class Admin::EventTemplatesController < ApplicationController
 
   private
   def event_template_params
-    params.require(:event_template).permit(:part, :theme,
-        menu_templates_attributes:[:id, :name, :status, :_destroy])
+    params.require(:event_template).permit(:part, :theme, :is_enabled,
+        menu_templates_attributes:[:id, :name, :_destroy])
   end
 end

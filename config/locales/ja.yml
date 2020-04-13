@@ -19,7 +19,7 @@ ja:
         amino: "アミノ酸系"
         condition: "コンディション系"
 
-    menu_templates:
+    event_template:
      part:
         whole_body: "全身"
         upper_body: "上半身"

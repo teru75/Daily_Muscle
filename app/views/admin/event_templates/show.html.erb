@@ -1,16 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-6">
-      <h3>マイメニュー詳細</h3>
+      <h3>メニューテンプレート詳細</h3>
       <button onclick="display()">編集する</button>
-      <%= link_to "削除する", customer_my_menu_path(@my_menu), class:"btn active", method: :delete, "data-confirm" => "本当に消しますか？" %>
-      <table class="table" id="my_menu">
+      <table class="table" id="event_template">
         <tr>
-          <td ><%= @my_menu.theme %></td>
-          <td><%= @my_menu.part %></td>
+          <td ><%= @event_template.theme %></td>
+          <td><%= @event_template.part_i18n %></td>
         </tr>
         
-        <% @my_menu.my_menu_items.each do |item| %>
+        <% @event_template.menu_templates.each do |item| %>
         <tr>
           <td>
             <%= item.name %>
@@ -19,27 +18,29 @@
         </tr>
       </table>
     
-      <div id="my_menu_edit" style="display: none;">
-        <%= form_with(model: @my_menu, local: true, url: customer_my_menu_path(@my_menu), method: :put) do |f| %>
-          <%= f.label :theme, "テーマ" %>
-          <%= f.text_field :theme, class:"form-control" %>
-          <%= f.label :part, "部位" %>
-          <%= f.select :part, [["全身", :whole_body], ["上半身", :upper_body], ["腕", :arm], ["胸", :breast], ["肩", :shoulder],["背中", :back], ["下半身", :lower_body], ["体幹", :trunk]], class:"form-control" %>
+      <div id="event_template_edit" style="display: none;">
+        <%= form_with(model: @event_template, local: true, url: admin_event_templates_path) do |f| %>
+        <%= f.label :theme, "テーマ" %>
+        <%= f.text_field :theme, class:"form-control" %>
+        <%= f.label :part, "部位" %>
+        <%= f.radio_button :status, true %> 有効
+        <%= f.radio_button :status, true %> 無効
+        <%= f.select :part, [["全身", :whole_body], ["上半身", :upper_body], ["腕", :arm], ["胸", :breast], ["肩", :shoulder],["背中", :back], ["下半身", :lower_body], ["体幹", :trunk]], class:"form-control" %>
 
-          <div class="my_menu_items">
-            <%= f.fields_for :my_menu_items do |i| %>
-              <%= render "my_menu_item_fields", f: i %>
-            <% end %>
-            <div class="links">
-              <br><%= link_to_add_association "メニューを追加", f, :my_menu_items %>
-            </div>
+        <div class="event_templates">
+          <%= f.fields_for :menu_templates do |i| %>
+            <%= render "menu_template_fields", f: i %>
+          <% end %>
+          <div class="links">
+            <br><%= link_to_add_association "メニューを追加", f, :menu_templates %>
           </div>
+        </div>
 
-          <div class="actions">
-            <%= f.submit "登録" %>
-          </div>
+        <div class="actions">
+          <%= f.submit "登録" %>
+        </div>
 
-        <% end %>
+      <% end %>
       </div>
     </div>
   </div>
