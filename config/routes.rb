@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :admin do
     resources :event_templates, only: [:index, :new, :create, :show, :edit, :update]
-    resources :menu_templates, only: [:create, :update, :destroy]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :events, only: [:index, :show]
   end

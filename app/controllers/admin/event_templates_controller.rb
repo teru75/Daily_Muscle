@@ -22,11 +22,14 @@ class Admin::EventTemplatesController < ApplicationController
     @event_template = EventTemplate.find(params[:id])
   end
 
-  def edit
-    @event_template = EventTemplate.find(params[:id])
- end
-
   def update
+    @event_template = EventTemplate.find(params[:id])
+    if @event_template.update(event_template_params)
+      flash[:success] = "メニューテンプレートが編集されました！"
+      redirect_to admin_event_template_path(@event_template)
+    else
+      render :edit
+    end
   end
 
   private
