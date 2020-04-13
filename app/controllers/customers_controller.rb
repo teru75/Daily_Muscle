@@ -4,6 +4,9 @@ class CustomersController < ApplicationController
      @customer = Customer.find(params[:id])
   end
 
+  def index
+  end
+
   def edit
     @customer =Customer.find(params[:id])
     if @customer.id != current_customer.id
@@ -22,8 +25,15 @@ class CustomersController < ApplicationController
     end
   end
 
-  def index
-  end
+  def hide
+    @customer = Customer.find(params[:id])
+    #is_deletedカラムにフラグを立てる(defaultはfalse)
+    @customer.update(is_deleted: true)
+    #ログアウトさせる
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
+    end
 
   private
   def customer_params

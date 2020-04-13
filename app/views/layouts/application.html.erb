@@ -37,6 +37,7 @@
           <li><%= link_to "テンプレート一覧", admin_event_templates_path%></li>
           <li><%= link_to "会員トレーニング一覧", admin_events_path %></li>
           <li><%= link_to "会員一覧", admin_customers_path %></li>
+          <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
           <% elsif current_page?(new_admin_session_path) %>
           <% else %>
           <li><%=link_to "新規登録", new_customer_registration_path %></li>

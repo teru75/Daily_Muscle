@@ -1,2 +1,122 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-offset-2 clo-xs-9">
+      <h1 class="page-header">会員詳細</h1>
+      <div class="row">
+        <div class="col-xs-3">
+          <%= attachment_image_tag @customer, :profile_image, :fill, 40, 40, format: 'jpeg',fallback: "no_image.png", size:"150×150" %>
+        </div>
+        <div class="col-xs-6">
+          <button onclick="display()">編集する</button>
+          <table id="admin-customer">
+            <tr>
+              <td>名前</td>
+              <td><%= @customer.name %></td>
+            </tr>
+            <tr>
+              <td>メールアドレス</td>
+              <td><%= @customer.email %></td>
+            </tr>
+            <tr>
+              <td>会員ステータス</td>
+              <td>
+                <% if @customer.is_deleted == true %>
+                  退会済み
+                <% else %>
+                  有効
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td>データ公開ステータス</td>
+              <td>
+                <% if @customer.is_data_available == true %>
+                  公開を許可
+                <% else %>
+                公開を許可しない
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+              </td>
+            </tr>
+          </table>
+
+          <table id="admin-customer-edit" style="display: none;">
+            <%= form_with(model:@customer, local: true, url: admin_customer_path(@customer), method: :put) do |f| %>
+            <tr>
+              <td>名前</td>
+              <td><%= @customer.name %></td>
+            </tr>
+            <tr>
+              <td>メールアドレス</td>
+              <td><%= @customer.email %></td>
+            </tr>
+            <tr>
+              <td>会員ステータス</td>
+              <td>
+                <%= f.radio_button :is_deleted, false %> 有効
+                <%= f.radio_button :is_deleted, true %> 退会済み
+               </td>
+            </tr>
+            <tr>
+              <td>データ公開ステータス</td>
+              <td>
+                <%= f.radio_button :is_data_available, true %> データ公開を許可
+                <%= f.radio_button :is_data_available, false %> データ公開を許可しない
+              </td>
+            </tr>
+            <tr>
+              <td><%= f.submit " 保存する", class:"btn active" %></td>
+            </tr>
+          </table>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-8">
+          <h3>マイメニュー</h3>
+          <% @customer.my_menus.each do |menu| %>
+            <table>
+              <tr>
+                <td><%= menu.theme %></td>
+                <td><%= menu.part_i18n %></td>
+              </tr>
+              <% menu.my_menu_items.each do |item| %>
+              <tr>
+                <td><%= item.name %></td>
+              </tr>
+              <% end %>
+            </table>
+          <% end %>
+        </div>
+
+        <div class="col-xs-8">
+          <h3>マイサプリメント</h3>
+          <% @customer.my_supplements.each do |supplement| %>
+            <table>
+              <tr>
+                <td><%= supplement.name %></td>
+                <td><%= supplement.genre %></td>
+                <td><%= supplement.brand %></td>
+              </tr>
+            </table>
+          <% end %>
+        </div>
+
+        <div class="col-xs-8">
+          <h3>マイジム</h3>
+          <% @customer.my_gyms.each do |gym| %>
+            <table>
+              <tr>
+                <td><%= gym.name %></td>
+              </tr>
+            </table>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

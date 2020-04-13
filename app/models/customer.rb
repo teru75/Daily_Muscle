@@ -20,4 +20,9 @@ class Customer < ApplicationRecord
   validates :name, presence: true, length: {in: 2..50}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, {presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }}
+
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
+  
 end
