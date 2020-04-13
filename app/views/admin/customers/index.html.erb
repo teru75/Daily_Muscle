@@ -1,2 +1,21 @@
-<h1>Admin::Customers#index</h1>
-<p>Find me in app/views/admin/customers/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8">
+      <h1>会員一覧</h1>
+      <table>
+        <tr>
+          <th></th>
+          <th>名前</th>
+          <th>メールアドレス</th>
+        </tr>
+        <% @customers.each do |customer| %>
+        <tr>
+          <td><%= attachment_image_tag customer, :profile_image, :fill,10, 10, format: 'jpeg',fallback: "no_image.png", size:'100x100' %></td>
+          <td><%= customer.name %></td>
+          <td><%= customer.email %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
