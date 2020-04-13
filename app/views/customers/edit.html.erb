@@ -27,7 +27,10 @@
       <div class="actions">
         <%= f.submit "編集内容を保存する", class:"btn customer-update active" %>
       </div>
-      <%= link_to "パスワードを忘れてしまった方へ", new_customer_password_path(@customer) %>
+      <%= link_to "パスワードを忘れてしまった方へ", new_customer_password_path(@customer) %><br>
+      <% if customer_signed_in? && @customer.id == current_customer.id %>
+        <%= link_to "退会", customers_hide_path(current_customer), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
+      <% end %>
       <% end %>
     </div>
   </div>
