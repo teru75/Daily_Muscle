@@ -36,6 +36,7 @@ class MyMenusController < ApplicationController
       redirect_to customer_my_menus_path
     end
     if @my_menu.update(my_menu_params)
+       flash[:success] = "マイメニューが編集されました！"
       redirect_to customer_my_menu_path(@my_menu)
     else
       render :edit

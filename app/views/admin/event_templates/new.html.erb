@@ -1,2 +1,28 @@
-<h1>Admin::EventTemplates#new</h1>
-<p>Find me in app/views/admin/event_templates/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8">
+      <h1 class="page-header">メニューテンプレート</h1>
+      <h3>新規登録</h3>
+      <%= form_with(model: @event_template, local: true, url: admin_event_templates_path) do |f| %>
+        <%= f.label :theme, "テーマ" %>
+        <%= f.text_field :theme, class:"form-control" %>
+        <%= f.label :part, "部位" %>
+        <%= f.select :part, [["全身", :whole_body], ["上半身", :upper_body], ["腕", :arm], ["胸", :breast], ["肩", :shoulder],["背中", :back], ["下半身", :lower_body], ["体幹", :trunk]], class:"form-control" %>
+
+        <div class="event_templates">
+          <%= f.fields_for :menu_templates do |i| %>
+            <%= render "menu_template_fields", f: i %>
+          <% end %>
+          <div class="links">
+            <br><%= link_to_add_association "メニューを追加", f, :menu_templates %>
+          </div>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "登録" %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
