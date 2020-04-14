@@ -1,2 +1,40 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-9">
+      <h1><%= @event.start.strftime('%Y/%m/%d') %>メニュー詳細</h1>
+      <table border="2" width=70%>
+        <tr>
+          <th colspan="4">トレーニング</th>
+        </tr>
+        <tr>
+          <td colspan="2">時間</td>
+          <td colspan="2"><%= ((@event.end-@event.start)/60).ceil %>分</td>
+        </tr>
+        <tr>
+          <th>メニュー</th>
+          <th>重さ</th>
+          <th>回数</th>
+          <th>セット数</th>
+        </tr>
+        <% @event.menus.each do |menu| %>
+        <tr>
+          <td rowspan="<%=menu.reps.size%>"><%= menu.name %></td>
+          <% menu.reps.each do |rep| %>
+          <td><%= rep.weight %></td>
+          <td><%= rep.count %></td>
+          <td><%= rep.set_count %></td>
+          </tr>
+        <% end %>
+        <% end %>
+      </table>
+      <span><%= link_to edit_event_path(@event) do %>
+          <button type="button" class="btn btn-event-edit active">編集</button>
+         <% end %>
+      </span>
+      <span><%= link_to event_path(@event),method: :delete, "data-confirm" => "本当に消しますか？" do %>
+          <button type="button" class="btn btn-event-destroy active">削除</button>
+         <% end %>
+      </span>
+    </div>
+  </div>
+</div>

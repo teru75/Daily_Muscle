@@ -13,11 +13,15 @@ class EventsController < ApplicationController
       flash[:success] = "トレーニングを保存しました！"
        redirect_to event_path(@event)
     else
+      @event = Event.new
+      @menu = @event.menus.build
+      @reps = @menu.reps.build
       render :new
     end
   end
 
   def show
+    @event = Event.find(params[:id])
   end
 
   def index
