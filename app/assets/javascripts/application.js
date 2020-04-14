@@ -60,6 +60,7 @@ $(function () {
 
 // マイメニューを編集する記述
 var display=function() {
+  if(document.getElementById('my_menu') != null) {
     //切り替える対象の状態を取得
     var edit = document.getElementById('my_menu_edit');
     var menu = document.getElementById('my_menu');
@@ -73,7 +74,7 @@ var display=function() {
          edit.setAttribute("style","display:block");
          menu.setAttribute("style","display:none");
         //デバッグ用にinlineをlogに出力
-        console.log("inline");
+        console.log("block");
     }else{
          //スタイルを非表示(none)に切り替え
         edit.setAttribute("style","display:none");
@@ -81,13 +82,11 @@ var display=function() {
         //デバッグ用にnoneをlogに出力
         console.log("none");
     }
-}
-
-//　マイサプリメントを編集する記述
-var display=function() {
-    //切り替える対象の状態を取得
+  }
+  //マイサプリメントを編集する記述
+  if(document.getElementById('my_supplement') != null) {
     var edit = document.getElementById('my_supplement_edit');
-    var supplement = document.getElementById('my_supplement');
+    var menu = document.getElementById('my_supplement');
     //取得した情報からスタイルについての状態のみをstateに代入
     state=edit.style.display;
     //デバッグ用にlogに出力
@@ -96,23 +95,22 @@ var display=function() {
     if(state=="none"){
          //スタイルを表示(inline)に切り替え
          edit.setAttribute("style","display:block");
-         supplement.setAttribute("style","display:none");
+         menu.setAttribute("style","display:none");
         //デバッグ用にinlineをlogに出力
-        console.log("inline");
+        console.log("block");
     }else{
          //スタイルを非表示(none)に切り替え
         edit.setAttribute("style","display:none");
-        supplement.setAttribute("style","display:block");
+        menu.setAttribute("style","display:block");
         //デバッグ用にnoneをlogに出力
         console.log("none");
     }
-}
+  }
 
-//　マイジムを編集する記述
-var display=function() {
-    //切り替える対象の状態を取得
+  //マイジムを編集する記述
+  if(document.getElementById('my_gym') != null) {
     var edit = document.getElementById('my_gym_edit');
-    var gym = document.getElementById('my_gym');
+    var menu = document.getElementById('my_gym');
     //取得した情報からスタイルについての状態のみをstateに代入
     state=edit.style.display;
     //デバッグ用にlogに出力
@@ -121,23 +119,22 @@ var display=function() {
     if(state=="none"){
          //スタイルを表示(inline)に切り替え
          edit.setAttribute("style","display:block");
-         gym.setAttribute("style","display:none");
+         menu.setAttribute("style","display:none");
         //デバッグ用にinlineをlogに出力
-        console.log("inline");
+        console.log("block");
     }else{
          //スタイルを非表示(none)に切り替え
         edit.setAttribute("style","display:none");
-        gym.setAttribute("style","display:block");
+        menu.setAttribute("style","display:block");
         //デバッグ用にnoneをlogに出力
         console.log("none");
     }
-}
+  }
 
-//メニューテンプレートを編集する記述
-var display=function() {
-    //切り替える対象の状態を取得
+  //イベントテンプレートを編集する記述
+  if(document.getElementById('event_template') != null) {
     var edit = document.getElementById('event_template_edit');
-    var template = document.getElementById('event_template');
+    var menu = document.getElementById('event_template');
     //取得した情報からスタイルについての状態のみをstateに代入
     state=edit.style.display;
     //デバッグ用にlogに出力
@@ -146,23 +143,22 @@ var display=function() {
     if(state=="none"){
          //スタイルを表示(inline)に切り替え
          edit.setAttribute("style","display:block");
-         template.setAttribute("style","display:none");
+         menu.setAttribute("style","display:none");
         //デバッグ用にinlineをlogに出力
-        console.log("inline");
+        console.log("block");
     }else{
          //スタイルを非表示(none)に切り替え
         edit.setAttribute("style","display:none");
-        template.setAttribute("style","display:block");
+        menu.setAttribute("style","display:block");
         //デバッグ用にnoneをlogに出力
         console.log("none");
     }
-}
+  }
 
-//管理者が会員を編集する記述
-var display=function() {
-    //切り替える対象の状態を取得
-    var edit = document.getElementById('admin-customer-edit');
-    var customer = document.getElementById('admin-customer');
+  //管理者が会員を編集する記述
+  if(document.getElementById('admin-customer') != null) {
+    var edit = document.getElementById('admin-cutomer-edit');
+    var menu = document.getElementById('admin-customer');
     //取得した情報からスタイルについての状態のみをstateに代入
     state=edit.style.display;
     //デバッグ用にlogに出力
@@ -171,23 +167,22 @@ var display=function() {
     if(state=="none"){
          //スタイルを表示(inline)に切り替え
          edit.setAttribute("style","display:block");
-         customer.setAttribute("style","display:none");
+         menu.setAttribute("style","display:none");
         //デバッグ用にinlineをlogに出力
-        console.log("inline");
+        console.log("block");
     }else{
          //スタイルを非表示(none)に切り替え
         edit.setAttribute("style","display:none");
-        customer.setAttribute("style","display:block");
+        menu.setAttribute("style","display:block");
         //デバッグ用にnoneをlogに出力
         console.log("none");
     }
-}
+  }
 
-//トレーニング概要を編集する記述
-var display=function() {
-    //切り替える対象の状態を取得
+  //トレーニング概要を編集する記述
+  if(document.getElementById('customer-event') != null) {
     var edit = document.getElementById('customer-event-edit');
-    var event = document.getElementById('customer-event');
+    var menu = document.getElementById('customer-event');
     //取得した情報からスタイルについての状態のみをstateに代入
     state=edit.style.display;
     //デバッグ用にlogに出力
@@ -196,14 +191,17 @@ var display=function() {
     if(state=="none"){
          //スタイルを表示(inline)に切り替え
          edit.setAttribute("style","display:block");
-         event.setAttribute("style","display:none");
+         menu.setAttribute("style","display:none");
         //デバッグ用にinlineをlogに出力
-        console.log("inline");
+        console.log("block");
     }else{
          //スタイルを非表示(none)に切り替え
         edit.setAttribute("style","display:none");
-        event.setAttribute("style","display:block");
+        menu.setAttribute("style","display:block");
         //デバッグ用にnoneをlogに出力
         console.log("none");
     }
+  }
 }
+
+
