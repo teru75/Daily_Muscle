@@ -1,0 +1,11 @@
+<div class="nested-fields">
+  <%= f.label :name, "メニュー" %>
+  <%= f.text_field :name, class:"form-control" %>
+  <%= link_to_remove_association "メニューを削除", f %>
+  <%= f.fields_for :reps do |r| %>
+    <%= render "rep_fields", f: r %>
+  <% end %>
+ <div class="links">
+  <br><%= link_to_add_association "重さなどを追加", f, :reps %>
+</div>
+</div>
