@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :admin do
-    resources :event_templates, only: [:index, :new, :create, :show, :edit, :update]
+    resources :event_templates, only: [:index, :new, :create, :show, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :events, only: [:index, :show]
   end
@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     get 'groups' => 'groups#customer_index'
   end
   put "/customers/:id/hide" => "customers#hide", as: 'customers_hide'
-  resources :events, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+  resources :events, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     resource :event_likes, only: [:create, :destroy]
   end
 
