@@ -7,13 +7,6 @@ class CustomersController < ApplicationController
   def index
   end
 
-  def edit
-    @customer =Customer.find(params[:id])
-    if @customer.id != current_customer.id
-      redirect_to customer_path(@customer)
-    end
-
-  end
 
   def update
     @customer = Customer.find(params[:id])

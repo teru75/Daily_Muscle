@@ -14,6 +14,8 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
+//= require jquery-ui/widgets/sortable
+//= require jquery-ui/effects/effect-highlight
 //= require moment
 //= require fullcalendar
 //= require cocoon

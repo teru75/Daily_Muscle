@@ -47,7 +47,7 @@ class EventsController < ApplicationController
     params.require(:event).permit(:part, :start, :end,
         menus_attributes:
         [
-        :id, :name, :_destroy, reps_attributes:
+        :id, :name, :position, :_destroy, reps_attributes:
         [:id, :weight, :count, :set_count, :_destroy
         ]
       ]
