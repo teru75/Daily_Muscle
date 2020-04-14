@@ -182,3 +182,28 @@ var display=function() {
         console.log("none");
     }
 }
+
+//トレーニング概要を編集する記述
+var display=function() {
+    //切り替える対象の状態を取得
+    var edit = document.getElementById('customer-event-edit');
+    var event = document.getElementById('customer-event');
+    //取得した情報からスタイルについての状態のみをstateに代入
+    state=edit.style.display;
+    //デバッグ用にlogに出力
+    console.log(state);
+    //非表示中のときの処理
+    if(state=="none"){
+         //スタイルを表示(inline)に切り替え
+         edit.setAttribute("style","display:block");
+         event.setAttribute("style","display:none");
+        //デバッグ用にinlineをlogに出力
+        console.log("inline");
+    }else{
+         //スタイルを非表示(none)に切り替え
+        edit.setAttribute("style","display:none");
+        event.setAttribute("style","display:block");
+        //デバッグ用にnoneをlogに出力
+        console.log("none");
+    }
+}
