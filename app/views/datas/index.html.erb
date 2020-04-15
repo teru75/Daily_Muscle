@@ -1,2 +1,6 @@
-<h1>Datas#index</h1>
-<p>Find me in app/views/datas/index.html.erb</p>
+<canvas id="myChart" width="200" height="100"></canvas>
+<script>
+    var graphdays = <%== @dayline %>
+    var graphtimes = <%= @timeline %>
+</script>
+<script>draw_graph();</script>
