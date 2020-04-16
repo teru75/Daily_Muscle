@@ -5,6 +5,7 @@ class CustomersController < ApplicationController
   end
 
   def index
+    @events = Event.where(customer_id: current_customer.id)
   end
 
   def edit
