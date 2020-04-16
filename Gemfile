@@ -32,9 +32,10 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'chart-js-rails', '~> 0.1.4'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+gem "chartkick"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -72,7 +73,6 @@ gem 'momentjs-rails'
 gem 'cocoon'
 gem 'enum_help'
 gem 'byebug'
-gem 'jquery-ui-rails'
 gem 'acts_as_list'
 gem 'kaminari','~> 1.1.1'
 
