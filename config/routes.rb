@@ -43,5 +43,4 @@ Rails.application.routes.draw do
   resources :datas, only: [:index]
   resources :groups, only: [:new, :create, :index, :show, :update]
   resources :group_customers, only: [:destroy]
-
 end
