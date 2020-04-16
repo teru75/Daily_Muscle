@@ -39,6 +39,10 @@
         </div>
       </div>
 
+      <div id="like-<%= @event.id %>">
+        <%= render 'event_likes',event: @event %>
+        </div>
+
       <div class="row" id="customer-event-edit" style="display: none;">
         <div class="col-xs-9">
           <%= render 'form', event: @event %>
