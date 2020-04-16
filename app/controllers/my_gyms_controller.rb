@@ -16,7 +16,7 @@ def new
   end
 
   def index
-    @my_gyms = MyGym.all
+    @customer = Customer.find(params[:customer_id])
   end
 
   def show

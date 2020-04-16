@@ -16,7 +16,7 @@ class MySupplementsController < ApplicationController
   end
 
   def index
-    @my_supplements = MySupplement.all
+    @customer = Customer.find(params[:customer_id])
   end
 
   def show

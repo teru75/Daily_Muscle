@@ -160,7 +160,7 @@ var display=function() {
 
   //管理者が会員を編集する記述
   if(document.getElementById('admin-customer') != null) {
-    var edit = document.getElementById('admin-cutomer-edit');
+    var edit = document.getElementById('admin-customer-edit');
     var menu = document.getElementById('admin-customer');
     //取得した情報からスタイルについての状態のみをstateに代入
     state=edit.style.display;
