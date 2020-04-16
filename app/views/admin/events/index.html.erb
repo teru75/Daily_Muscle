@@ -1,2 +1,26 @@
-<h1>Admin::Events#index</h1>
-<p>Find me in app/views/admin/events/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8">
+      <h1>筋トレ一覧</h1>
+      <table class="table" width="100%">
+        <tr>
+          <th>ユーザー</th>
+          <th>部位</th>
+          <th>トレーニング時間</th>
+        </tr>
+        <% @events.each do |event| %>
+        <tr>
+          <td>
+            <%= link_to admin_event_path(event) do %>
+            <%= event.customer.name %>
+            <% end %>
+            </td>
+          <td><%= event.part_i18n %></td>
+          <td><%= ((event.end-event.start)/60).ceil %>分</td>
+        </tr>
+        <% end %>
+      </table>
+      <%= paginate @events, class: "paginate" %>
+    </div>
+  </div>
+</div>
