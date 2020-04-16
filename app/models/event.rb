@@ -8,6 +8,6 @@ class Event < ApplicationRecord
   validates :end, presence: true
   has_many :event_likes, dependent: :destroy
   def liked_by?(customer)
-    likes.where(customer_id: customer.id).exists?
+    event_likes.where(customer_id: customer.id).exists?
   end
 end
