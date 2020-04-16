@@ -5,7 +5,7 @@
       <%= link_to "新規登録する",new_customer_my_supplement_path %>
       <div class="my-menu-item">
         <h4></h4>
-        <% @my_supplements.each do |supplement| %>
+        <% @customer.my_supplements.each do |supplement| %>
         <%= link_to customer_my_supplement_path(supplement.customer_id, supplement) do %>
         <%= supplement.name %>
         <% end %>

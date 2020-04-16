@@ -1,12 +1,18 @@
 class CustomersController < ApplicationController
   def show
-     @events = Event.all
      @customer = Customer.find(params[:id])
+     @events = @customer.events
   end
 
   def index
   end
 
+  def edit
+    @customer = Customer.find(params[:id])
+    if @customer.id != current_customer.id
+      flash[:alert] = "他アカウントの編集はできません。"
+    end
+  end
 
   def update
     @customer = Customer.find(params[:id])

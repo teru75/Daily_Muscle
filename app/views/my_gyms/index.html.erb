@@ -5,7 +5,7 @@
       <%= link_to "新規登録する",new_customer_my_gym_path %>
       <div class="my-menu-item">
         <h4></h4>
-        <% @my_gyms.each do |gym| %>
+        <% @customer.my_gyms.each do |gym| %>
         <%= link_to customer_my_gym_path(gym.customer_id, gym) do %>
         <%= gym.name %>
         <% end %>

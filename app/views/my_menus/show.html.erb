@@ -20,6 +20,10 @@
           </td>
         </tr>
       </table>
+
+      <div id="like-<%= @my_menu.id %>">
+        <%= render 'my_menu_likes',my_menu: @my_menu %>
+        </div>
     
       <div id="my_menu_edit" style="display: none;">
         <%= form_with(model: @my_menu, local: true, url: customer_my_menu_path(@my_menu), method: :put) do |f| %>
