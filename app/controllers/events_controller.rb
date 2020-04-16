@@ -40,6 +40,10 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    flash[:alert] = "トレーニングを削除しました。"
+    redirect_to customer_path(current_customer)
   end
 
   private
