@@ -25,5 +25,17 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (self.is_deleted == false)
   end
-  
+
+  def follow(customer_id)
+    follower.create(followed_id: customer_id)
+  end
+
+  def unfollow(customer_id)
+    follower.find_by(followed_id: customer_id).destroy
+  end
+
+  def following?(customer)
+    following_customer.include?(customer)
+  end
+
 end

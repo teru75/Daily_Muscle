@@ -30,6 +30,7 @@
         <ul class="nav navbar-nav navbar-right">
           <% if customer_signed_in? %>
           <li><%= link_to "新規作成", new_event_path %></li>
+          <li><%= link_to "タイムライン", events_path %></li>
           <li><%= link_to "コミュニティ", customer_groups_path(current_customer) %></li>
           <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
           <li></li>
