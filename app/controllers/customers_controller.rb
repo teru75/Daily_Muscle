@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
   end
 
   def index
-    @events = Event.where(customer_id: current_customer.id)
+    @events = Event.order(start: :desc).page(params[:page])
   end
 
   def edit

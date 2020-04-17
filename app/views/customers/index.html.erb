@@ -1,2 +1,37 @@
-<h1>Customers#index</h1>
-<p>Find me in app/views/customers/index.html.erb</p>
+<div class="container">
+  <h1>筋トレ</h1>
+
+  <div class="row">
+    <div class="col-xs-8">
+      <% @events.each do |event| %>
+      <div class="row">
+        <div class="col-xs-2">
+          <%= link_to customer_path(event.customer) do %>
+          <%= attachment_image_tag(event.customer, :profile_image, :size =>'50x50', fallback: "no_image.png",class: "img-circle") %>
+          <%= event.customer.name %>
+          <% end %>
+        </div>
+        <div class="col-xs-8">
+          <table>
+            <tr>
+              <td><%= event.part_i18n %></td>
+              <% event.menus.each do |menu| %>
+              <td><%= menu.name %></td>
+              <% menu.reps.each do |rep| %>
+              <td><%= rep.weight %></td>
+              <td><%= rep.count %></td>
+              <td><%= rep.set_count %></td>
+              <% end %>
+              <% end %>
+            </tr>
+        </table>
+        </div>
+        <div class="col-xs-2">
+          <%= event.start %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>
