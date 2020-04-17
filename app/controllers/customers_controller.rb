@@ -5,7 +5,6 @@ class CustomersController < ApplicationController
   end
 
   def index
-    @events = Event.order(start: :desc).page(params[:page])
   end
 
   def edit

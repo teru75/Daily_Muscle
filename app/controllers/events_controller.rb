@@ -22,7 +22,7 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    @events = Event.order(start: :desc).page(params[:page])
   end
 
   def update
