@@ -19,7 +19,7 @@
           <span class="icon-bar"></span>
         </button>
         <% if customer_signed_in? %>
-        <%= link_to "タイトル", customer_path(current_customer), class:"navbar-brand" %>
+        <%= link_to "タイトル", customer_path(current_customer), class:"navbar-brand", data: {"turbolinks" => false} %>
         <% elsif admin_signed_in? %>
         <%= link_to "タイトル", admin_homes_top_path, class:"navbar-brand" %>
         <% else %>
@@ -49,7 +49,7 @@
     </div>
   </nav>
   <%= render 'layouts/flash_messages' %>
-  <body data-turbolinks="false">
+  <body >
     <%= yield %>
   </body>
 </html>
