@@ -10,7 +10,7 @@ class DatasController < ApplicationController
     @events = @customer.events.joins(:menus).where("menus.name = 'ベンチプレス'").order(start: "ASC").last(5)
     @events.each do |event|
       event.menus.each do |menu|
-        if menu.name == @menu && count < 5
+        if menu.name == menu && count < 5
           count+= 1
           @dayline.push(menu.event.start.strftime('%m/%d').to_s)
           @timeline.push(menu.reps.order(weight: "DESC").first[:weight])
