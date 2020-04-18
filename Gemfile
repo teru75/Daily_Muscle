@@ -74,3 +74,6 @@ gem 'cocoon'
 gem 'enum_help'
 gem 'byebug'
 gem 'acts_as_list'
+gem 'kaminari','~> 1.1.1'
+
+

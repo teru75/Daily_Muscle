@@ -17,7 +17,7 @@ class MyMenusController < ApplicationController
   end
 
   def index
-    @my_menus = MyMenu.all
+    @customer = Customer.find(params[:customer_id])
     # レイアウト作成時に部位別に分ける記述
     # @Upper_bodys = MyMenu.where(part: upper_body)
     

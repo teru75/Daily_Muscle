@@ -1,0 +1,11 @@
+<% if event.liked_by?(current_customer) %>
+  <%= link_to event_event_likes_path(event), method: :delete, remote: true do %>
+    <span class="glyphicon glyphicon-heart" aria-hidden="true", style="color: red;"></span>
+    <%= event.event_likes.count %> いいね
+  <% end %>
+<% else %>
+  <%= link_to event_event_likes_path(event), method: :post, remote: true do %>
+    <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+    <%= event.event_likes.count %> いいね
+  <% end %>
+<% end %>

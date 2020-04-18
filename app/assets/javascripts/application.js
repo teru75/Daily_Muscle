@@ -23,43 +23,6 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-// カレンダーを表示させる記述
-$(function () {
-
-          function eventCalendar() {
-              return $('#calendar').fullCalendar({});
-          };
-          function clearCalendar() {
-              $('#calendar').html('');
-          };
-          $(document).on('turbolinks:load', function () {
-          eventCalendar();
-          });
-          $(document).on('turbolinks:before-cache', clearCalendar);
-
-          $('#calendar').fullCalendar({
-              events: '/events.json',
-              //カレンダー上部を年月で表示させる
-              titleFormat: 'YYYY年 M月',
-              //曜日を日本語表示
-              dayNamesShort: ['日', '月', '火', '水', '木', '金', '土'],
-              buttonText: {
-                  prev: '前月',
-                  next: '次月',
-                  prevYear: '前年',
-                  nextYear: '翌年',
-                  today: '今日',
-                  month: '月',
-                  week: '週',
-                  day: '日'
-              },
-              timeFormat: "HH:mm",
-                //イベントの色を変える
-              eventColor: '#63ceef',
-              //イベントの文字色を変える
-              eventTextColor: '#000000',
-          });
-});
 
 // マイメニューを編集する記述
 var display=function() {
@@ -160,7 +123,7 @@ var display=function() {
 
   //管理者が会員を編集する記述
   if(document.getElementById('admin-customer') != null) {
-    var edit = document.getElementById('admin-cutomer-edit');
+    var edit = document.getElementById('admin-customer-edit');
     var menu = document.getElementById('admin-customer');
     //取得した情報からスタイルについての状態のみをstateに代入
     state=edit.style.display;
