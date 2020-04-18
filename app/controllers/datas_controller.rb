@@ -1,16 +1,13 @@
 class DatasController < ApplicationController
   def index
-    if params[:menu] == "1"
-    @menu = "ベンチプレス"
-    end
     @customer = Customer.find(current_customer.id)
     @dayline = Array.new
     @timeline = Array.new
     count = 0
-    @events = @customer.events.joins(:menus).where("menus.name = 'ベンチプレス'").order(start: "ASC").last(5)
+    @events = @customer.events.joins(:menus).where("menus.name == ?", params[:name]).order(start: "ASC").last(5)
     @events.each do |event|
       event.menus.each do |menu|
-        if menu.name == menu && count < 5
+        if menu.name == params[:name] && count < 5
           count+= 1
           @dayline.push(menu.event.start.strftime('%m/%d').to_s)
           @timeline.push(menu.reps.order(weight: "DESC").first[:weight])
