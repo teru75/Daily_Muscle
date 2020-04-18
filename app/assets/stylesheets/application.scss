@@ -27,20 +27,37 @@ body{
   background-position: 50% 10%;
   height: 500px;
   color: white;
+  margin-bottom: 50px;
  }
 
  .start-content{
   text-align: center;
   height: 500px;
+  background-color: #f6f6f6;
   padding: 10px;
  }
 
- .start-content > start-item{
+ .about-title{
+ font-size: 35px;
+ line-height: 1.5;
+ font-weight: bold;
+ }
 
+.about-content{
+  margin-bottom: 50px;
+}
+
+ .about-content p{
+ color: #666666;
+ }
+
+ .start-content p{
+ color: #666666;
  }
 
  .start-item{
   display: flex;
+  justify-content: space-around;
  }
 
  .navbar{
