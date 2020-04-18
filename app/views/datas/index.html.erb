@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-8">
-      <%= form_for request.path, method: :get do |f| %>
-      <%= f.select :menu, [ ["ベンチプレス",1], ["スクワット", 2], ["デッドリフト", 3 ] ,["ショルダープレス", 4]], prompt: "メニューを選択してください"  %>
+      <%= form_with(url: "/datas", local:true, method: :get) do |f| %>
+      <%= f.select :name, options_for_select(["ベンチプレス", "デッドリフト", "スクワット"]) %>
       <%= f.submit "表示" %>
       <% end %>
       <canvas id="myChart" width="200" height="100"></canvas>
@@ -14,8 +14,26 @@
     var graphtimes = <%= @timeline %>
     console.log (graphtimes);
 </script>
+
 <script>
-  function draw_graph(){
+    // $(function(){
+    //     $('change-btn').on('click', function(){
+    //         $.ajax({
+    //             url:'/datas',
+    //             type: 'GET',
+    //             data{
+    //                 menu: $('.menu').value
+    //             }
+    //         })done(function(data){
+    //             data['dayline'];
+    //             data['itemline'];
+    //             draw_graph(data['dayline'], data['timeline'])
+    //         })
+    //     })
+    // });
+</script>
+<script>
+  function draw_graph(dayline, timeline){
     ctx = document.getElementById("myChart").getContext('2d');
     myChart = new Chart(ctx, {
         type: 'bar',
