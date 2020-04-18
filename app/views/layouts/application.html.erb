@@ -9,7 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <nav class="navbar navbar-default navbar-fixed-top">
+  <nav class="navbar navbar-fixed-top" style="background-image: linear-gradient(120deg,#ff63ce,#fda52d);">
     <div class="container-fruid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample">
@@ -27,23 +27,23 @@
         <% end %>
       </div>
       <div class="collapse navbar-collapse" id="navbarEexample">
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right nav-item">
           <% if customer_signed_in? %>
-          <li><%= link_to "新規作成", new_event_path %></li>
-          <li><%= link_to "タイムライン", events_path %></li>
-          <li><%= link_to "コミュニティ", customer_groups_path(current_customer) %></li>
-          <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+          <li ><%= link_to "新規作成", new_event_path, class:"nav-item-customer"%></li>
+          <li><%= link_to "タイムライン", events_path, class:"nav-item-customer" %></li>
+          <li><%= link_to "コミュニティ", customer_groups_path(current_customer), class:"nav-item-customer" %></li>
+          <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"nav-item-customer" %></li>
           <li></li>
           <% elsif admin_signed_in? %>
-          <li><%= link_to "テンプレート一覧", admin_event_templates_path%></li>
-          <li><%= link_to "会員トレーニング一覧", admin_events_path %></li>
-          <li><%= link_to "会員一覧", admin_customers_path %></li>
+          <li><%= link_to "テンプレート一覧", admin_event_templates_path, class:"nav-item-customer"%></li>
+          <li><%= link_to "会員トレーニング一覧", admin_events_path, class:"nav-item-customer" %></li>
+          <li><%= link_to "会員一覧", admin_customers_path, class:"nav-item-customer" %></li>
           <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
           <% elsif current_page?(new_admin_session_path) %>
           <% else %>
-          <li><%=link_to "新規登録", new_customer_registration_path %></li>
-          <li><%= link_to "ログイン", new_customer_session_path %></li>
-          <li><a href="#link">アプリについて</a></li>
+          <li><%=link_to "新規登録", new_customer_registration_path, class:"nav-item-customer" %></li>
+          <li><%= link_to "ログイン", new_customer_session_path, class:"nav-item-customer" %></li>
+          <li><a href="#link", class="nav-item-customer">アプリについて</a></li>
           <% end %>
         </ul>
       </div>
@@ -53,4 +53,7 @@
   <body >
     <%= yield %>
   </body>
+  <footer>
+    © 2020 Daily Muscle All Rights Reserved
+  </footer>
 </html>
