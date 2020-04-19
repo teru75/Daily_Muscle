@@ -1,6 +1,6 @@
 <div class="container" style="height: 1000px;">
   <div class="row">
-    <div class="col-xs-4" style="margin: 50px 0px;">
+    <div class="col-xs-8" style="margin: 50px 0px;">
       <h3 id="my_menu-title">マイメニュー詳細</h3>
       <% if @my_menu.customer_id == current_customer.id %>
       <button onclick="display()" class="btn btn-success">編集する</button>
@@ -8,7 +8,7 @@
       <% end %>
       <%= link_to "一覧へ戻る", customer_my_menus_path(@my_menu.customer_id), class:"btn btn-info" %>
       <div id="my_menu">
-        <table class="table"  style="margin-top: 20px;">
+        <table class="table"  style="margin-top: 20px; width: 90%;">
           <tr>
             <td width="80%" style="text-align: center;"><%= @my_menu.theme %></td>
             <td><span class="part-category"><%= @my_menu.part_i18n %></span></td>
@@ -33,6 +33,11 @@
         <% end %>
       </div>
     </div>
+      <div class="col-xs-4" style="border: 2px solid #eee; background-color: #eeeaec; margin: 50px 0px;">
+        <div class="customer-profile" style="width:70%; margin: 70px auto; ">
+        <div class="profile-image" style="width: 40%; margin: 20px auto;">
+        <%= render "customers/customer_form", customer: @customer %>
+      </div>
   </div>
 </div>
 

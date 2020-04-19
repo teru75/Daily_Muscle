@@ -1,29 +1,17 @@
-<div class="comtainer">
-  <div class="row">
-    <div class="col-xs-8">
-      <h1 class="page-header">マイサプリメント</h1>
+<div class="container" style="min-height: 500px;">
+  <div class="row" style="margin: 50px 0px;">
+    <div class="col-xs-7">
+      <h1>マイメニュー</h1>
       <h3>新規登録</h3>
       <%= form_with(model: @my_supplement, local: true, url: customer_my_supplements_path) do |f| %>
-        <div class="field">
-        <%= f.label :name, "名前" %>
-        <%= f.text_field :name, class:"form-control" %>
-        </div>
-        
-        <div class="field">
-        <%= f.label :genre, "ジャンル" %>
-        <%= f.select :genre, [["ホエイプロテイン", :whey], ["ソイプロテイン", :soy], ["カゼインプロテイン", :casein], ["アミノ酸系", :amino], ["コンディション系", :condition]], class:"form-control" %>
-        </div>
-
-        <div class="field">
-        <%= f.label :brand, "ブランド" %>
-        <%= f.text_field :brand, class:"form-control" %>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "登録" %>
-        </div>
-
+          <%= render "form", f:f %>
       <% end %>
+    </div>
+
+    <div class="col-xs-offset-1 col-xs-4" style="border: 2px solid #eee; background-color: #eeeaec;">
+      <div class="customer-profile" style="width:50%; margin: 70px auto; ">
+      <div class="profile-image" style="width: 40%; margin: 20px auto;">
+      <%= render "customers/customer_form", customer: @customer %>
     </div>
   </div>
 </div>

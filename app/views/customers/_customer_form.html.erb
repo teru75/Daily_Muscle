@@ -3,7 +3,11 @@
   <table class="table customer-table table-hover" >
     <tr>
       <% if customer != current_customer %>
-      <td class="table-customer-name"><strong><%= customer.name %></strong></td>
+      <td class="table-customer-name">
+        <%= link_to customer_path(customer) do %>
+        <strong><%= customer.name %></strong>
+        <% end %>
+      </td>
       <td class="follow-btn">
         <% if current_customer.following?(customer) %>
           <%= link_to 'フォロー外す', customer_relationships_path(customer.id), method: :delete, remote: true, class:"btn btn-primary" %>

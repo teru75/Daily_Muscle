@@ -1,6 +1,7 @@
 class MySupplementsController < ApplicationController
   def new
     @my_supplement = MySupplement.new
+    @customer = Customer.find(current_customer.id)
   end
   
   def create
@@ -17,6 +18,11 @@ class MySupplementsController < ApplicationController
 
   def index
     @customer = Customer.find(params[:customer_id])
+    @wheys = @customer.my_supplements.where(genre: :whey)
+    @soys = @customer.my_supplements.where(genre: :soy)
+    @caseins = @customer.my_supplements.where(genre: :casein)
+    @aminos = @customer.my_supplements.where(genre: :amino)
+    @conditions = @customer.my_supplements.where(genre: :condition)
   end
 
   def show
@@ -33,7 +39,7 @@ class MySupplementsController < ApplicationController
     end
     if @my_supplement.update(my_supplement_params)
       flash[:success] = "マイサプリメントを編集しました！"
-      redirect_to customer_my_supplement_path(@my_supplement)
+      redirect_to customer_my_supplement_path(@my_supplement.customer_id, @my_supplement)
     else
       render :edit
     end
@@ -43,11 +49,11 @@ class MySupplementsController < ApplicationController
     @my_supplement = MySupplement.find(params[:id])
     if @my_supplement.customer_id != current_customer.id
       flash[:danger] = "他アカウントの編集はできません。"
-      redirect_to customer_my_supplements_path
+      redirect_to customer_my_supplements_path(current_customer)
     end
     @my_supplement.destroy
     flash[:notice] = "マイメニューを削除しました。"
-    redirect_to customer_my_supplements_path
+    redirect_to customer_my_supplements_path(current_customer)
   end
 
   private

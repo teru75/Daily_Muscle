@@ -56,6 +56,7 @@ var display=function() {
   if(document.getElementById('my_supplement') != null) {
     var edit = document.getElementById('my_supplement_edit');
     var menu = document.getElementById('my_supplement');
+    var title = document.getElementById('my_supplement-title');
     //取得した情報からスタイルについての状態のみをstateに代入
     state=edit.style.display;
     //デバッグ用にlogに出力
@@ -65,12 +66,14 @@ var display=function() {
          //スタイルを表示(inline)に切り替え
          edit.setAttribute("style","display:block");
          menu.setAttribute("style","display:none");
+         title.textContent = 'マイサプリメント編集';
         //デバッグ用にinlineをlogに出力
         console.log("block");
     }else{
          //スタイルを非表示(none)に切り替え
         edit.setAttribute("style","display:none");
         menu.setAttribute("style","display:block");
+        title.textContent = 'マイサプリメント詳細';
         //デバッグ用にnoneをlogに出力
         console.log("none");
     }
