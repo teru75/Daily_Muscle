@@ -30,6 +30,7 @@ var display=function() {
     //切り替える対象の状態を取得
     var edit = document.getElementById('my_menu_edit');
     var menu = document.getElementById('my_menu');
+    var title = document.getElementById('my_menu-title');
     //取得した情報からスタイルについての状態のみをstateに代入
     state=edit.style.display;
     //デバッグ用にlogに出力
@@ -39,12 +40,14 @@ var display=function() {
          //スタイルを表示(inline)に切り替え
          edit.setAttribute("style","display:block");
          menu.setAttribute("style","display:none");
+         title.textContent = 'マイメニュー編集';
         //デバッグ用にinlineをlogに出力
         console.log("block");
     }else{
          //スタイルを非表示(none)に切り替え
         edit.setAttribute("style","display:none");
         menu.setAttribute("style","display:block");
+        title.textContent = 'マイメニュー詳細';
         //デバッグ用にnoneをlogに出力
         console.log("none");
     }

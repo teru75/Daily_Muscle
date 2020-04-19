@@ -1,28 +1,17 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-offset-2 col-xs-8">
-      <h1 class="page-header">マイメニュー</h1>
+<div class="container" style="min-height: 500px;">
+  <div class="row" style="margin: 50px 0px;">
+    <div class="col-xs-7">
+      <h1>マイメニュー</h1>
       <h3>新規登録</h3>
       <%= form_with(model: @my_menu, local: true, url: customer_my_menus_path) do |f| %>
-        <%= f.label :theme, "テーマ" %>
-        <%= f.text_field :theme, class:"form-control" %>
-        <%= f.label :part, "部位" %>
-        <%= f.select :part, [["全身", :whole_body], ["上半身", :upper_body], ["腕", :arm], ["胸", :breast], ["肩", :shoulder],["背中", :back], ["下半身", :lower_body], ["体幹", :trunk]], class:"form-control" %>
-
-        <div class="my_menu_items">
-          <%= f.fields_for :my_menu_items do |i| %>
-            <%= render "my_menu_item_fields", f: i %>
-          <% end %>
-          <div class="links">
-            <br><%= link_to_add_association "メニューを追加", f, :my_menu_items %>
-          </div>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "登録" %>
-        </div>
-
+          <%= render "form", f:f %>
       <% end %>
+    </div>
+
+    <div class="col-xs-offset-1 col-xs-4" style="border: 2px solid #eee; background-color: #eeeaec;">
+      <div class="customer-profile" style="width:50%; margin: 70px auto; ">
+      <div class="profile-image" style="width: 40%; margin: 20px auto;">
+      <%= render "customers/customer_form", customer: @customer %>
     </div>
   </div>
 </div>
