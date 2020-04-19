@@ -41,7 +41,7 @@ class MySupplementsController < ApplicationController
       flash[:success] = "マイサプリメントを編集しました！"
       redirect_to customer_my_supplement_path(@my_supplement.customer_id, @my_supplement)
     else
-      render :edit
+      render :new
     end
   end
 
