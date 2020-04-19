@@ -45,6 +45,12 @@
   margin-bottom: 0px;
   }
 
+  .row-margin{
+  margin: 50px 0px;
+  }
+
+  
+
   /* トップページのcss */
  .muscle-main{
   background-image: image-url("daniel-apodaca-WdoQio6HPVA-unsplash.jpg");
@@ -59,7 +65,7 @@
   text-align: center;
   height: 350px;
   background-color: #f6f6f6;
-  padding: 10px;
+  padding-top: 20px;
  }
 
  .about-title{
@@ -160,11 +166,6 @@ a.anchor{
 
 
 /* 会員詳細ページのcss */
-.customer-show{
-  margin-top: 70px;
-  margin-bottom: 70px;
-}
-
 .customer-show-content div{
   border-bottom: 1px solid #eee;
   height :100px;
@@ -183,11 +184,18 @@ a.anchor{
   text-align :center;
 }
 
-table.customer-table td:hover {
-  background-color: #CCFFFF;    /* マウスオーバー時のセルの背景色 */
+
+
+
+/* マイ系のcss */
+.part-category{
+  display: inline-block;
+  padding: 5px 8px;
+  background-color: #acabab;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 13px;
 }
-
-
 
 .password-box{
   text-align: center;
@@ -195,5 +203,11 @@ table.customer-table td:hover {
 
 .my-menu-item{
   border-bottom: 1px solid #eee;
-  height: 100px;
+  width: 90%;
+  display: flex;
+}
+
+.my-menu-content{
+  margin-bottom: 50px;
+  margin-top: 50px;
 }

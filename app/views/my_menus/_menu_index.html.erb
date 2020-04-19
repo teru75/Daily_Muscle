@@ -1,0 +1,18 @@
+<div style="margin-right: 20px; width: 200px;">
+    <table class="table">
+      <tr>
+        <th>
+          <%= link_to customer_my_menu_path(menu.customer_id, menu) do %>
+          <%= menu.theme %>
+          <% end %>
+        </th>
+      </tr>
+      <% menu.my_menu_items.each do |item| %>
+      <tr>
+        <td>
+        <%= item.name %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+</div>

@@ -1,53 +1,43 @@
-<div class="container">
+<div class="container" style="height: 1000px;">
   <div class="row">
-    <div class="col-xs-6">
-      <h3>マイメニュー詳細</h3>
+    <div class="col-xs-8" style="margin: 50px 0px;">
+      <h3 id="my_menu-title">マイメニュー詳細</h3>
       <% if @my_menu.customer_id == current_customer.id %>
-      <button onclick="display()">編集する</button>
-      <%= link_to "削除する", customer_my_menu_path(@my_menu), class:"btn active", method: :delete, "data-confirm" => "本当に消しますか？" %>
+      <button onclick="display()" class="btn btn-success">編集する</button>
+      <%= link_to "削除する", customer_my_menu_path(@my_menu), class:"btn btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" %>
       <% end %>
-      <table class="table" id="my_menu">
-        <tr>
-          <td ><%= @my_menu.theme %></td>
-          <td><%= @my_menu.part_i18n %></td>
-        </tr>
-        
-        <% @my_menu.my_menu_items.each do |item| %>
-        <tr>
-          <td>
-            <%= item.name %>
-            <% end %>
-          </td>
-        </tr>
-      </table>
+      <%= link_to "一覧へ戻る", customer_my_menus_path(@my_menu.customer_id), class:"btn btn-info" %>
+      <div id="my_menu">
+        <table class="table"  style="margin-top: 20px; width: 90%;">
+          <tr>
+            <td width="80%" style="text-align: center;"><%= @my_menu.theme %></td>
+            <td><span class="part-category"><%= @my_menu.part_i18n %></span></td>
+          </tr>
+          
+          <% @my_menu.my_menu_items.each do |item| %>
+          <tr style="text-align: center;">
+            <td colspan="2">
+              <%= item.name %>
+              <% end %>
+            </td>
+          </tr>
+        </table>
 
-      <div id="like-<%= @my_menu.id %>">
+        <div id="like-<%= @my_menu.id %>">
         <%= render 'my_menu_likes',my_menu: @my_menu %>
         </div>
-    
+      </div>
       <div id="my_menu_edit" style="display: none;">
-        <%= form_with(model: @my_menu, local: true, url: customer_my_menu_path(@my_menu), method: :put) do |f| %>
-          <%= f.label :theme, "テーマ" %>
-          <%= f.text_field :theme, class:"form-control" %>
-          <%= f.label :part, "部位" %>
-          <%= f.select :part, [["全身", :whole_body], ["上半身", :upper_body], ["腕", :arm], ["胸", :breast], ["肩", :shoulder],["背中", :back], ["下半身", :lower_body], ["体幹", :trunk]], class:"form-control" %>
-
-          <div class="my_menu_items">
-            <%= f.fields_for :my_menu_items do |i| %>
-              <%= render "my_menu_item_fields", f: i %>
-            <% end %>
-            <div class="links">
-              <br><%= link_to_add_association "メニューを追加", f, :my_menu_items %>
-            </div>
-          </div>
-
-          <div class="actions">
-            <%= f.submit "登録" %>
-          </div>
-
+         <%= form_with(model: @my_menu, local: true, url: customer_my_menu_path, method: :put) do |f| %>
+          <%= render "form", f:f %>
         <% end %>
       </div>
     </div>
+      <div class="col-xs-4" style="border: 2px solid #eee; background-color: #eeeaec; margin: 50px 0px;">
+        <div class="customer-profile" style="width:70%; margin: 70px auto; ">
+        <div class="profile-image" style="width: 40%; margin: 20px auto;">
+        <%= render "customers/customer_form", customer: @customer %>
+      </div>
   </div>
 </div>
 

@@ -1,0 +1,14 @@
+<div style="margin-right: 20px; width: 200px;">
+    <table class="table">
+      <tr>
+        <td>
+        <%= link_to customer_my_supplement_path(supplement.customer_id, supplement.id) do %>
+        <%= supplement.name %>
+        <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td><%= supplement.brand %></td>
+      </tr>
+    </table>
+</div>

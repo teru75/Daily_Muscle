@@ -1,33 +1,75 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-8　my-menu-content">
-      <h3>マイサプリメント　一覧</h3>
-      <%= link_to "新規登録する",new_customer_my_supplement_path %>
-      <div class="my-menu-item">
-        <h4></h4>
-        <% @customer.my_supplements.each do |supplement| %>
-        <%= link_to customer_my_supplement_path(supplement.customer_id, supplement) do %>
-        <%= supplement.name %>
+  <div class="row my-menu-content">
+    <div class="col-xs-8">
+      <div>
+        <h3>マイサプリメント　一覧</h3>
+        <div style="margin-bottom: 20px;">
+        <% if @customer == current_customer %>
+        <span><%= link_to "新規登録する",new_customer_my_supplement_path, class:" btn btn-primary" %></span>
         <% end %>
-        <%= supplement.genre_i18n %>
-        <%= supplement.brand %>
-        <% end %>
+        </div>
       </div>
-      <div class="my-menu-item">
+
+      <% if @wheys.exists? %>
+      <div>
         <h4>ホエイプロテイン</h4>
+        <div class="my-menu-item">
+          <% @wheys.each do |supplement| %>
+          <%= render "supplement_index", supplement: supplement%>
+          <% end %>
+        </div>
       </div>
-      <div class="my-menu-item">
+      <% end %>
+
+      <% if @soys.exists? %>
+      <div>
         <h4>ソイプロテイン</h4>
+        <div class="my-menu-item">
+          <% @soys.each do |supplement| %>
+          <%= render "supplement_index", supplement: supplement %>
+          <% end %>
+        </div>
       </div>
-      <div class="my-menu-item">
+      <% end %>
+
+      <% if @caseins.exists? %>
+      <div>
         <h4>カゼインプロテイン</h4>
+        <div class="my-menu-item">
+          <% @caseins.each do |supplement| %>
+          <%= render "supplement_index", supplement: supplement %>
+          <% end %>
+        </div>
       </div>
-      <div class="my-menu-item">
+      <% end %>
+
+      <% if @aminos.exists? %>
+      <div>
         <h4>アミノ酸系</h4>
+        <div class="my-menu-item">
+          <% @aminos.each do |supplement| %>
+          <%= render "supplement_index", supplement: supplement %>
+          <% end %>
+        </div>
       </div>
-      <div class="my-menu-item">
+      <% end %>
+
+      <% if @conditions.exists? %>
+      <div>
         <h4>コンディション系</h4>
+        <div class="my-menu-item">
+          <% @conditions.each do |supplement| %>
+          <%= render "supplement_index", supplement: supplement %>
+          <% end %>
+        </div>
       </div>
+      <% end %>
+    </div>
+    
+    <div class="col-xs-4" style="border: 2px solid #eee; background-color: #eeeaec;">
+      <div class="customer-profile" style="width:70%; margin: 70px auto; ">
+      <div class="profile-image" style="width: 40%; margin: 20px auto;">
+      <%= render "customers/customer_form", customer: @customer %>
     </div>
   </div>
 </div>

@@ -1,5 +1,6 @@
 class MyMenusController < ApplicationController
   def new
+    @customer =Customer.find(current_customer.id)
     @my_menu = MyMenu.new
     @my_menu_item = @my_menu.my_menu_items.build
   end
@@ -18,9 +19,15 @@ class MyMenusController < ApplicationController
 
   def index
     @customer = Customer.find(params[:customer_id])
-    # レイアウト作成時に部位別に分ける記述
-    # @Upper_bodys = MyMenu.where(part: upper_body)
-    
+    @whole_bodys = @customer.my_menus.where(part: :whole_body)
+    @upper_bodys = @customer.my_menus.where(part: :upper_body)
+    @arms = @customer.my_menus.where(part: :arm)
+    @shoulders = @customer.my_menus.where(part: :sholders)
+    @breasts = @customer.my_menus.where(part: :breast)
+    @backs = @customer.my_menus.where(part: :back)
+    @lower_bodys = @customer.my_menus.where(part: :lower_body)
+    @trunks = @customer.my_menus.where(part: :trunk)
+    @arms
   end
 
   def show
@@ -37,9 +44,11 @@ class MyMenusController < ApplicationController
     end
     if @my_menu.update(my_menu_params)
        flash[:success] = "マイメニューが編集されました！"
-      redirect_to customer_my_menu_path(@my_menu)
+      redirect_to customer_my_menu_path(@my_menu.customer_id, @my_menu)
     else
-      render :edit
+      @customer = Customer.find(params[:customer_id])
+      @my_menu = @customer.my_menus.find(params[:id])
+      render :show
     end
   end
 
