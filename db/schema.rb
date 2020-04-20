@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_13_084826) do
+ActiveRecord::Schema.define(version: 2020_04_20_091414) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2020_04_13_084826) do
     t.datetime "updated_at", null: false
     t.string "theme"
     t.boolean "is_enabled", default: true, null: false
+    t.text "introduction"
   end
 
   create_table "events", force: :cascade do |t|
