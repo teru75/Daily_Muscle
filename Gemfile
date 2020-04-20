@@ -76,4 +76,7 @@ gem 'byebug'
 gem 'acts_as_list'
 gem 'kaminari','~> 1.1.1'
 gem 'font-awesome-sass', '~> 5.4.1'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+
 

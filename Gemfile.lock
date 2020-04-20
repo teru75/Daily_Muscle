@@ -100,6 +100,9 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.9.1)
+      devise (>= 4.7.1)
+    devise-i18n-views (0.3.7)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     enum_help (0.0.17)
@@ -295,6 +298,8 @@ DEPENDENCIES
   cocoon
   coffee-rails (~> 4.2)
   devise
+  devise-i18n
+  devise-i18n-views
   enum_help
   font-awesome-sass (~> 5.4.1)
   fullcalendar-rails
