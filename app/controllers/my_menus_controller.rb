@@ -27,7 +27,6 @@ class MyMenusController < ApplicationController
     @backs = @customer.my_menus.where(part: :back)
     @lower_bodys = @customer.my_menus.where(part: :lower_body)
     @trunks = @customer.my_menus.where(part: :trunk)
-    @arms
   end
 
   def show

@@ -1,6 +1,13 @@
 class Admin::EventTemplatesController < ApplicationController
   def index
-    @event_templates = EventTemplate.all
+    @whole_bodys = EventTemplate.where(part: :whole_body)
+    @upper_bodys = EventTemplate.where(part: :upper_body)
+    @arms = EventTemplate.where(part: :arm)
+    @shoulders = EventTemplate.where(part: :sholders)
+    @breasts = EventTemplate.where(part: :breast)
+    @backs = EventTemplate.where(part: :back)
+    @lower_bodys = EventTemplate.where(part: :lower_body)
+    @trunks = EventTemplate.where(part: :trunk)
   end
 
   def new

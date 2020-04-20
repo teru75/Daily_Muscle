@@ -1,48 +1,38 @@
-<div class="container">
+<div class="container" style="height: 1000px;">
   <div class="row">
-    <div class="col-xs-6">
-      <h3>メニューテンプレート詳細</h3>
-      <button onclick="display()">編集する</button>
-      <table class="table" id="event_template">
-        <tr>
-          <td ><%= @event_template.theme %></td>
-          <td><%= @event_template.part_i18n %></td>
-        </tr>
-        
-        <% @event_template.menu_templates.each do |item| %>
-        <tr>
-          <td>
-            <%= item.name %>
-            <% end %>
-          </td>
-        </tr>
-      </table>
-    
-      <div id="event_template_edit" style="display: none;">
-        <%= form_with(model: @event_template, local: true, url: admin_event_template_path(@event_template), method: :put) do |f| %>
-        <%= f.label :theme, "テーマ" %>
-        <%= f.text_field :theme, class:"form-control" %>
-        <%= f.label :part, "部位" %>
-        <%= f.radio_button :is_enabled, true %> 有効
-        <%= f.radio_button :is_enabled, false %> 無効
-        <%= f.select :part, [["全身", :whole_body], ["上半身", :upper_body], ["腕", :arm], ["胸", :breast], ["肩", :shoulder],["背中", :back], ["下半身", :lower_body], ["体幹", :trunk]], class:"form-control" %>
-
-        <div class="event_templates">
-          <%= f.fields_for :menu_templates do |i| %>
-            <%= render "menu_template_fields", f: i %>
-          <% end %>
-          <div class="links">
-            <br><%= link_to_add_association "メニューを追加", f, :menu_templates %>
-          </div>
-        </div>
-
-        <div class="actions">
-          <%= f.submit "登録" %>
-        </div>
-
-      <% end %>
+    <div class="col-xs-7" style="margin: 30px 0px;">
+      <h3 id="event_template-title">メニューテンプレート詳細</h3>
+      <button onclick="display()" class="btn btn-success">編集する</button>
+      <%= link_to "一覧へ戻る", admin_event_templates_path, class:"btn btn-info" %>
+      <div id="event_template" style="margin-bottom: 20px;">
+        <table class="table"  style="margin-top: 20px; width: 90%;">
+          <tr>
+            <td width="80%" style="text-align: center;"><%= @event_template.theme %></td>
+            <td><span class="part-category"><%= @event_template.part_i18n %></span></td>
+          </tr>
+          <% @event_template.menu_templates.each do |item| %>
+          <tr style="text-align: center;">
+            <td colspan="2">
+              <%= item.name %>
+              <% end %>
+            </td>
+          </tr>
+        </table>
       </div>
+      <div id="event_template_edit" style="display: none;">
+         <%= form_with(model: @event_template, local: true, url: admin_event_template_path, method: :put) do |f| %>
+         <%= f.radio_button :is_enabled, true %> 有効
+         <%= f.radio_button :is_enabled, false %> 無効
+          <%= render "form", f:f %>
+      </div>
+    </div>
+    <div class="col-xs-5" style="margin-top: 45px;">
+      <%= f.label :introduction, "説明文" %>
+      <%= f.text_area :introduction, class:"form-control" %>
+      <% end %>
     </div>
   </div>
 </div>
+
+
 

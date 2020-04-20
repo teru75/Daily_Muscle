@@ -9,13 +9,12 @@
           <% end %>
         </div>
       </div>
-
       <% if @whole_bodys.exists? %>
       <div>
         <h4>全身</h4>
         <div class="my-menu-item">
           <% @whole_bodys.each do |menu| %>
-          <%= render "menu_index", menu: menu %>
+          <%= render "my_menus/menu_index_item", menu: menu %>
           <% end %>
         </div>
       </div>
@@ -26,7 +25,7 @@
         <h4>上半身</h4>
         <div class="my-menu-item">
           <% @upper_bodys.each do |menu| %>
-          <%= render "menu_index", menu: menu %>
+          <%= render "my_menus/menu_index_item", menu: menu %>
           <% end %>
         </div>
       </div>
@@ -37,7 +36,7 @@
         <h4>胸</h4>
         <div class="my-menu-item">
           <% @breasts.each do |menu| %>
-          <%= render "menu_index", menu: menu %>
+          <%= render "my_menus/menu_index_item", menu: menu %>
           <% end %>
         </div>
       </div>
@@ -48,7 +47,7 @@
         <h4>腕</h4>
         <div class="my-menu-item">
           <% @arms.each do |menu| %>
-          <%= render "menu_index", menu: menu %>
+          <%= render "my_menus/menu_index_item", menu: menu %>
           <% end %>
         </div>
       </div>
@@ -59,7 +58,7 @@
         <h4>肩</h4>
         <div class="my-menu-item">
           <% @shoulders.each do |menu| %>
-          <%= render "menu_index", menu: menu %>
+          <%= render "my_menus/menu_index_item", menu: menu %>
           <% end %>
         </div>
       </div>
@@ -70,7 +69,7 @@
         <h4>背中</h4>
         <div class="my-menu-item">
           <% @backs.each do |menu| %>
-          <%= render "menu_index", menu: menu %>
+          <%= render "my_menus/menu_index_item", menu: menu %>
           <% end %>
         </div>
       </div>
@@ -81,7 +80,7 @@
         <h4>下半身</h4>
         <div class="my-menu-item">
           <% @lower_bodys.each do |menu| %>
-          <%= render "menu_index", menu: menu %>
+          <%= render "my_menus/menu_index_item", menu: menu %>
           <% end %>
         </div>
       </div>
@@ -92,7 +91,7 @@
         <h4>体幹</h4>
         <div class="my-menu-item">
           <% @trunks.each do |menu| %>
-          <%= render "menu_index", menu: menu %>
+          <%= render "my_menus/menu_index_item", menu: menu %>
           <% end %>
         </div>
       </div>
