@@ -1,4 +1,5 @@
 class Admin::EventTemplatesController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @whole_bodys = EventTemplate.where(part: :whole_body)
     @upper_bodys = EventTemplate.where(part: :upper_body)

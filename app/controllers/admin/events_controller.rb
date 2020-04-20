@@ -1,4 +1,5 @@
 class Admin::EventsController < ApplicationController
+  before_action :authenticate_admin!
   def show
     @event = Event.find(params[:id])
   end

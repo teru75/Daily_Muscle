@@ -205,9 +205,22 @@ a.anchor{
   border-bottom: 3px solid #eee;
   width: 90%;
   display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
 }
 
 .my-menu-content{
   margin-bottom: 50px;
   margin-top: 50px;
+}
+
+
+ /* 管理者会員機能のcss */
+
+.admin-my-index{
+ border-bottom: 3px solid #eee;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
 }
