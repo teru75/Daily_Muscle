@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   resources :customers, only: [:show, :edit, :update, :index] do
     resources :my_menus, only: [:index, :new, :show, :create, :update, :destroy] do
-      resource :my_menu_likes, only: [:create, :destroy, :index]
+      resource :my_menu_likes, only: [:create, :destroy]
     end
     resources :my_supplements, only: [:index, :new, :show, :create, :update, :destroy]
     resources :my_gyms, only: [:index, :new, :create, :show, :update, :destroy]
