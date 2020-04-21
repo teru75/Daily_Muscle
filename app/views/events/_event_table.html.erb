@@ -1,0 +1,42 @@
+<table width=70% class="table table-striped table-bordered">
+  <tr>
+    <th colspan="3" class="info">トレーニング</th>
+    <td class="success">
+      <div id="like-<%= event.id %>">
+        <%= render 'event_likes',event: event %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" style="vertical-align: middle;">ユーザー</td>
+    <td colspan="2"><%= attachment_image_tag event.customer, :profile_image,  :size =>'40x40', format: 'jpeg''jpg''svg''png',fallback: "avator.svg" %><span style="margin-left:10px;"><%= event.customer.name%></span></td>
+  </tr>
+  <tr>
+    <td colspan="2">日付</td>
+    <td colspan="2"><%= event.start.strftime('%Y/%m/%d %H:%M') %></td>
+  </tr>
+  <tr>
+    <td colspan="2">時間</td>
+    <td colspan="2"><%= ((event.end-event.start)/60).ceil %>分</td>
+  </tr>
+  <tr>
+    <td colspan="2">部位</td>
+    <td colspan="2"><%= event.part_i18n %></td>
+  </tr>
+  <tr>
+    <th>メニュー</th>
+    <th>重さ</th>
+    <th>回数</th>
+    <th>セット数</th>
+  </tr>
+  <% event.menus.each do |menu| %>
+  <tr>
+    <td rowspan="<%=menu.reps.size%>"><%= menu.name %></td>
+    <% menu.reps.each do |rep| %>
+    <td><%= rep.weight %>kg</td>
+    <td><%= rep.count %></td>
+    <td><%= rep.set_count %></td>
+  </tr>
+  <% end %>
+  <% end %>
+</table>

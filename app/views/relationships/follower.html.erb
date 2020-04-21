@@ -10,7 +10,11 @@
         </tr>
         <% @customers.each do |customer| %>
         <tr>
-          <td width="250"><%= attachment_image_tag customer, :profile_image, :fill, 40, 40, format: 'jpeg',fallback: "no_image.png",size:"100×100" %></td>
+          <td width="250">
+            <%= link_to customer_path(customer) do %>
+              <%= attachment_image_tag customer, :profile_image,  :size =>'40x40', format: 'jpeg''jpg''svg''png',fallback: "avator.svg" %>
+            <% end %>
+            </td>
           <td width="200"><%= customer.name %></td>
           <td>フォロー数：<%= customer.follower.count %></td>
           <td>フォロワー数：<%= customer.followed.count %></td>

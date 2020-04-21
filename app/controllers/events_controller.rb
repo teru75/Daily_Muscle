@@ -22,7 +22,17 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.order(start: :desc).page(params[:page])
+    @customer = Customer.find(current_customer.id)
+    @customers = @customer.following_customer
+    @events = Event.order(start: :desc)
+    if params[:name] == "全ユーザーを表示"
+      @events = Event.order(start: :desc)
+    elsif params[:name] == "フォローしたユーザーのみ表示"
+      @customers.each do |customer|
+      @events = Event.where(customer_id: customer.id).order(start: :desc)
+      end
+    end
+    
   end
 
   def update
@@ -51,7 +61,7 @@ class EventsController < ApplicationController
     params.require(:event).permit(:part, :start, :end,
         menus_attributes:
         [
-        :id, :name, :position, :_destroy, reps_attributes:
+        :id, :name, :_destroy, reps_attributes:
         [:id, :weight, :count, :set_count, :_destroy
         ]
       ]
