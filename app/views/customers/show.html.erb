@@ -1,9 +1,10 @@
 <div class="container-fruid">
-  <div class="row row-margin">
-    <div class="col-xs-offset-2 col-xs-5 customer-show">
+  <div class="row" style="margin-bottom: 50px;">
+    <div class="col-xs-offset-1 col-xs-5 customer-show">
+      <h1 class="page-header">ユーザー詳細</h1>
       <div id="calendar"></div>
     </div>
-    <div class="col-xs-5">
+    <div class="col-xs-offset-1 col-xs-4" style="border: 2px solid #eee; background-color: #eeeaec; margin-top: 100px;">
       <div class="customer-profile" style="width:50%; margin: 70px auto; ">
       <div class="profile-image" style="width: 27%; margin: 20px auto;">
       <%= render "customer_form", customer: @customer %>

@@ -1,53 +1,26 @@
-<div class="container">
+<div class="container" style="min-height: 500px;">
   <div class="row">
-    <div class="col-xs-9">
-      <h1><%= @event.start.strftime('%Y/%m/%d') %>メニュー詳細</h1>
-      <button onclick="display()">編集する</button>
-      <%= link_to "削除", event_path(@event),method: :delete, "data-confirm" => "本当に消しますか？", class:"btn active" %>
-      <div class="row" id ="customer-event">
-        <div class="col-xs-9">
-
-          <table border="2" width=70%>
-            <tr>
-              <th colspan="4">トレーニング</th>
-            </tr>
-            <tr>
-              <td colspan="2">時間</td>
-              <td colspan="2"><%= ((@event.end-@event.start)/60).ceil %>分</td>
-            </tr>
-            <tr>
-              <td colspan="2">部位</td>
-              <td colspan="2"><%= @event.part_i18n %></td>
-            </tr>
-            <tr>
-              <th>メニュー</th>
-              <th>重さ</th>
-              <th>回数</th>
-              <th>セット数</th>
-            </tr>
-            <% @event.menus.each do |menu| %>
-            <tr>
-              <td rowspan="<%=menu.reps.size%>"><%= menu.name %></td>
-              <% menu.reps.each do |rep| %>
-              <td><%= rep.weight %></td>
-              <td><%= rep.count %></td>
-              <td><%= rep.set_count %></td>
-            </tr>
-            <% end %>
-            <% end %>
-          </table>
-        </div>
+    <div class="col-xs-7" style="margin-bottom: 50px;">
+    <h1 class="page-header" id="event-title">メニュー詳細</h1>
+      <div style="margin-bottom: 30px;">
+      <% if @event.customer_id == current_customer.id %>
+      <button onclick="display()" class="btn btn-success">編集する</button>
+      <%= link_to "削除する", event_path(@event), class:"btn btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" %>
+      <% end %>
+      <%= link_to "タイムラインへ戻る", events_path, class:"btn btn-info" %>
       </div>
-
-      <div id="like-<%= @event.id %>">
-        <%= render 'event_likes',event: @event %>
-        </div>
-
-      <div class="row" id="customer-event-edit" style="display: none;">
-        <div class="col-xs-9">
-          <%= render 'form', event: @event %>
-        </div>
+      <div id="customer-event">
+        <%= render "event_table", event: @event %>
       </div>
+      <div id="customer-event-edit" style="display: none;">
+        <%= render 'form', event: @event %>
+      </div>
+    </div>
+
+    <div class="col-xs-offset-1 col-xs-4" style="border: 2px solid #eee; background-color: #eeeaec; margin-top: 50px">
+      <div class="customer-profile" style="width:70%; margin: 70px auto; ">
+      <div class="profile-image" style="width: 40%; margin: 20px auto;">
+      <%= render "customers/customer_form", customer: @event.customer %>
     </div>
   </div>
 </div>

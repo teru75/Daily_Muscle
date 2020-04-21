@@ -14,4 +14,9 @@ class EventLikesController < ApplicationController
     redirect_to request.referer
   end
 
+  def index
+    @customer = Customer.find(params[:customer_id])
+    @likes = EventLike.where(customer_id: @customer.id)
+  end
+
 end

@@ -33,17 +33,32 @@
     </tr>
     <tr>
       <td colspan="2">
+        <%= link_to "トレーニングいいね一覧", customer_event_likes_path(customer), style:"display:block; color: black;" %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <%= link_to "マイメニューいいね一覧", customer_my_menu_likes_path(customer), style:"display:block; color: black;" %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
       <%= link_to "マイメニュー", customer_my_menus_path(customer), style:"display:block; color: black;" %>
       </td>
     </tr>
     <tr>
       <td colspan="2">
-      <%= link_to "マイサプリメント", customer_my_supplements_path(customer), class:"stretched-link active", style:"display:block; color: black;" %>
+      <%= link_to "マイサプリメント", customer_my_supplements_path(customer), style:"display:block; color: black;" %>
       </td>
     </tr>
     <tr>
       <td colspan="2">
-      <%= link_to "マイジム", customer_my_gyms_path(customer), class:"stretched-link active", style:"display:block; color: black;" %>
+      <%= link_to "マイジム", customer_my_gyms_path(customer), style:"display:block; color: black;" %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <%= link_to "データ", customer_datas_path(customer), style:"display:block; color: black;" %>
       </td>
     </tr>
   </table>

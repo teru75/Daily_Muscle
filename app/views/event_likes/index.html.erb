@@ -1,15 +1,9 @@
 <div class="container">
-  <h1 class="page-header" style="text-align: center;">タイムライン</h1>
-  <div class="row">
+  <div class="row" style="margin-bottom: 50px;">
     <div class="col-xs-8">
-      <div>
-      <%= link_to "更新する", events_path, class:"btn btn-primary" %>
-      <%= form_with(url: "/events", local:true, method: :get) do |f| %>
-      <%= f.select :name, options_for_select(["全ユーザーを表示","フォローしたユーザーのみ表示"]) %>
-      <%= f.submit "表示" %>
-      <% end %>
-      </div>
-      <% @events.each do |event| %>
+    <h1 class="page-header">いいね一覧</h1>
+     <% @likes.each do |like| %>
+      <% event = Event.find_by(id: like.event_id) %>
       <div class="row" style="border-bottom: solid 1px #eee; margin-top: 20px;">
         <div class="col-xs-12">
         <table width=70% class="table table-striped table-bordered">
@@ -21,11 +15,10 @@
             </th>
             <td class="success">
               <div id="like-<%= event.id %>">
-                <%= render 'event_likes',event: event %>
+                <%= render 'events/event_likes',event: event %>
               </div>
             </td>
           </tr>
-          
           <tr>
             <td colspan="2">日付</td>
             <td colspan="2"><%= event.start.strftime('%Y/%m/%d %H:%M') %></td>
@@ -47,8 +40,6 @@
               </div>
               </td>
           </tr>
-          
-          
         </table>
         </div>
       </div>
@@ -58,6 +49,8 @@
       <div class="customer-profile" style="width:70%; margin: 70px auto; ">
       <div class="profile-image" style="width: 40%; margin: 20px auto;">
       <%= render "customers/customer_form", customer: @customer %>
+    </div>
+
     </div>
   </div>
 </div>
