@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   resources :customers, only: [:show, :edit, :update, :index] do
     resources :my_menus, only: [:index, :new, :show, :create, :update, :destroy] do
-      resource :my_menu_likes, only: [:create, :destroy]
+      resource :my_menu_likes, only: [:create, :destroy, :index]
     end
     resources :my_supplements, only: [:index, :new, :show, :create, :update, :destroy]
     resources :my_gyms, only: [:index, :new, :create, :show, :update, :destroy]
@@ -33,6 +33,8 @@ Rails.application.routes.draw do
     get 'follows' => 'relationships#follower', as: 'follows'
     get 'followers' => 'relationships#followed', as: 'followers'
     get 'groups' => 'groups#customer_index'
+    resources :event_likes, only: [:index, :show]
+    resources :my_menu_likes, only: [:index]
   end
   put "/customers/:id/hide" => "customers#hide", as: 'customers_hide'
   resources :events, only: [:new, :create, :index, :show, :edit, :update, :destroy] do

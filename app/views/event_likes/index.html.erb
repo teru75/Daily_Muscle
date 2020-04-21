@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row" style="margin-bottom: 50px;">
+    <div class="col-xs-8">
+    <h1 class="page-header">いいね一覧</h1>
+     <% @likes.each do |like| %>
+      <% event = Event.find_by(id: like.event_id) %>
+      <div class="row" style="border-bottom: solid 1px #eee; margin-top: 20px;">
+        <div class="col-xs-12">
+        <table width=70% class="table table-striped table-bordered">
+          <tr>
+            <th width="50%" colspan="2">
+              <%= link_to customer_path(event.customer_id) do %>
+              <%= attachment_image_tag event.customer, :profile_image,  :size =>'40x40', format: 'jpeg''jpg''svg''png',fallback: "avator.svg" %><span style="margin-left:10px;"><%= event.customer.name%></span>
+              <% end %>
+            </th>
+            <td class="success">
+              <div id="like-<%= event.id %>">
+                <%= render 'events/event_likes',event: event %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">日付</td>
+            <td colspan="2"><%= event.start.strftime('%Y/%m/%d %H:%M') %></td>
+          </tr>
+          <tr>
+            <td colspan="2">時間</td>
+            <td colspan="2"><%= ((event.end-event.start)/60).ceil %>分</td>
+          </tr>
+          <tr>
+            <td colspan="2">部位</td>
+            <td colspan="2">
+              <div style="display: flex;  justify-content: space-between;">
+                <div>
+                <%= event.part_i18n %>
+                </div>
+                <div>
+                <span style="text-align: right;"><%= link_to "詳細・・", event_path(event) %></span>
+                </div>
+              </div>
+              </td>
+          </tr>
+        </table>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div class="col-xs-offset-1 col-xs-3" style="border: 2px solid #eee; background-color: #eeeaec; margin-top: 50px">
+      <div class="customer-profile" style="width:70%; margin: 70px auto; ">
+      <div class="profile-image" style="width: 40%; margin: 20px auto;">
+      <%= render "customers/customer_form", customer: @customer %>
+    </div>
+
+    </div>
+  </div>
+</div>

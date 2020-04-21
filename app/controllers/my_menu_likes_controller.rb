@@ -14,4 +14,9 @@ class MyMenuLikesController < ApplicationController
     redirect_to request.referer
   end
 
+  def index
+    @customer = Customer.find(params[:customer_id])
+    @likes = MyMenuLike.where(customer_id: @customer.id)
+  end
+
 end
