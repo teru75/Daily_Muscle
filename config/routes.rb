@@ -35,14 +35,15 @@ Rails.application.routes.draw do
     get 'groups' => 'groups#customer_index'
     resources :event_likes, only: [:index, :show]
     resources :my_menu_likes, only: [:index]
+    resources :datas, only: [:index]
   end
+
   put "/customers/:id/hide" => "customers#hide", as: 'customers_hide'
   resources :events, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
     resource :event_likes, only: [:create, :destroy]
   end
 
-  resources :event_templates, only: [:index]
-  resources :datas, only: [:index]
+  resources :event_templates, only: [:index, :show]
   resources :groups, only: [:new, :create, :index, :show, :update]
   resources :group_customers, only: [:destroy]
 end
