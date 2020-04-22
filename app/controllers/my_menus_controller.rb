@@ -1,4 +1,5 @@
 class MyMenusController < ApplicationController
+  before_action :authenticate_customer!
   def new
     @customer =Customer.find(current_customer.id)
     @my_menu = MyMenu.new
@@ -13,6 +14,7 @@ class MyMenusController < ApplicationController
       flash[:success] = "マイメニューを登録しました！"
        redirect_to customer_my_menu_path(@my_menu.customer_id, @my_menu)
     else
+      @customer =Customer.find(current_customer.id)
       render :new
     end
   end
@@ -47,6 +49,7 @@ class MyMenusController < ApplicationController
     else
       @customer = Customer.find(params[:customer_id])
       @my_menu = @customer.my_menus.find(params[:id])
+      flash[:alert] = "正しい項目を入力してください。"
       render :show
     end
   end
@@ -59,7 +62,7 @@ class MyMenusController < ApplicationController
     end
     @my_menu.destroy
     flash[:notice] = "マイメニューを削除しました。"
-    redirect_to customer_my_menus_path
+    redirect_to customer_my_menus_path(current_customer)
   end
 
   private

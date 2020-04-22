@@ -1,0 +1,12 @@
+<div class="row">
+  <% if event_template.errors.any? %>
+    <div class="error_explanation">
+      <h2><%= event_template.errors.count %>件のエラーがありました。</h2>
+      <ul>
+        <% event_template.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>

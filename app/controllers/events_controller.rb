@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :authenticate_customer!
   def new
     @event = Event.new
     @menu = @event.menus.build
@@ -51,6 +52,10 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
+    if @event.customer_id != current_customer.id
+      flash[:danger] = "他アカウントの編集はできません。"
+      redirect_to customer_path(current_customer)
+    end
     @event.destroy
     flash[:alert] = "トレーニングを削除しました。"
     redirect_to customer_path(current_customer)
