@@ -1,18 +1,28 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-8">
-      <%= form_with(url: "/datas", local:true, method: :get) do |f| %>
-      <%= f.select :name, options_for_select(["ベンチプレス", "デッドリフト", "スクワット"]) %>
+  <div class="row" style="margin-bottom: 50px; ">
+    <h1 class="page-header">データ</h1>
+    <div class="col-xs-7">
+      <%= form_with(url: "/customers/#{@customer.id}/datas", local:true, method: :get) do |f| %>
+      <%= f.select :name, options_for_select(["ベンチプレス", "デッドリフト", "スクワット"]), include_blank:"選択してください" %>
       <%= f.submit "表示" %>
       <% end %>
       <canvas id="myChart" width="200" height="100"></canvas>
+    </div>
+
+    <div class="col-xs-offset-1 col-xs-4" style="border: 2px solid #eee; background-color: #eeeaec; margin-top: 20px;">
+      <div class="customer-profile" style="width:50%; margin: 70px auto; ">
+      <div class="profile-image" style="width: 27%; margin: 20px auto;">
+      <%= render "customers/customer_form", customer: @customer %>
     </div>
   </div>
 </div>
 <script>
     var graphdays = <%== @dayline %>
     var graphtimes = <%= @timeline %>
+    
     console.log (graphtimes);
+    console.log (graphdays);
+    console.log (Math.max.apply(null, graphtimes)* 1.3.round);
 </script>
 
 <script>
@@ -33,14 +43,14 @@
     // });
 </script>
 <script>
-  function draw_graph(dayline, timeline){
+  function draw_graph(){
     ctx = document.getElementById("myChart").getContext('2d');
     myChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: graphdays,
             datasets: [{
-                label: '重量',
+                label: '<%=params[:name]%>の重量',
                 data: graphtimes,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -65,7 +75,8 @@
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero:true
+                        beginAtZero:true,
+                        min: 0,
                     }
                 }]
             }
@@ -73,4 +84,48 @@
     })
   }
 </script>
+<script>
+  //   function draw_graph2(){
+  //   ctx = document.getElementById("myChart2").getContext('2d');
+  //   myChart = new Chart(ctx, {
+  //       type: 'bar',
+  //       data: {
+  //           labels: partdays,
+  //           datasets: [{
+  //               label: '重量',
+  //               data: parttimes,
+  //               backgroundColor: [
+  //                   'rgba(255, 99, 132, 0.2)',
+  //                   'rgba(54, 162, 235, 0.2)',
+  //                   'rgba(255, 206, 86, 0.2)',
+  //                   'rgba(75, 192, 192, 0.2)',
+  //                   'rgba(153, 102, 255, 0.2)',
+  //                   'rgba(255, 159, 64, 0.2)'
+  //               ],
+  //               borderColor: [
+  //                   'rgba(255,99,132,1)',
+  //                   'rgba(54, 162, 235, 1)',
+  //                   'rgba(255, 206, 86, 1)',
+  //                   'rgba(75, 192, 192, 1)',
+  //                   'rgba(153, 102, 255, 1)',
+  //                   'rgba(255, 159, 64, 1)'
+  //               ],
+  //               borderWidth: 1
+  //           }]
+  //       },
+  //       options: {
+  //           scales: {
+  //               yAxes: [{
+  //                   ticks: {
+  //                       beginAtZero:true,
+  //                       min: 0,
+  //                   }
+  //               }]
+  //           }
+  //       }
+  //   })
+  // }
+</script>
 <script>draw_graph();</script>
+<!-- <script>draw_graph2();</script>
+ -->
