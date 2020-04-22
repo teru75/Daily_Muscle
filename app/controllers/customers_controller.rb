@@ -1,10 +1,8 @@
 class CustomersController < ApplicationController
+  before_action :authenticate_customer!
   def show
      @customer = Customer.find(params[:id])
      @events = @customer.events
-  end
-
-  def index
   end
 
   def edit
@@ -32,7 +30,7 @@ class CustomersController < ApplicationController
     reset_session
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
-    end
+  end
 
   private
   def customer_params

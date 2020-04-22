@@ -1,37 +1,46 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-offset-4 col-xs-4 customer-devise-box">
+
+
+<div class="container-fruid signup-content">
+  <div class="row" style="display: flex; align-items: center; justify-content: center; height: 550px;">
+    <div class="customer-devise-box">
+      <div class="signin-form">
+      <h2>ユーザー編集</h2>
+
       <%= form_with(model: @customer, local: true, url: customer_path, method: :put) do |f| %>
-      <div class="fields">
-        <label>名前</label>
-        <%= f.text_field :name, autofocus: true, class:"form-control" %>
-      </div>
 
-      <div class="fields">
-        <%= attachment_image_tag @customer, :profile_image, :fill, 100, 100, format: 'jpeg''jpg', fallback: "no_image.png", size:'100x100' %>
-        <%= f.label :profile_image, "プロフィール画像" %>
-        <%= f.attachment_field :profile_image %>
-      </div>
+       <div class="fields">
+          <label>名前</label>
+          <%= f.text_field :name, autofocus: true, class:"form-control" %>
+        </div>
 
-      <div class="fields">
-        <label>メールアドレス</label>
-        <%= f.text_field :email, autofocus: true, class:"form-control" %>
-      </div>
+        <div class="fields" style="margin-top: 10px;">
+          <div>
+          <%= attachment_image_tag @customer, :profile_image,  :size =>'40x40', format: 'jpeg''jpg''svg''png',fallback: "avator.svg" %>
+        </div>
+          <%= f.label :profile_image, "プロフィール画像" %>
+          <%= f.attachment_field :profile_image %>
+        </div>
 
-      <div class="fields">
-        <label>データ公開ステータス</label><br>
-        <%= f.radio_button :is_data_available, true %> データを公開する
-        <%= f.radio_button :is_data_available, false %> データを公開しない
-      </div>
+        <div class="field login-top-form">
+          <label>メールアドレス</label>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+        </div>
 
-      <div class="actions">
-        <%= f.submit "編集内容を保存する", class:"btn customer-update active" %>
-      </div>
-      <%= link_to "パスワードを忘れてしまった方へ", new_customer_password_path(@customer) %><br>
-      <% if customer_signed_in? && @customer.id == current_customer.id %>
-        <%= link_to "退会", customers_hide_path(current_customer), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
+        <div class="fields">
+          <label>データ公開ステータス</label><br>
+          <%= f.radio_button :is_data_available, true %> データを公開する
+          <%= f.radio_button :is_data_available, false %> データを公開しない
+        </div>
+
+        <div class="actions">
+          <%= f.submit "編集内容を保存する", class:"btn login-btn" %>
+        </div>
       <% end %>
-      <% end %>
+      </div>
+      <div style="margin-top: 20px; font-size: 0.8125rem;">
+        <%= link_to "パスワードを忘れてしまった方へ", new_password_path(@customer),style:"color: #949697;" %><br>
+        <span><%= link_to "退会", customers_hide_path(current_customer), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" , style:"color: #ff7b63;"%></span>
+      </div>
     </div>
   </div>
 </div>

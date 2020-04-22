@@ -1,7 +1,8 @@
 <div class="container" style="min-height: 500px;">
+  <%= render "error_message", my_menu: @my_menu %>
   <div class="row" style="margin: 50px 0px;">
     <div class="col-xs-7">
-      <h1>マイメニュー</h1>
+      <h1 class="page-header">マイメニュー</h1>
       <h3>新規登録</h3>
       <%= form_with(model: @my_menu, local: true, url: customer_my_menus_path) do |f| %>
           <%= render "form", f:f %>

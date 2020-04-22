@@ -22,6 +22,8 @@ class Admin::EventTemplatesController < ApplicationController
       flash[:success] = "メニューテンプレートを登録しました！"
        redirect_to admin_event_template_path(@event_template)
     else
+      @event_template = EventTemplate.new
+      @menu_template = @event_template.menu_templates.build
       render :new
     end
   end

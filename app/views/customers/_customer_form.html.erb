@@ -1,9 +1,9 @@
-    <%= attachment_image_tag customer, :profile_image,  :size =>'80x80', format: 'jpeg''jpg''svg''png',fallback: "avator.svg" %>
+    <%= attachment_image_tag customer, :profile_image,  :size =>'100x100', format: 'jpeg''jpg''svg''png',fallback: "avator.svg" %>
   </div>
   <table class="table customer-table table-hover" >
+    <% if customer != current_customer %>
     <tr>
-      <% if customer != current_customer %>
-      <td class="table-customer-name">
+      <td class="table-customer-name" colspan="2" style="text-align: center;">
         <%= link_to customer_path(customer) do %>
         <strong><%= customer.name %></strong>
         <% end %>
@@ -11,20 +11,21 @@
         <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
         <% end %>
       </td>
-      <td class="follow-btn">
-        <% if current_customer.following?(customer) %>
-          <%= link_to 'フォロー外す', customer_relationships_path(customer.id), method: :delete, remote: true, class:"btn btn-primary" %>
-         <% else %>
-          <%= link_to 'フォローする',customer_relationships_path(customer.id), method: :POST, remote: true, class:"btn btn-primary" %>
-         <% end %>
+    </tr>
+    <tr>
+      <td class="follow-btn" colspan="2">
+        <%= render "relationships/follow", customer: customer %>
       </td>
+    </tr>
       <% else %>
+    <tr>
       <td colspan="2">
         <strong><%= customer.name %></strong>
         <% if customer.is_data_available == false %>
         <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
         <% end %>
       </td>
+    </tr>
       <% end %>
     </tr>
     <tr >
@@ -68,6 +69,13 @@
     <tr>
       <td colspan="2">
         <%= link_to "データ", customer_datas_path(customer), style:"display:block; color: black;" %>
+      </td>
+    </tr>
+    <% end %>
+    <% if customer.id == current_customer.id %>
+    <tr>
+      <td colspan="2">
+        <%= link_to "ユーザー情報編集", edit_customer_path(customer), style:"display:block; color: black;" %>
       </td>
     </tr>
     <% end %>

@@ -1,34 +1,30 @@
-<div class="container">
+<div class="container" style="min-height: 500px;">
   <div class="row">
-    <div class="col-xs-8">
-      <h1>フォロワー一覧</h1>
-      <table class="table">
+    <div class="col-xs-offset-2 col-xs-8">
+      <h1>フォロ一覧</h1>
+      <table class="table table-striped table-bordered">
         <tr>
-          <th>image</th>
-          <th>name</th>
+          <th>画像</th>
+          <th>名前</th>
+          <th>フォロー数</th>
+          <th>フォロワー数</th>
           <th></th>
         </tr>
         <% @customers.each do |customer| %>
         <tr>
-          <td width="250">
-            <%= link_to customer_path(customer) do %>
+          <td><%= link_to customer_path(customer) do %>
               <%= attachment_image_tag customer, :profile_image,  :size =>'40x40', format: 'jpeg''jpg''svg''png',fallback: "avator.svg" %>
             <% end %>
-            </td>
-          <td width="200"><%= customer.name %></td>
-          <td>フォロー数：<%= customer.follower.count %></td>
-          <td>フォロワー数：<%= customer.followed.count %></td>
-          <td>
-            <% if current_customer != customer %>
-              <% if current_customer.following?(customer) %>
-                <%= link_to 'フォロー外す', customer_relationships_path(customer.id), method: :delete %>
-              <% else %>
-                <%= link_to 'フォローする', customer_relationships_path(customer.id), method: :POST %>
-              <% end %>
-            <% end %>
           </td>
-          <td>
-            <%= link_to "Show", customer_path(customer) %>
+          <td width="30%">
+            <%= link_to customer_path(customer) do %>
+            <%= customer.name %>
+            <% end %>
+            </td>
+          <td><%= customer.follower.count %>フォロー</td>
+          <td><%= customer.followed.count %>フォロワー</td>
+          <td style="text-align: center; vertical-align: middle;">
+            <%= render "relationships/follow", customer: customer %>
           </td>
         </tr>
         <% end %>

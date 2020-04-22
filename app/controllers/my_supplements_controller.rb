@@ -1,4 +1,5 @@
 class MySupplementsController < ApplicationController
+  before_action :authenticate_customer!
   def new
     @my_supplement = MySupplement.new
     @customer = Customer.find(current_customer.id)
@@ -12,6 +13,7 @@ class MySupplementsController < ApplicationController
       flash[:success] = "マイサプリメントを登録しました！"
        redirect_to customer_my_supplement_path(@my_supplement.customer_id, @my_supplement)
     else
+      @customer =Customer.find(current_customer.id)
       render :new
     end
   end
@@ -41,7 +43,10 @@ class MySupplementsController < ApplicationController
       flash[:success] = "マイサプリメントを編集しました！"
       redirect_to customer_my_supplement_path(@my_supplement.customer_id, @my_supplement)
     else
-      render :new
+      @customer = Customer.find(params[:customer_id])
+      @my_supplement = @customer.my_supplements.find(params[:id])
+      flash[:alert] = "正しい項目を入力してください。"
+      render :show
     end
   end
 

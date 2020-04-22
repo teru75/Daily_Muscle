@@ -1,5 +1,6 @@
 class MyGymsController < ApplicationController
-def new
+  before_action :authenticate_customer!
+  def new
     @my_gym = MyGym.new
     @customer =Customer.find(params[:customer_id])
   end
@@ -12,6 +13,7 @@ def new
       flash[:success] = "マイジムを登録しました！"
        redirect_to customer_my_gym_path(@my_gym.customer_id, @my_gym)
     else
+      @customer =Customer.find(current_customer.id)
       render :new
     end
   end
@@ -36,7 +38,10 @@ def new
       flash[:success] = "マイジムを編集しました！"
       redirect_to customer_my_gym_path(@my_gym.customer_id, @my_gym)
     else
-      render :new
+      @customer = Customer.find(params[:customer_id])
+      @my_gym = @customer.my_gyms.find(params[:id])
+      flash[:alert] = "正しい項目を入力してください。"
+      render :show
     end
   end
 
