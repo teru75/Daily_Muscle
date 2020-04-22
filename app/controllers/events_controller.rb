@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
   def new
+    @customer = Customer.find(current_customer.id)
+    @event_templates = EventTemplate.all
     @event = Event.new
     @menu = @event.menus.build
     @reps = @menu.reps.build
@@ -8,7 +10,22 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.customer_id = current_customer.id
-
+    # if @params[:method] = 1
+    #   @event.save
+    #   @event.menus.each do |menu|
+    #     @menus = Menu.new(menus_params)
+    #     @menus.event_id = @event.id
+    #     @menus.name = menu.name
+    #     @menus.save
+    # end
+    # if @params[:method] = 2
+    #   @event.save
+    #   @event.menus.each do |menu|
+    #     @menus = Menu.new(menus_params)
+    #     @menus.event_id = @event.id
+    #     @menus.name = menu.name
+    #     @menus.save
+    # end
     if @event.save
       flash[:success] = "トレーニングを保存しました！"
        redirect_to event_path(@event)
@@ -66,6 +83,10 @@ class EventsController < ApplicationController
         ]
       ]
       )
+  end
+
+  def menus_params
+    parmas.require(:menu).permit(:event_id, :name)
   end
 
 end

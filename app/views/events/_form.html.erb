@@ -26,15 +26,61 @@
     </td>
     </td>
   </tr>
-  <tbody class="menus">
+  <% if current_page?(controller: 'events', action: 'new') %>
+  <tr>
+    <td>
+      <label><input type="radio" name="training_method" value="method1" onclick="methodChange();" checked="checked" />新しく作成</label>
+      <label><input type="radio" name="training_method" value="method2" onclick="methodChange();"/>マイメニューから選ぶ</label>
+      <label><input type="radio" name="training_method" value="method3" onclick="methodChange();"/>メニューテンプレートから選ぶ</label>
+    </td>
+  </tr>
+  <% end %>
+  
+  <tbody class="menus" id="first_method">
     <%= f.fields_for :menus do |m| %>
       <%= render "menu_fields", f: m %>
     <% end %>
   </tbody>
+  <tr id="second_method" style="display: none;">
+    <% customer.my_menus.each do |menu| %>
+    <td><%= menu.theme %></td>
+    <% end %>
+  </tr>
+  <tr id="third_method" style="display: none;">
+    <% event_templates.each do |template| %>
+    <td><%= template.theme %></td>
+    <% end %>
+  </tr>
 </table>
 <%= link_to_add_association "メニューを追加", f, :menus, data: {"association-insertion-node" => "tbody.menus", "association-insertion-method" => "append"} %>
 
-<div class="actions">
-  <%= f.submit "登録", class:"btn btn-primary" %>
-</div>
+  <div class="actions">
+    <%= f.submit "登録", class:"btn btn-primary" %>
+  </div>
 <% end %>
+
+<script>
+  function methodChange(){
+
+    radio = document.getElementsByName('training_method')
+    if(radio[0].checked) {
+    //フォーム
+      document.getElementById('first_method').style.display = "";
+      document.getElementById('second_method').style.display = "none";
+      //特典
+      document.getElementById('third_method').style.display = "none";
+    }else if(radio[1].checked) {
+    //フォーム
+      document.getElementById('first_method').style.display = "none";
+      document.getElementById('second_method').style.display = "";
+      //特典
+      document.getElementById('third_method').style.display = "none";
+    }else if(radio[2].checked) {
+    //フォーム
+      document.getElementById('first_method').style.display = "none";
+      document.getElementById('second_method').style.display = "none";
+      //特典
+      document.getElementById('third_method').style.display = "";
+    }
+  }
+</script>
