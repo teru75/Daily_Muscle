@@ -7,6 +7,9 @@
         <%= link_to customer_path(customer) do %>
         <strong><%= customer.name %></strong>
         <% end %>
+        <% if customer.is_data_available == false %>
+        <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+        <% end %>
       </td>
       <td class="follow-btn">
         <% if current_customer.following?(customer) %>
@@ -16,7 +19,12 @@
          <% end %>
       </td>
       <% else %>
-      <td colspan="2"><strong><%= customer.name %></strong></td>
+      <td colspan="2">
+        <strong><%= customer.name %></strong>
+        <% if customer.is_data_available == false %>
+        <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+        <% end %>
+      </td>
       <% end %>
     </tr>
     <tr >
@@ -56,10 +64,12 @@
       <%= link_to "マイジム", customer_my_gyms_path(customer), style:"display:block; color: black;" %>
       </td>
     </tr>
+    <% if customer.is_data_available == true %>
     <tr>
       <td colspan="2">
         <%= link_to "データ", customer_datas_path(customer), style:"display:block; color: black;" %>
       </td>
     </tr>
+    <% end %>
   </table>
 </div>
