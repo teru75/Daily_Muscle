@@ -13,7 +13,7 @@
 //= require Chart.min
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+// require turbolinks
 //= require jquery
 //= require moment
 //= require fullcalendar

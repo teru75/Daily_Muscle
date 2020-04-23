@@ -83,4 +83,32 @@
       document.getElementById('third_method').style.display = "";
     }
   }
+
+  //let i = 1
+  //$('td').attr("id", _ => i++);
+
+  // $(document).ready(function() {
+  //   $('.weight-field').on('inview', function() {
+  //          //ブラウザの表示域に表示されたときに実行する処理
+  //          var weights = $('.weight-field');
+  //          //let i = 1
+  //          //$('td').attr("id", _ => i++);
+  //          console.log($(this))
+  //   });
+  // });
+  var result = $('.dummy1').closest('.weight-field');
+ 
+        console.log( result );
+
+
+  var i = 1;
+$('.dummy1').on('inview', function() {
+    // 親がdivなら、そのdivにユニークなidを振る
+  $(this).closest('.weight-field').attr('id', i);
+    // iを一個ふやす
+     i++;
+     console.log(i);
+    // dummy を削除
+    $('.dummy1').remove();
+});
 </script>
