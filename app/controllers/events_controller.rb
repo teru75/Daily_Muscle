@@ -30,6 +30,12 @@ class EventsController < ApplicationController
       flash[:success] = "トレーニングを保存しました！"
        redirect_to event_path(@event)
     else
+      @customer = Customer.find(current_customer.id)
+      @event_templates = EventTemplate.all
+      @event = Event.new
+      @menu = @event.menus.build
+      @reps = @menu.reps.build
+      flash[:alert] = "保存に失敗しました。空欄または不正な値があります。"
       render :new
     end
   end
@@ -62,6 +68,7 @@ class EventsController < ApplicationController
       flash[:success] = "トレーニングの編集が完了しました！"
       redirect_to event_path(@event)
     else
+      flash[:alert] = "保存に失敗しました。空欄または不正な値があります。"
       render :show
     end
   end

@@ -1,6 +1,6 @@
 
 
-<div class="weight-field">
+<div class="nested-fields" style="border-bottom: 1px solid #eee; padding: 10px;">
   <%= f.label :weight, "重さ" %>
   <%= f.number_field :weight, min:0, max:300, step: '0.25', class:'input_form' %>
   
@@ -10,6 +10,5 @@
   <%= f.label :set_count, "セット数" %>
     <%= f.number_field :set_count, class:"input_form" %><br>
   <%= link_to_remove_association "重さなどを削除", f %>
-  <div class="dummy1">
-  </div>
+
 </div>
