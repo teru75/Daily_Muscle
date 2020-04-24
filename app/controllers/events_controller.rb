@@ -14,6 +14,10 @@ class EventsController < ApplicationController
       flash[:success] = "トレーニングを保存しました！"
        redirect_to event_path(@event)
     else
+      @event = Event.new
+      @menu = @event.menus.build
+      @reps = @menu.reps.build
+      flash[:alert] = "空欄または不正な値があります。"
       render :new
     end
   end
