@@ -13,7 +13,7 @@
       </td>
     </tr>
     <tr>
-      <td class="follow-btn" colspan="2">
+      <td class="follow-btn" id="follow-<%= customer.id %>" colspan="2">
         <%= render "relationships/follow", customer: customer %>
       </td>
     </tr>
@@ -28,17 +28,8 @@
     </tr>
       <% end %>
     </tr>
-    <tr >
-      <td>
-        <%= link_to customer_follows_path(customer), style:"color: black;" do %>
-          <%= customer.follower.count %>フォロー
-          <% end %>
-      </td>
-      <td>
-        <%= link_to customer_followers_path(customer), style:"color: black;" do %>
-          <%= customer.followed.count %>フォロワー
-        <% end %>
-      </td>
+    <tr id="follow_count">
+      <%= render "relationships/follow_count", customer: customer %>
     </tr>
     <tr>
       <td colspan="2">

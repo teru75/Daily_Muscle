@@ -1,0 +1,10 @@
+<td>
+  <%= link_to customer_follows_path(customer), style:"color: black;" do %>
+    <%= customer.follower.count %>フォロー
+    <% end %>
+</td>
+<td>
+  <%= link_to customer_followers_path(customer), style:"color: black;" do %>
+    <%= customer.followed.count %>フォロワー
+  <% end %>
+</td>
