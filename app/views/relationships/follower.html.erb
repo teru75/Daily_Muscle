@@ -20,11 +20,12 @@
             <%= link_to customer_path(customer) do %>
             <%= customer.name %>
             <% end %>
-            </td>
-          <td><%= customer.follower.count %>フォロー</td>
-          <td><%= customer.followed.count %>フォロワー</td>
-          <td style="text-align: center; vertical-align: middle;">
+          </td>
+          <td id="following-<%= customer.id%>"><%= render "relationships/following_count", customer: customer %></td>
+          <td id="follower-<%= customer.id %>"><%= render "relationships/follower_count", customer: customer %></td>
+          <td style="text-align: center; vertical-align: middle;" id="follow-<%= customer.id %>">
             <%= render "relationships/follow", customer: customer %>
+          </td>
           </td>
         </tr>
         <% end %>

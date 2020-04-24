@@ -13,7 +13,7 @@
       </td>
     </tr>
     <tr>
-      <td class="follow-btn" id="follow-<%= customer.id %>" colspan="2">
+      <td id="follow-<%= customer.id %>" colspan="2" style="text-align: center;">
         <%= render "relationships/follow", customer: customer %>
       </td>
     </tr>
@@ -28,8 +28,9 @@
     </tr>
       <% end %>
     </tr>
-    <tr id="follow_count">
-      <%= render "relationships/follow_count", customer: customer %>
+    <tr>
+      <td id="following-<%= customer.id %>"><%= render "relationships/following_count", customer: customer %></td>
+      <td id="follower-<%= customer.id %>"><%= render "relationships/follower_count", customer: customer %></td>
     </tr>
     <tr>
       <td colspan="2">
