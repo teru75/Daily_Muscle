@@ -1,8 +1,8 @@
-<div class="container" style="height: 600px;">
+<div class="container" style="min-height: 600px;">
   <%= render "error_message", my_gym: @my_gym %>
   <div class="row">
+    <h1 id="my_gym-title" class="page-header">マイジム詳細</h1>
     <div class="col-xs-8" style="margin: 50px 0px;">
-      <h3 id="my_gym-title">マイジム詳細</h3>
       <% if @my_gym.customer_id == current_customer.id %>
       <button onclick="display()" class="btn btn-success">編集する</button>
       <%= link_to "削除する", customer_my_gym_path(@my_gym), class:"btn btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" %>

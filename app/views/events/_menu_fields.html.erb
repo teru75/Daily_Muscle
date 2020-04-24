@@ -1,24 +1,21 @@
-
-
-<tr >
-  <td colspan="2" class="nested-fields">
+<div class="nested-fields">
+  <div class="" style="padding: 10px; border-bottom: 1px solid #eee; background-color: #eeeaec;">
   <%= f.label :name, "メニュー" %>
   <%= f.text_field :name, class:"form-control" %>
+  </div>
+  <div style="border-bottom: 1px solid #eee; padding: 5px;">
   <%= link_to_remove_association "メニューを削除", f %>
+</div>
   
-  </td>
-</tr>
 
-  <td class="weight-td" colspan="2"><%= f.fields_for :reps do |r| %>
-    <%= render "rep_fields", f: r %>
-  <% end %>
+    <%= f.fields_for :reps do |r| %>
+      <%= render "rep_fields", f: r %>
+    <% end %>
   
-  </td>
-<tr>
-  <td colspan="2"><div>
-    <%= link_to_add_association "重さなどを追加", f, :reps, data: {"association-insertion-node" => ".weight-td", "association-insertion-method" => "append"} %>
-  </div></td>
-</tr>
+    <div class="links" style="padding: 5px; border-bottom: 1px solid #eee; ">
+    <%= link_to_add_association "重さなどを追加", f, :reps %>
+  </div>
+</div>
 
 
 <script>
