@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_091414) do
+ActiveRecord::Schema.define(version: 2020_04_24_071521) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -36,8 +36,6 @@ ActiveRecord::Schema.define(version: 2020_04_20_091414) do
     t.datetime "updated_at", null: false
     t.string "profile_image_id"
     t.string "email", default: "", null: false
-    t.string "provider"
-    t.string "uid"
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
@@ -62,22 +60,6 @@ ActiveRecord::Schema.define(version: 2020_04_20_091414) do
     t.datetime "start"
     t.datetime "end"
     t.integer "part"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "group_customers", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "group_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_group_customers_on_customer_id"
-    t.index ["group_id"], name: "index_group_customers_on_group_id"
-  end
-
-  create_table "groups", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
