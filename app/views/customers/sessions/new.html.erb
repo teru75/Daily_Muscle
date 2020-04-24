@@ -23,13 +23,12 @@
         <% end %>
 
         <div class="actions">
-          <%= f.submit "ログイン", class:"btn active login-btn" %>
+          <%= f.submit "ログイン", class:"btn login-btn" %>
         </div>
       <% end %>
       </div>
       <div style="margin-top: 20px; font-size: 0.8125rem;">
-        <span style="color: #949697; margin-right: 10px;">アカウントをお持ちでない方</span><span><%= link_to "新規登録", new_customer_registration_path(resource_name), style:"color: #ff7b63;" %></span><br>
-        <%= link_to "パスワードを忘れてしまった方へ", new_password_path(resource_name),style:"color: #949697;" %>
+        <span style="color: #949697; margin-right: 10px;">アカウントをお持ちでない方</span><span><%= link_to "新規登録", new_customer_registration_path(resource_name), style:"color: #ff7b63;" %></span>
       </div>
     </div>
   </div>
