@@ -7,25 +7,24 @@ RSpec.describe 'MyMenuモデルのテスト', type: :model do
   # エラーメッセージがなければ失敗
 
   describe 'バリデーションのテスト' do
-    let(:my_menu) { build(:my_menu) }
-    subject { test_my_menu.valid? }
+    let(:customer) { create(:customer) }
+    let!(:my_menu) { build(:my_menu, customer_id: customer.id) }
+
     context 'partカラム' do
-      let(:test_my_menu) {my_menu}
       it '空欄でないこと' do
-        test_my_menu.part = ''
-        is_expected.to eq false;
+        my_menu.part = ''
+        expect(my_menu.valid?).to eq false;
       end
     end
 
     context 'themeカラム' do
-      let(:test_my_menu) { my_menu }
       it '空欄でないこと' do
-        test_my_menu.theme = ''
-        is_expected.to eq false;
+        my_menu.theme = ''
+        expect(my_menu.valid?).to eq false;
       end
       it '100文字以下であること' do
-        test_my_menu.theme = Faker::Lorem.characters(number:101)
-        is_expected.to eq false;
+        my_menu.theme = Faker::Lorem.characters(number:101)
+        expect(my_menu.valid?).to eq false;
       end
     end
 
@@ -42,6 +41,6 @@ RSpec.describe 'MyMenuモデルのテスト', type: :model do
         expect(MyMenu.reflect_on_association(:customer).macro).to eq :belongs_to
       end
     end
-    
+
   end
 end

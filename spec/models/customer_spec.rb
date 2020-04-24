@@ -15,10 +15,6 @@ RSpec.describe 'Customerモデルのテスト', type: :model do
         test_customer.name = ''
         is_expected.to eq false;
       end
-      it '2文字以上であること' do
-        test_customer.name = Faker::Lorem.characters(number:1)
-        is_expected.to eq false;
-      end
       it '50文字以下であること' do
         test_customer.name = Faker::Lorem.characters(number:51)
         is_expected.to eq false;
@@ -33,13 +29,14 @@ RSpec.describe 'Customerモデルのテスト', type: :model do
       end
     end
 
-    context 'passwordカラム ' do
+    context 'passwordカラム' do
       let(:test_customer) { customer }
       it '空欄でないこと 'do
         test_customer.password = ''
-        is_expected.eq false;
+        is_expected.to eq false;
       end
     end
+
   end
   describe 'アソシエーションのテスト' do
     context 'Eventモデルとの関係' do

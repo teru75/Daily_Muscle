@@ -8,28 +8,18 @@ RSpec.describe 'EventTemplateモデルのテスト', type: :model do
 
   describe 'バリデーションのテスト' do
     let(:event_template) { build(:event_template) }
-    subject { test_event_template.valid? }
+    
     context 'partカラム' do
-      let(:test_event_template) { event_template }
       it '空欄でないこと' do
-        test_event_template.part = ''
-        is_expected.to eq false;
-      end
-      it '2文字以上であること' do
-        test_event_template.part = Faker::Lorem.characters(number:1)
-        is_expected.to eq false;
-      end
-      it '50文字以下であること' do
-        test_event_template.part = Faker::Lorem.characters(number:51)
-        is_expected.to eq false;
+        event_template.part = ''
+        expect(event_template.valid?).to eq false;
       end
     end
 
     context 'themeカラム' do
-      let(:test_event_template) { event_template }
       it '空欄でないこと' do
-        test_event_template.theme = ''
-        is_expected.to eq false;
+        event_template.theme = ''
+        expect(event_template.valid?).to eq false;
       end
     end
 

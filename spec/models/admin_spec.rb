@@ -18,8 +18,9 @@ RSpec.describe 'Adminモデルのテスト', type: :model do
     end
 
     context 'passwordカラム' do
+      let(:test_admin) { admin }
       it '空欄でないこと' do
-        test.admin.password = ''
+        test_admin.password = ''
         is_expected.to eq false;
       end
     end

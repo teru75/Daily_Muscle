@@ -6,30 +6,29 @@ RSpec.describe 'Repモデルのテスト', type: :model do
   # 登録できるかできないか 登録できたら失敗
   # エラーメッセージがなければ失敗
 
+
   describe 'バリデーションのテスト' do
-    let(:rep) { build(:rep) }
-    subject { test_rep.valid? }
-    context 'nameカラム' do
-      let(:test_rep) { rep }
+    let(:menu) { create(:menu) }
+    let!(:rep) { build(:rep, menu_id: menu.id) }
+
+    context 'weightカラム' do
       it '空欄でないこと' do
-        test_rep.weight = ''
-        is_expected.to eq false;
+        rep.weight = ''
+        expect(rep.valid?).to eq false;
       end
     end
 
     context 'countカラム' do
-      let(:test_rep) { rep }
       it '空欄でないこと' do
-        test_rep.count = ''
-        is_expected.to eq false;
+        rep.count = ''
+        expect(rep.valid?).to eq false;
       end
     end
 
     context 'set_countカラム' do
-      let(:test_rep) { rep }
       it '空欄でないこと' do
-        test_rep.set_count = ''
-        is_expected.to eq false;
+        rep.set_count = ''
+        expect(rep.valid?).to eq false;
       end
     end
 

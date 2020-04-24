@@ -7,17 +7,17 @@ RSpec.describe 'MyGymモデルのテスト', type: :model do
   # エラーメッセージがなければ失敗
 
   describe 'バリデーションのテスト' do
-    let(:my_gym) { build(:my_gym) }
-    subject { test_my_gym.valid? }
+    let(:customer) { create(:customer) }
+    let!(:my_gym) { build(:my_gym, customer_id: customer.id) }
+
     context 'nameカラム' do
-      let(:test_my_gym) { my_gym }
       it '空欄でないこと' do
-        test_my_gym.name = ''
-        is_expected.to eq false;
+        my_gym.name = ''
+        expect(my_gym.valid?).to eq false;
       end
       it '100文字以下であること' do
-        test_my_gym.name = Faker::Lorem.characters(number:101)
-        is_expected.to eq false;
+        my_gym.name = Faker::Lorem.characters(number:101)
+        expect(my_gym.valid?).to eq false;
       end
     end
 
@@ -25,7 +25,7 @@ RSpec.describe 'MyGymモデルのテスト', type: :model do
   describe 'アソシエーションのテスト' do
     context 'Customerモデルとの関係' do
       it 'N:1となっている' do
-        expect(MyGym.reflect_on_association(:customer).macro).to eq :belong_to
+        expect(MyGym.reflect_on_association(:customer).macro).to eq :belongs_to
       end
     end
 

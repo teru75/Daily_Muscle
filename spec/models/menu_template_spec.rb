@@ -7,25 +7,27 @@ RSpec.describe 'MenuTemplateモデルのテスト', type: :model do
   # エラーメッセージがなければ失敗
 
   describe 'バリデーションのテスト' do
-    let(:menu_template) { build(:menu_template) }
-    subject { test_menu_template.valid? }
+    let(:event_template) { create(:event_template) }
+    let!(:menu_template) { build(:menu_template, event_template_id: event_template.id) }
+
     context 'nameカラム' do
-      let(:test_menu_template) { menu_template }
       it '空欄でないこと' do
-        test_menu_template.name = ''
-        is_expected.to eq false;
+        menu_template.name = ''
+        expect(menu_template.valid?).to eq false;
       end
+
       it '50文字以下であること' do
-        test_menu_template.name = Faker::Lorem.characters(number:51)
-        is_expected.to eq false;
+        menu_template.name = Faker::Lorem.characters(number:51)
+        expect(menu_template.valid?).to eq false;
       end
     end
 
   end
+
   describe 'アソシエーションのテスト' do
     context 'EventTemPlateモデルとの関係' do
       it 'N:1となっている' do
-        expect(MenuTemplate.reflect_on_association(:event_template).macro).to eq :belong_to
+        expect(MenuTemplate.reflect_on_association(:event_template).macro).to eq :belongs_to
       end
     end
 

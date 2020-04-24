@@ -7,21 +7,18 @@ RSpec.describe 'Menuモデルのテスト', type: :model do
   # エラーメッセージがなければ失敗
 
   describe 'バリデーションのテスト' do
-    let(:menu) { build(:menu) }
-    subject { test_menu.valid? }
+    let(:event) { create(:event) }
+    let!(:menu) { build(:menu, event_id: event.id) }
+
     context 'nameカラム' do
-      let(:test_menu) { menu }
       it '空欄でないこと' do
-        test_menu.name = ''
-        is_expected.to eq false;
+        menu.name = ''
+        expect(menu.valid?).to eq false;
       end
-      it '2文字以上であること' do
-        test_menu.name = Faker::Lorem.characters(number:1)
-        is_expected.to eq false;
-      end
+
       it '50文字以下であること' do
-        test_menu.name = Faker::Lorem.characters(number:51)
-        is_expected.to eq false;
+        menu.name = Faker::Lorem.characters(number:51)
+        expect(menu.valid?).to eq false;
       end
     end
 

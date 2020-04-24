@@ -9,6 +9,7 @@ class CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     if @customer.id != current_customer.id
       flash[:alert] = "他アカウントの編集はできません。"
+      redirect_to customer_path(current_customer.id)
     end
   end
 
@@ -18,6 +19,7 @@ class CustomersController < ApplicationController
       flash[:success] = "ユーザー情報を編集しました。"
       redirect_to customer_path(@customer)
     else
+      flash[:alert] = "空欄または不正な値があります。"
       render :edit
     end
   end
