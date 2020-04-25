@@ -24,9 +24,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
 
   resources :customers, only: [:show, :edit, :update, :index] do
-    resources :my_menus, only: [:index, :new, :show, :create, :update, :destroy] do
-      resource :my_menu_likes, only: [:create, :destroy]
-    end
+    resources :my_menus, only: [:index, :new, :show, :create, :update, :destroy]
     resources :my_supplements, only: [:index, :new, :show, :create, :update, :destroy]
     resources :my_gyms, only: [:index, :new, :create, :show, :update, :destroy]
     resource :relationships, only: [:create, :destroy]
@@ -34,7 +32,6 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followed', as: 'followers'
     get 'groups' => 'groups#customer_index'
     resources :event_likes, only: [:index, :show]
-    resources :my_menu_likes, only: [:index]
     resources :datas, only: [:index]
   end
 

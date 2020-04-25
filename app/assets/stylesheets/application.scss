@@ -19,6 +19,8 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
+
+  /*  ページ全体のcss*/
   body{
   padding-top: 50px;
   }
@@ -41,15 +43,12 @@
   font-weight: 400;
   }
 
+
+  /* フラッシュメッセージのcss */
   .alert{
   margin-bottom: 0px;
   }
 
-  .row-margin{
-  margin: 50px 0px;
-  }
-
-  
 
   /* トップページのcss */
  .muscle-main{
@@ -86,7 +85,10 @@
  color: #666666;
  }
 
- .navbar-brand{
+
+/* ヘッダーの調整 */
+
+.navbar-brand{
  color: white;
  }
 
@@ -94,18 +96,24 @@
   text-align: center;
 }
 
-.nav-item-customer{
-  color: rgba(255,255,255,0.7);
-  transition: 0.6s, ease;
+.nav-item-customer:hover{
+  background-color: #2E3892;
 }
+
 
 .nav-text{
   font-size: 13px;
 }
 
-.nav-item-customer:hover{
-  background-color: #2E3892;
-}
+.navbar{
+  margin-bottom: 0px;
+ }
+
+ .navbar-nav > li{
+  margin-right: 40px;
+ }
+
+
 
 
 /* 新規登録,ログインのcss */
@@ -144,23 +152,6 @@
 .login-btn{
   background-color:#ff7b63;
   color: white;
-}
-
-
-
-
- .navbar{
-  margin-bottom: 0px;
- }
-
- .navbar-nav > li{
-  margin-right: 40px;
- }
-
-a.anchor{
-  display: block;
-  padding-top: 70px;
-  margin-top: -70px;
 }
 
 

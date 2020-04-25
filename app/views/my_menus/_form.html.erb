@@ -1,10 +1,6 @@
 <table class="table table-striped table-bordered" style="margin-top: 20px; width: 90%;">
   <tr>
-    <td width="80%" style="text-align: center;">
-      <%= f.label :theme, "テーマ" %>
-      <%= f.text_field :theme, class:"form-control" %>
-      </td>
-    <td style="vertical-align: middle;"><%= f.select :part, [["全身", :whole_body], ["上半身", :upper_body], ["腕", :arm], ["胸", :breast], ["肩", :shoulder],["背中", :back], ["下半身", :lower_body], ["体幹", :trunk]], class:"form-control" %></td>
+    <td colspan="2" style="text-align: center;" class="info"><%= f.select :part, [["全身", :whole_body], ["上半身", :upper_body], ["腕", :arm], ["胸", :breast], ["肩", :shoulder],["背中", :back], ["下半身", :lower_body], ["体幹", :trunk]], class:"form-control" %></td>
   </tr>
   <tbody class="menu_items">
     <%= f.fields_for :my_menu_items do |i| %>
