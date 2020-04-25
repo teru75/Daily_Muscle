@@ -1,4 +1,4 @@
-<div>
+<div style="text-align: center;">
 <%= form_with(model: event, local: true) do |f| %>
 
     <div class="fields">
@@ -48,13 +48,14 @@
         a++;
         // dummy1 を削除
     $('.dummy1').remove();
+
     console.log(a);
     console.log(pulldown);
     console.log(form);
     console.log(pulldownradio);
     console.log(formradio);
 
-        $(pulldownradio).on('click',function() {
+      $(pulldownradio).on('click',function() {
         $(form).hide();
         $(pulldown).show();
       });
@@ -63,20 +64,6 @@
         $(form).show();
         $(pulldown).hide();
       });
-     });
+    });
    });
-
-   
-
-  // function methodChange(){
-  //   radio1 = document.getElementById('method1') 
-  //   radio2 = document.getElementById('method2') 
-  //   if(radio1.checked) {
-  //     document.getElementById('menuPulldown').style.display = "";
-  //     document.getElementById('menuForm').style.display = "none";
-  //   }else if(radio2.checked) {
-  //     document.getElementById('menuPulldown').style.display = "none";
-  //     document.getElementById('menuForm').style.display = "";
-  //   }
-  // }
 </script>
