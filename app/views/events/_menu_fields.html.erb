@@ -1,30 +1,33 @@
 <div class="nested-fields">
-  <div class="" style="padding: 10px; border-bottom: 1px solid #eee; background-color: #eeeaec;">
+  <div style="padding: 10px; border-bottom: 1px solid #eee; background-color: #eeeaec;">
     <div>
-     <input type="radio" name="menuMethod" id="method1" checked="checked">マイメニューから選ぶ
-     <input type="radio" name="menuMethod" id="method2">入力する
+      <label>
+        <input type="radio" name="menuMethod" class="menuMethod" id="method1" checked="checked">マイメニューから選ぶ
+      </label>
+      <label>
+        <input type="radio" name="menuMethod" class="menuMethod" id="method2">入力する
+      </label>
     </div>
+
       <label>メニュー</label>
     <div id="menuPulldown">
       <%= f.collection_select :name, @customer.my_menu_items, :name, :name, include_blank:"選択してください", class:"form-control" %>
+
       <p class="dummy1"></p>
     </div>
-    <div id="menuForm" style="display: none;">
-      <%= f.text_field :name, class:"form-control" %>
+    <div id="menuForm" style="display: none; width: 300px; margin: 0 auto;">
+      <%= f.text_field :name, class:"form-control", disabled: true %>
     </div>
   </div>
   <div style="border-bottom: 1px solid #eee; padding: 5px;">
   <%= link_to_remove_association "メニューを削除", f %>
-</div>
-  
-
+  </div>
     <%= f.fields_for :reps do |r| %>
       <%= render "rep_fields", f: r %>
     <% end %>
-  
     <div class="links" style="padding: 5px; border-bottom: 1px solid #eee; ">
     <%= link_to_add_association "重さなどを追加", f, :reps %>
-  </div>
+    </div>
 </div>
 
 
