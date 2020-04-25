@@ -29,5 +29,11 @@ RSpec.describe 'MyMenuItemモデルのテスト', type: :model do
       end
     end
 
+    context 'Customerモデルとの関係' do
+      it 'N:1となっている' do
+        expect(MyMenuItem.reflect_on_association(:customer).macro).to eq :belongs_to
+      end
+    end
+
   end
 end
