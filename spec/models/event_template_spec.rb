@@ -21,6 +21,18 @@ RSpec.describe 'EventTemplateモデルのテスト', type: :model do
         event_template.theme = ''
         expect(event_template.valid?).to eq false;
       end
+
+      it '100文字以下であること' do
+        event_template.theme = Faker::Lorem.characters(number:101)
+        expect(event_template.valid?).to eq false;
+      end
+    end
+
+    context 'introductionカラム' do
+      it '空欄でないこと' do
+        event_template.introduction = ''
+        expect(event_template.valid?).to eq false;
+      end
     end
 
   end

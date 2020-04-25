@@ -9,15 +9,15 @@
             <td width="80%" style="text-align: center;"><%= @event_template.theme %></td>
             <td style="text-align: center;"><span class="part-category"><%= @event_template.part_i18n %></span></td>
           </tr>
-          <tr>
-            <td colspan="2"><%= @event_template.introduction %></td>
-          </tr>
           <% @event_template.menu_templates.each do |item| %>
           <tr style="text-align: center;">
             <td colspan="2">
               <%= item.name %>
               <% end %>
             </td>
+          </tr>
+          <tr style="text-align: center;" class="success">
+            <td colspan="2"><%= @event_template.introduction %></td>
           </tr>
         </table>
       </div>

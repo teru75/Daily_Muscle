@@ -1,4 +1,4 @@
-<div class="container" style="height: 1000px;">
+<div class="container" style="min-height: 500px; width: 100%;">
   <div class="row" style="margin: 30px 0px;">
     <div class="col-xs-7" >
       <h3 id="event_template-title" style="margin-top: 0px;">メニューテンプレート詳細</h3>
@@ -15,6 +15,11 @@
             <td colspan="2">
               <%= item.name %>
               <% end %>
+            </td>
+          </tr>
+          <tr style=" background-color: #eeeaec;">
+            <td colspan="2" rowspan="<%=@event_template.introduction.length%>">
+              <%= @event_template.introduction %>
             </td>
           </tr>
         </table>
