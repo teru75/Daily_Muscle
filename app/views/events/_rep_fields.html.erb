@@ -1,16 +1,16 @@
 <div class="nested-fields" s>
   <div style="padding: 10px;">
-  <%= f.label :weight, "重さ" %>
-  <%= f.number_field :weight, min:0, max:300, step: '0.25', class:'input_form' %>
-  
-  <%= f.label :count, "回数" %>
-  <%= f.number_field :count, class:'input_form' %>
-  
-  <%= f.label :set_count, "セット数" %>
-    <%= f.number_field :set_count, class:"input_form" %>
+    <%= f.label :weight, "重さ" %>
+    <%= f.number_field :weight, min:0, max:300, step: '0.25', class:'input_form' %>
+
+    <%= f.label :count, "回数" %>
+    <%= f.number_field :count, class:'input_form' %>
+
+    <%= f.label :set_count, "セット数" %>
+      <%= f.number_field :set_count, class:"input_form" %>
   </div>
   <div style="border-bottom: 1px solid #eee; padding: 0px 5px 5px 5px;">
-  <%= link_to_remove_association "重さなどを削除", f %>
-</div>
- 
+    <%= link_to_remove_association "重さなどを削除", f %>
+  </div>
+
 </div>

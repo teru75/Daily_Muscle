@@ -6,7 +6,6 @@
       <span style="margin-left: 27px;">
         <%= f.select :part, [["全身", :whole_body], ["上半身", :upper_body], ["腕", :arm], ["胸", :breast], ["肩", :shoulder],["背中", :back], ["下半身", :lower_body], ["体幹", :trunk]], class:"form-control" %>
       </span>
-      
     </div>
     <div class="fields">
       <%= f.label :start, "開始日時" %>
@@ -27,43 +26,46 @@
       </div>
     </div>
 
-<div class="actions" style="margin: 10px 0px;">
-  <%= f.submit "登録", class:"btn btn-primary" %>
-</div>
-<% end %>
-</div>
+    <div class="actions" style="margin: 10px 0px;">
+      <%= f.submit "登録", class:"btn btn-primary" %>
+    </div>
 
 <script>
   var a = 1;
   $(function(){
-   $(document).on('inview', '.dummy1', function() {
-        // 親がdivなら、そのdivにユニークなidを振る
-    var pulldown = $(this).closest('div').attr('id', 'pulldown' + a);
-    var form = $('#menuForm').attr('id', 'form' + a);
+    $(document).on('click', '.menuMethod', function () {});
 
-    var  pulldownradio = $('#method1').attr('id', 'pulldownMethod' + a);
-    var formradio = $('#method2').attr('id', 'formMethod' + a);
-    $('input[name="menuMethod"]').attr('name', 'method' + a);
+    $(document).on('inview', '.dummy1', function() {
+      console.log('inview');
+      // 親がdivなら、そのdivにユニークなidを振る
+      var pulldown = $(this).closest('div').attr('id', 'pulldown' + a);
+      var form = $('#menuForm').attr('id', 'form' + a);
 
-        a++;
-        // dummy1 を削除
-    $('.dummy1').remove();
+      var  pulldownradio = $('#method1').attr('id', 'pulldownMethod' + a);
+      var formradio = $('#method2').attr('id', 'formMethod' + a);
+      $('input[name="menuMethod"]').attr('name', 'method' + a);
 
-    console.log(a);
-    console.log(pulldown);
-    console.log(form);
-    console.log(pulldownradio);
-    console.log(formradio);
+      a++;
+      // dummy1 を削除
+      $('.dummy1').remove();
 
       $(pulldownradio).on('click',function() {
+        console.log('pulldownradio');
         $(form).hide();
+        $(form).find('input').prop("disabled", true);
+        $(pulldown).find('select').prop("disabled", false);
         $(pulldown).show();
       });
-
       $(formradio).on('click', function(){
-        $(form).show();
+        console.log('formradio');
         $(pulldown).hide();
+        $(form).show();
+        $(form).find('input').prop("disabled", false);
+        $(pulldown).find('select').prop("disabled", true);
       });
     });
-   });
+  });
 </script>
+
+<% end %>
+</div>
