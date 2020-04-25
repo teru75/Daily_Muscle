@@ -1,7 +1,18 @@
 <div class="nested-fields">
   <div class="" style="padding: 10px; border-bottom: 1px solid #eee; background-color: #eeeaec;">
-  <%= f.label :name, "メニュー" %>
-  <%= f.text_field :name, class:"form-control" %>
+    <div >
+      <label><input type="radio" value="method1" name="menuMethod" id="method1" checked="checked" />マイメニューから選ぶ</label>
+      <label><input type="radio" value="method2" name="menuMethod" id="method2" />入力する</label>
+    </div>
+    <div id="menuPulldown">
+      <%= f.label :name, "メニュー" %>
+      <%= f.collection_select :name, MyMenuItem.all, :name, :name, include_blank:"選択してください", class:"form-control" %>
+      <p class="dummy1"></p>
+    </div>
+    <div id="menuForm" style="display: none;">
+      <%= f.label :name, "メニュー" %>
+      <%= f.text_field :name, class:"form-control" %>
+    </div>
   </div>
   <div style="border-bottom: 1px solid #eee; padding: 5px;">
   <%= link_to_remove_association "メニューを削除", f %>
@@ -18,7 +29,3 @@
 </div>
 
 
-<script>
-  let i = 1
-  $('td').attr("id", _ => i++);
-</script>
