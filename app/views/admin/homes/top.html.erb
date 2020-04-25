@@ -1,8 +1,15 @@
 <div class="container" style="min-height: 500px;">
   <div class="row">
     <div class="col-xs-offset-2 col-xs-8" style="margin-top: 30px;">
-      <h1>今日のトレーニング</h1>
-      <p><strong><%= @event.count %>件</strong></p>
+      <div>
+        <h2>今日のトレーニング</h2>
+        <h3><strong><%= @event.count %>件</strong></h3>
+      </div>
+
+      <div style="margin-top: 50px;">
+        <h2>新規ユーザー</h2>
+        <h3><strong><%= @customer.count %>人</strong></h3>
+      </div>
     </div>
   </div>
 </div>

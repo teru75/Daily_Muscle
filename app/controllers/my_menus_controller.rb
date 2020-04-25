@@ -68,7 +68,7 @@ class MyMenusController < ApplicationController
   private
   def my_menu_params
     params.require(:my_menu).permit(:part, :theme,
-        my_menu_items_attributes:[:id, :name, :_destroy]
+        my_menu_items_attributes:[:id, :customer_id, :name, :_destroy]
       )
   end
 end

@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_customer!
   def new
+    @customer = Customer.find(current_customer.id)
     @event = Event.new
     @menu = @event.menus.build
     @reps = @menu.reps.build

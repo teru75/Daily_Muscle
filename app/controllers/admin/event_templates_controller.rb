@@ -24,6 +24,7 @@ class Admin::EventTemplatesController < ApplicationController
     else
       @event_template = EventTemplate.new
       @menu_template = @event_template.menu_templates.build
+      flash[:alert] = "空欄または不正な値があります。"
       render :new
     end
   end
@@ -38,13 +39,14 @@ class Admin::EventTemplatesController < ApplicationController
       flash[:success] = "メニューテンプレートが編集されました！"
       redirect_to admin_event_template_path(@event_template)
     else
-      render :new
+      flash[:alert] = "空欄または不正な値があります。"
+      render :show
     end
   end
 
   private
   def event_template_params
-    params.require(:event_template).permit(:part, :theme, :is_enabled,
+    params.require(:event_template).permit(:part, :theme, :introduction, :is_enabled,
         menu_templates_attributes:[:id, :name, :_destroy])
   end
 end
