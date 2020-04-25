@@ -9,7 +9,6 @@ class Customer < ApplicationRecord
   has_many :my_menu_items, dependent: :destroy
   has_many :my_gyms, dependent: :destroy
   has_many :event_likes, dependent: :destroy
-  has_many :my_menu_likes, dependent: :destroy
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following_customer, through: :follower, source: :followed
