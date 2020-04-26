@@ -1,5 +1,5 @@
 <div style="text-align: center;">
-<%= form_with(model: event, local: true) do |f| %>
+  <%= form_with(model: event, local: true) do |f| %>
 
     <div class="fields">
       <%= f.label :part, "部位" %>
@@ -29,7 +29,8 @@
     <div class="actions" style="margin: 10px 0px;">
       <%= f.submit "登録", class:"btn btn-primary" %>
     </div>
-
+  <% end %>
+</div>
 <script>
   var a = 1;
   $(function(){
@@ -37,17 +38,15 @@
     $(document).on('inview', '.dummy1', function() {
       console.log('inview');
       // 親がdivなら、そのdivにユニークなidを振る
-      var pulldown = $(this).closest('div').attr('id', 'pulldown' + a);
+      var pulldown = $('#menuPulldown').attr('id', 'pulldown' + a);
       var form = $('#menuForm').attr('id', 'form' + a);
 
       var  pulldownradio = $('#method1').attr('id', 'pulldownMethod' + a);
       var formradio = $('#method2').attr('id', 'formMethod' + a);
-      $('input[name="menuMethod"]').attr('name', 'method' + a);
-
+      console.log(pulldownradio);
       a++;
       // dummy1 を削除
-      $('.dummy1').remove();
-
+      console.log(a);
       $(pulldownradio).on('click',function() {
         console.log('pulldownradio');
         $(form).hide();
@@ -65,6 +64,3 @@
     });
   });
 </script>
-
-<% end %>
-</div>

@@ -12,7 +12,6 @@ class EventTemplatesController < ApplicationController
   end
 
   def show
-    @customer = Customer.find(current_customer.id)
     @event_template = EventTemplate.find(params[:id])
   end
 end
