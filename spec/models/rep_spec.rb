@@ -6,7 +6,6 @@ RSpec.describe 'Repモデルのテスト', type: :model do
   # 登録できるかできないか 登録できたら失敗
   # エラーメッセージがなければ失敗
 
-
   describe 'バリデーションのテスト' do
     let(:menu) { create(:menu) }
     let!(:rep) { build(:rep, menu_id: menu.id) }
@@ -14,31 +13,30 @@ RSpec.describe 'Repモデルのテスト', type: :model do
     context 'weightカラム' do
       it '空欄でないこと' do
         rep.weight = ''
-        expect(rep.valid?).to eq false;
+        expect(rep.valid?).to eq false
       end
     end
 
     context 'countカラム' do
       it '空欄でないこと' do
         rep.count = ''
-        expect(rep.valid?).to eq false;
+        expect(rep.valid?).to eq false
       end
     end
 
     context 'set_countカラム' do
       it '空欄でないこと' do
         rep.set_count = ''
-        expect(rep.valid?).to eq false;
+        expect(rep.valid?).to eq false
       end
     end
-
   end
+
   describe 'アソシエーションのテスト' do
     context 'Menuモデルとの関係' do
       it 'N:1となっている' do
         expect(Rep.reflect_on_association(:menu).macro).to eq :belongs_to
       end
     end
-
   end
 end

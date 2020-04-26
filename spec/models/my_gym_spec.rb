@@ -13,21 +13,20 @@ RSpec.describe 'MyGymモデルのテスト', type: :model do
     context 'nameカラム' do
       it '空欄でないこと' do
         my_gym.name = ''
-        expect(my_gym.valid?).to eq false;
+        expect(my_gym.valid?).to eq false
       end
       it '100文字以下であること' do
-        my_gym.name = Faker::Lorem.characters(number:101)
-        expect(my_gym.valid?).to eq false;
+        my_gym.name = Faker::Lorem.characters(number: 101)
+        expect(my_gym.valid?).to eq false
       end
     end
-
   end
+
   describe 'アソシエーションのテスト' do
     context 'Customerモデルとの関係' do
       it 'N:1となっている' do
         expect(MyGym.reflect_on_association(:customer).macro).to eq :belongs_to
       end
     end
-
   end
 end

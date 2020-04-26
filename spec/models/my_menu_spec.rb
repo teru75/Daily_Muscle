@@ -13,11 +13,11 @@ RSpec.describe 'MyMenuモデルのテスト', type: :model do
     context 'partカラム' do
       it '空欄でないこと' do
         my_menu.part = ''
-        expect(my_menu.valid?).to eq false;
+        expect(my_menu.valid?).to eq false
       end
     end
-    
   end
+
   describe 'アソシエーションのテスト' do
     context 'MyMenuItemモデルとの関係' do
       it '1:Nとなっている' do
@@ -30,6 +30,5 @@ RSpec.describe 'MyMenuモデルのテスト', type: :model do
         expect(MyMenu.reflect_on_association(:customer).macro).to eq :belongs_to
       end
     end
-
   end
 end

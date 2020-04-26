@@ -13,15 +13,14 @@ RSpec.describe 'MenuTemplateモデルのテスト', type: :model do
     context 'nameカラム' do
       it '空欄でないこと' do
         menu_template.name = ''
-        expect(menu_template.valid?).to eq false;
+        expect(menu_template.valid?).to eq false
       end
 
       it '50文字以下であること' do
-        menu_template.name = Faker::Lorem.characters(number:51)
-        expect(menu_template.valid?).to eq false;
+        menu_template.name = Faker::Lorem.characters(number: 51)
+        expect(menu_template.valid?).to eq false
       end
     end
-
   end
 
   describe 'アソシエーションのテスト' do
@@ -30,6 +29,5 @@ RSpec.describe 'MenuTemplateモデルのテスト', type: :model do
         expect(MenuTemplate.reflect_on_association(:event_template).macro).to eq :belongs_to
       end
     end
-
   end
 end

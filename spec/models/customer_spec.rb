@@ -7,37 +7,42 @@ RSpec.describe 'Customerモデルのテスト', type: :model do
   # エラーメッセージがなければ失敗
 
   describe 'バリデーションのテスト' do
-    let(:customer) { build(:customer) }
     subject { test_customer.valid? }
+
+    let(:customer) { build(:customer) }
+
     context 'nameカラム ' do
       let(:test_customer) { customer }
+
       it '空欄でないこと' do
         test_customer.name = ''
-        is_expected.to eq false;
+        is_expected.to eq false
       end
       it '50文字以下であること' do
-        test_customer.name = Faker::Lorem.characters(number:51)
-        is_expected.to eq false;
+        test_customer.name = Faker::Lorem.characters(number: 51)
+        is_expected.to eq false
       end
     end
 
     context 'emailカラム ' do
       let(:test_customer) { customer }
+
       it '空欄でないこと' do
         test_customer.email = ''
-        is_expected.to eq false;
+        is_expected.to eq false
       end
     end
 
     context 'passwordカラム' do
       let(:test_customer) { customer }
-      it '空欄でないこと 'do
+
+      it '空欄でないこと ' do
         test_customer.password = ''
-        is_expected.to eq false;
+        is_expected.to eq false
       end
     end
-
   end
+
   describe 'アソシエーションのテスト' do
     context 'Eventモデルとの関係' do
       it '1:Nとなっている' do

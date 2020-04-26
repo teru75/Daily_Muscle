@@ -12,5 +12,4 @@ class MyMenuItemsController < ApplicationController
     flash[:notice] = "マイメニューを削除しました。"
     redirect_to customer_my_menus_path(current_customer)
   end
-
 end

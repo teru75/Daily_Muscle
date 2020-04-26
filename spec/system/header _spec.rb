@@ -5,8 +5,10 @@ describe 'ヘッダーのテスト' do
     before do
       visit root_path
     end
+
     context 'ヘッダーの表示を確認' do
       subject { page }
+
       it 'タイトルとリンクが表示される' do
         home_link = find_all('a')[0].native.inner_text
         expect(home_link).to match(//)
@@ -20,8 +22,10 @@ describe 'ヘッダーのテスト' do
         expect(login_link).to match(/ログイン/)
       end
     end
+
     context 'ヘッダーのリンクを確認' do
       subject { current_path }
+
       it 'Top画面に遷移する' do
         home_link = find_all('a')[0].native.inner_text
         home_link = home_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
@@ -46,14 +50,17 @@ describe 'ヘッダーのテスト' do
 
   describe 'ユーザーがログインしている場合' do
     let(:customer) { create(:customer) }
+
     before do
       visit new_customer_session_path
       fill_in 'customer[email]', with: customer.email
       fill_in 'customer[password]', with: customer.password
       click_button 'ログイン'
     end
+
     context 'ヘッダーの表示を確認' do
       subject { page }
+
       it 'タイトルとリンクが表示される' do
         home_link = find_all('a')[0].native.inner_text
         expect(home_link).to match(/Daily Muscle/)
@@ -78,11 +85,12 @@ describe 'ヘッダーのテスト' do
 
     context 'ヘッダーのリンクを確認' do
       subject { current_path }
+
       it '会員詳細画面に遷移する' do
         home_link = find_all('a')[0].native.inner_text
         home_link = home_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link home_link
-        is_expected.to eq('/customers/'+customer.id.to_s)
+        is_expected.to eq('/customers/' + customer.id.to_s)
       end
       it 'トレーニング作成画面に遷移する' do
         event_link = find_all('a')[1].native.inner_text
@@ -113,14 +121,17 @@ describe 'ヘッダーのテスト' do
 
   describe '管理者がログインしている場合' do
     let(:admin) { create(:admin) }
+
     before do
       visit new_admin_session_path
       fill_in 'admin[email]', with: admin.email
       fill_in 'admin[password]', with: admin.password
       click_button 'ログイン'
     end
+
     context 'ヘッダーの表示を確認' do
       subject { page }
+
       it 'タイトルとリンクが表示される' do
         home_link = find_all('a')[0].native.inner_text
         expect(home_link).to match(/Daily Muscle/)
@@ -145,6 +156,7 @@ describe 'ヘッダーのテスト' do
 
     context 'ヘッダーのリンクを確認' do
       subject { current_path }
+
       it '管理者トップ画面に遷移する' do
         home_link = find_all('a')[0].native.inner_text
         home_link = home_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')

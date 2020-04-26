@@ -4,16 +4,16 @@ class MySupplementsController < ApplicationController
     @my_supplement = MySupplement.new
     @customer = Customer.find(current_customer.id)
   end
-  
+
   def create
     @my_supplement = MySupplement.new(my_supplement_params)
     @my_supplement.customer_id = current_customer.id
 
     if @my_supplement.save
       flash[:success] = "マイサプリメントを登録しました！"
-       redirect_to customer_my_supplement_path(@my_supplement.customer_id, @my_supplement)
+      redirect_to customer_my_supplement_path(@my_supplement.customer_id, @my_supplement)
     else
-      @customer =Customer.find(current_customer.id)
+      @customer = Customer.find(current_customer.id)
       render :new
     end
   end
@@ -31,7 +31,6 @@ class MySupplementsController < ApplicationController
     @customer = Customer.find(params[:customer_id])
     @my_supplement = @customer.my_supplements.find(params[:id])
   end
-
 
   def update
     @my_supplement = MySupplement.find(params[:id])
@@ -62,6 +61,7 @@ class MySupplementsController < ApplicationController
   end
 
   private
+
   def my_supplement_params
     params.require(:my_supplement).permit(:name, :genre, :brand)
   end

@@ -5,5 +5,4 @@ class MySupplementsControllerTest < ActionDispatch::IntegrationTest
     get my_supplements_index_url
     assert_response :success
   end
-
 end

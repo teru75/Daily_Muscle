@@ -5,4 +5,4 @@ FactoryBot.define do
     set_count { Faker::Number.between(from: 0, to: 4) }
     menu
   end
-end 
+end

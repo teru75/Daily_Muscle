@@ -5,5 +5,4 @@ class MyMenusControllerTest < ActionDispatch::IntegrationTest
     get my_menus_index_url
     assert_response :success
   end
-
 end

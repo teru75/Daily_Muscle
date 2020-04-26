@@ -4,10 +4,12 @@ RSpec.describe 'Admins', type: :system do
   describe '管理者ユーザー認証のテスト' do
     describe '管理者ログイン' do
       let(:admin) { create(:admin) }
+
       before do
         admin
         visit new_admin_session_path
       end
+
       context 'ログイン画面に遷移' do
         it 'ログインに成功する' do
           fill_in 'admin[email]', with: admin.email
@@ -25,4 +27,4 @@ RSpec.describe 'Admins', type: :system do
       end
     end
   end
-end 
+end

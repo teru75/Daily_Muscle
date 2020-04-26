@@ -1,20 +1,20 @@
 class MyMenusController < ApplicationController
   before_action :authenticate_customer!
   def new
-    @customer =Customer.find(current_customer.id)
+    @customer = Customer.find(current_customer.id)
     @my_menu = MyMenu.new
     @my_menu_item = @my_menu.my_menu_items.build
   end
-  
+
   def create
     @my_menu = MyMenu.new(my_menu_params)
     @my_menu.customer_id = current_customer.id
 
     if @my_menu.save
       flash[:success] = "マイメニューを登録しました！"
-       redirect_to customer_my_menus_path(@my_menu.customer_id)
+      redirect_to customer_my_menus_path(@my_menu.customer_id)
     else
-      @customer =Customer.find(current_customer.id)
+      @customer = Customer.find(current_customer.id)
       render :new
     end
   end
@@ -32,9 +32,9 @@ class MyMenusController < ApplicationController
   end
 
   private
+
   def my_menu_params
     params.require(:my_menu).permit(:part,
-        my_menu_items_attributes:[:id, :customer_id, :name, :_destroy]
-      )
+                                    my_menu_items_attributes: [:id, :customer_id, :name, :_destroy])
   end
 end
