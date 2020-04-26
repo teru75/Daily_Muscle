@@ -19,17 +19,17 @@
           <span class="icon-bar"></span>
         </button>
         <% if customer_signed_in? %>
-        <%= link_to "Daily Muscle", customer_path(current_customer), class:"navbar-brand", data: {"turbolinks" => false} %>
+        <%= link_to "Daily Muscle", customer_path(current_customer), class:"navbar-brand" %>
         <% elsif admin_signed_in? %>
-        <%= link_to "Daily Muscle", admin_homes_top_path, class:"navbar-brand" %>
+        <%= link_to "Daily Muscle", admin_homes_top_path, class:"navbar-brand"%>
         <% else %>
-        <%= link_to "Daily Muscle", root_path, class:"navbar-brand" %>
+        <%= link_to "Daily Muscle", root_path, class:"navbar-brand"%>
         <% end %>
       </div>
       <div class="collapse navbar-collapse" id="navbarEexample">
         <ul class="nav navbar-nav navbar-right nav-item">
           <% if customer_signed_in? %>
-          <li><%= link_to "筋トレログ登録", new_event_path, class:"nav-item-customer"%></li>
+          <li><%= link_to "筋トレログ登録", new_event_path, class:"nav-item-customer", style:"font-family: 'Orbitron'、sans-serif;"%></li>
           <li><%= link_to "タイムライン", events_path, class:"nav-item-customer" %></li>
           <li><%= link_to "筋トレテンプレート", event_templates_path, class:"nav-item-customer" %></li>
           <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"nav-item-customer" %></li>
