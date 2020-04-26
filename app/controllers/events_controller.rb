@@ -15,6 +15,7 @@ class EventsController < ApplicationController
       flash[:success] = "トレーニングを保存しました！"
        redirect_to event_path(@event)
     else
+      @customer = Customer.find(current_customer.id)
       @event = Event.new
       @menu = @event.menus.build
       @reps = @menu.reps.build
@@ -24,6 +25,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @customer = Customer.find(current_customer.id)
     @event = Event.find(params[:id])
   end
 

@@ -23,6 +23,15 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+// ヘッダーアニメーション
+$(function(){
+  $('.nav-item-customer').mouseover(function(){
+    $(this).animate({'background-color': '#2E3892;'}, 'slow');
+  }, function(){
+    $(this).animate({'background-color': 'none'}, 'slow');
+  });
+});
+
 
 // マイメニューを編集する記述
 var display=function() {

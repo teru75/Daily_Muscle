@@ -1,12 +1,14 @@
 <div class="container" style="min-height: 500px;">
   <%= render "error_message", my_menu: @my_menu %>
-  <div class="row" class="my-menu-content">
+  <div class="row" style="margin-bottom: 50px;">
     <h1 class="page-header">マイメニュー</h1>
-    <div class="col-xs-7">
-      <h3>新規登録</h3>
-      <%= form_with(model: @my_menu, local: true, url: customer_my_menus_path) do |f| %>
+    <div class="col-xs-7" style="text-align: center;">
+        <h3>新規登録</h3>
+        <div style="width: 100%; margin: 0 auto;">
+        <%= form_with(model: @my_menu, local: true, url: customer_my_menus_path) do |f| %>
           <%= render "form", f:f %>
-      <% end %>
+        <% end %>
+      </div>
     </div>
       <%= render "customers/customer_form", customer: @customer %>
   </div>

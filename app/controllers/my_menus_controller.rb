@@ -12,7 +12,7 @@ class MyMenusController < ApplicationController
 
     if @my_menu.save
       flash[:success] = "マイメニューを登録しました！"
-       redirect_to customer_my_menu_path(@my_menu.customer_id, @my_menu)
+       redirect_to customer_my_menus_path(@my_menu.customer_id, @my_menu)
     else
       @customer =Customer.find(current_customer.id)
       render :new
@@ -29,40 +29,6 @@ class MyMenusController < ApplicationController
     @backs = @customer.my_menus.where(part: :back)
     @lower_bodys = @customer.my_menus.where(part: :lower_body)
     @trunks = @customer.my_menus.where(part: :trunk)
-  end
-
-  def show
-    @customer = Customer.find(params[:customer_id])
-    @my_menu = @customer.my_menus.find(params[:id])
-  end
-
-
-  def update
-    @my_menu = MyMenu.find(params[:id])
-    if @my_menu.customer_id != current_customer.id
-      flash[:danger] = "他アカウントの編集はできません。"
-      redirect_to customer_my_menus_path
-    end
-    if @my_menu.update(my_menu_params)
-       flash[:success] = "マイメニューが編集されました！"
-      redirect_to customer_my_menu_path(@my_menu.customer_id, @my_menu)
-    else
-      @customer = Customer.find(params[:customer_id])
-      @my_menu = @customer.my_menus.find(params[:id])
-      flash[:alert] = "正しい項目を入力してください。"
-      render :show
-    end
-  end
-
-  def destroy
-    @my_menu = MyMenu.find(params[:id])
-    if @my_menu.customer_id != current_customer.id
-      flash[:danger] = "他アカウントの編集はできません。"
-      redirect_to customer_my_menus_path
-    end
-    @my_menu.destroy
-    flash[:notice] = "マイメニューを削除しました。"
-    redirect_to customer_my_menus_path(current_customer)
   end
 
   private

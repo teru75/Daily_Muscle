@@ -22,12 +22,6 @@ class MyGymsController < ApplicationController
     @customer = Customer.find(params[:customer_id])
   end
 
-  def show
-    @customer = Customer.find(params[:customer_id])
-    @my_gym = @customer.my_gyms.find(params[:id])
-  end
-
-
   def update
     @my_gym = MyGym.find(params[:id])
     if @my_gym.customer_id != current_customer.id

@@ -1,5 +1,5 @@
 <div class="col-xs-offset-1 col-xs-4" style="border: 2px solid #eee; background-color: #eeeaec; margin-top: 20px;">
-  <div class="customer-profile" style="width:50%; margin: 60px auto; ">
+  <div class="customer-profile" style="width:60%; margin: 60px auto; ">
     <div class="profile-image" style="width: 50%; margin: 20px auto;">
       <%= attachment_image_tag customer, :profile_image,  :size =>'100x100', format: 'jpeg''jpg''svg''png',fallback: "avator.svg" %>
     </div>
@@ -38,6 +38,11 @@
     <tr>
       <td colspan="2">
         <%= link_to "トレーニングいいね一覧", customer_event_likes_path(customer), style:"display:block; color: black;" %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <%= link_to "マイメニュー", customer_my_menus_path(customer), style:"display:block; color: black;" %>
       </td>
     </tr>
     <tr>

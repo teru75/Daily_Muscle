@@ -90,14 +90,26 @@
 
 .navbar-brand{
  color: white;
- }
+  text-decoration:none;
+ transition:0.5s;
+}
+
 
 .nav-item{
   text-align: center;
 }
 
-.nav-item-customer:hover{
-  background-color: #2E3892;
+.nav-item-customer{
+  color: rgba(255,255,255,0.7);
+  text-decoration:none;
+  transition:0.5s;
+  display: block;
+  padding: 0px 20px;
+
+}
+
+.nav-iten-customer:hover{
+  background:#ff3300;
 }
 
 
@@ -110,7 +122,7 @@
  }
 
  .navbar-nav > li{
-  margin-right: 40px;
+ margin-right: 30px;
  }
 
 
@@ -204,7 +216,7 @@
 
 .my-menu-item{
   border-bottom: 3px solid #eee;
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-content: space-around;
