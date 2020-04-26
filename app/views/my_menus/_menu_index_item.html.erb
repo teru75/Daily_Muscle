@@ -6,9 +6,11 @@
         <td width="60%">
         <%= item.name %>
         </td>
-        <td style="text-align: center;">
-          <%= link_to "削除する", customer_my_menu_item_path(item.customer_id, item), class:"btn btn-danger", method: :delete,  "data-confirm" => "本当に削除しますか？" %>
-        </td>
+        <% if menu.customer_id == current_customer.id %>
+          <td style="text-align: center;">
+            <%= link_to "削除する", customer_my_menu_item_path(item.customer_id, item), class:"btn btn-danger", method: :delete,  "data-confirm" => "本当に削除しますか？" %>
+          </td>
+        <% end %>
       </tr>
       <% end %>
     <% end %>

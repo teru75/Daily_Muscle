@@ -15,13 +15,13 @@
         <table class="table table-striped table-bordered">
         <tr>
           <td width="60%">
-            <%= link_to customer_my_gym_path(gym.customer_id, gym) do %>
             <%= gym.name %>
-            <% end %>
           </td>
+        <% if gym.customer_id == current_customer.id %>
           <td style="text-align: center;">
             <%= link_to "削除する", customer_my_gym_path(gym.customer_id, gym), class:"btn btn-danger", method: :delete,  "data-confirm" => "本当に削除しますか？" %>
           </td>
+          <% end %>
         </tr>
         </table>
         <% end %>

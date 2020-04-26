@@ -31,7 +31,7 @@
   </tr>
   <% event.menus.each do |menu| %>
   <tr>
-    <td rowspan="<%=menu.reps.size%>"><%= menu.name %></td>
+    <th rowspan="<%=menu.reps.size%>"><%= menu.name %></th>
     <% menu.reps.each do |rep| %>
     <td><%= rep.weight %>kg</td>
     <td><%= rep.count %></td>

@@ -51,10 +51,11 @@
 
 
   /* トップページのcss */
- .muscle-main{
-  background-image: image-url("daniel-apodaca-WdoQio6HPVA-unsplash.jpg");
+ .bg-slider{
   background-size: cover;
   background-position: 50% 10%;
+  align-items: center;
+  justify-content: center;
   height: 500px;
   color: white;
   margin-bottom: 50px;
@@ -79,6 +80,7 @@
 
  .about-content p{
  color: #666666;
+ font-size: 15px;
  }
 
  .start-content p{
