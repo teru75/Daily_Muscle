@@ -19,19 +19,5 @@ class DatasController < ApplicationController
         end
       end
     end
-
-    # @partday = Array.new
-    # @partday.push(Event.parts.keys.to_a)
-    # @part_events = @customer.events.where("(events.start.year == ?) AND (events.start.month== ?)", 2020, 4).order(start: "ASC")
-    # @whole_bodys = @part_events.where(part: :whole_body)
-    # @upper_bodys = @part_events.where(part: :upper_body)
-    # @arms = @part_events.where(part: :arm)
-    # @breasts = @part_events.where(part: :breast)
-    # @shoulders = @part_events.where(part: :shoulder)
-    # @backs = @part_events.where(part: :back)
-    # @lower_bodys = @part_events.where(part: :lower_body)
-    # @trunks = @part_events.where(part: :trunk)
-    # @part_count = Array.new([@whole_bodys.length, @upper_bodys.length, @arms.length, @breasts.length, @shoulders.length, @backs.length, @lower_bodys.length, @trunks.length])
-
   end
 end
