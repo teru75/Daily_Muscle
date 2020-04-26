@@ -37,12 +37,12 @@
 
     $(document).on('inview', '.dummy1', function() {
       console.log('inview');
-      // 親がdivなら、そのdivにユニークなidを振る
       var pulldown = $('#menuPulldown').attr('id', 'pulldown' + a);
       var form = $('#menuForm').attr('id', 'form' + a);
 
       var  pulldownradio = $('#method1').attr('id', 'pulldownMethod' + a);
       var formradio = $('#method2').attr('id', 'formMethod' + a);
+      $('input[name="menuMethod"]').attr('name', 'method' + a);
       console.log(pulldownradio);
       a++;
       // dummy1 を削除

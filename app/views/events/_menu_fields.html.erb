@@ -13,7 +13,7 @@
     <div id="menuPulldown">
       <%= f.collection_select :name, @customer.my_menu_items, :name, :name, include_blank:"選択してください", class:"form-control" %>
 
-      <p class="dummy1"></p>
+      <p class="dummy1 target"></p>
     </div>
     <div id="menuForm" style="display: none; width: 300px; margin: 0 auto;">
       <%= f.text_field :name, class:"form-control", disabled: true %>
