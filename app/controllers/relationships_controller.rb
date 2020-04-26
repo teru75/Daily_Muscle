@@ -19,6 +19,4 @@ class RelationshipsController < ApplicationController
     customer = Customer.find(params[:customer_id])
     @customers = customer.follower_customer
   end
-
-
 end

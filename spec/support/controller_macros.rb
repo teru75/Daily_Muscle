@@ -10,4 +10,4 @@ module ControllerMacros
     @request.env["devise.mapping"] = Devise.mappings[:customer]
     sign_in customer
   end
-end 
+end

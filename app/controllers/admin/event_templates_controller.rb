@@ -20,7 +20,7 @@ class Admin::EventTemplatesController < ApplicationController
     @event_template = EventTemplate.new(event_template_params)
     if @event_template.save
       flash[:success] = "メニューテンプレートを登録しました！"
-       redirect_to admin_event_template_path(@event_template)
+      redirect_to admin_event_template_path(@event_template)
     else
       @event_template = EventTemplate.new
       @menu_template = @event_template.menu_templates.build
@@ -45,8 +45,9 @@ class Admin::EventTemplatesController < ApplicationController
   end
 
   private
+
   def event_template_params
     params.require(:event_template).permit(:part, :theme, :introduction, :is_enabled,
-        menu_templates_attributes:[:id, :name, :_destroy])
+                                           menu_templates_attributes: [:id, :name, :_destroy])
   end
 end

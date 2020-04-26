@@ -13,7 +13,7 @@ class EventsController < ApplicationController
 
     if @event.save
       flash[:success] = "トレーニングを保存しました！"
-       redirect_to event_path(@event)
+      redirect_to event_path(@event)
     else
       @customer = Customer.find(current_customer.id)
       @event = Event.new
@@ -37,10 +37,9 @@ class EventsController < ApplicationController
       @events = Event.order(start: :desc)
     elsif params[:name] == "フォローしたユーザーのみ表示"
       @customers.each do |customer|
-      @events = Event.where(customer_id: customer.id).order(start: :desc)
+        @events = Event.where(customer_id: customer.id).order(start: :desc)
       end
     end
-    
   end
 
   def update
@@ -69,15 +68,13 @@ class EventsController < ApplicationController
   end
 
   private
+
   def event_params
     params.require(:event).permit(:part, :start, :end,
-        menus_attributes:
-        [
-        :id, :name, :_destroy, reps_attributes:
-        [:id, :weight, :count, :set_count, :_destroy
-        ]
-      ]
-      )
+                                  menus_attributes:
+                                  [
+                                    :id, :name, :_destroy, reps_attributes:
+                                  [:id, :weight, :count, :set_count, :_destroy],
+                                  ])
   end
-
 end

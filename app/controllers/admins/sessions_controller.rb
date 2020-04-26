@@ -34,5 +34,4 @@ class Admins::SessionsController < Devise::SessionsController
     flash[:notice] = "ログアウトしました。"
     new_admin_session_path
   end
-
 end

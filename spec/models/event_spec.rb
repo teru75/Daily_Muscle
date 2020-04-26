@@ -13,11 +13,11 @@ RSpec.describe 'Eventモデルのテスト', type: :model do
     context 'partカラム' do
       it '空欄でないこと' do
         event.part = ''
-        expect(event.valid?).to eq false;
+        expect(event.valid?).to eq false
       end
     end
-
   end
+
   describe 'アソシエーションのテスト' do
     context 'Menuモデルとの関係' do
       it '1:Nとなっている' do
@@ -36,6 +36,5 @@ RSpec.describe 'Eventモデルのテスト', type: :model do
         expect(Event.reflect_on_association(:event_likes).macro).to eq :has_many
       end
     end
-
   end
 end

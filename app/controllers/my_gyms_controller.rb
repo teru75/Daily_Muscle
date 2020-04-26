@@ -2,18 +2,18 @@ class MyGymsController < ApplicationController
   before_action :authenticate_customer!
   def new
     @my_gym = MyGym.new
-    @customer =Customer.find(params[:customer_id])
+    @customer = Customer.find(params[:customer_id])
   end
-  
+
   def create
     @my_gym = MyGym.new(my_gym_params)
     @my_gym.customer_id = current_customer.id
 
     if @my_gym.save
       flash[:success] = "マイジムを登録しました！"
-       redirect_to customer_my_gyms_path(@my_gym.customer_id)
+      redirect_to customer_my_gyms_path(@my_gym.customer_id)
     else
-      @customer =Customer.find(current_customer.id)
+      @customer = Customer.find(current_customer.id)
       render :new
     end
   end
@@ -51,6 +51,7 @@ class MyGymsController < ApplicationController
   end
 
   private
+
   def my_gym_params
     params.require(:my_gym).permit(:name)
   end

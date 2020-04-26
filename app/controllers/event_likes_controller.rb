@@ -16,5 +16,4 @@ class EventLikesController < ApplicationController
     @customer = Customer.find(params[:customer_id])
     @likes = EventLike.where(customer_id: @customer.id)
   end
-
 end

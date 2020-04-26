@@ -4,11 +4,11 @@
     <h1 id="my_supplement-title" class="page-header">マイサプリメント詳細</h1>
     <div class="col-xs-7">
       <% if @my_supplement.customer_id == current_customer.id %>
-        <button onclick="display()" class="btn btn-success">編集する</button>
+        <button class="btn btn-success edit-display-btn">編集する</button>
         <%= link_to "削除する", customer_my_supplement_path(@my_supplement), class:"btn btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" %>
       <% end %>
       <%= link_to "一覧へ戻る", customer_my_supplements_path(@my_supplement.customer_id), class:"btn btn-info" %>
-      <div id="my_supplement">
+      <div class="base-display">
         <table class="table table-striped table-bordered"  style="margin-top: 20px; width: 90%;">
           <tr>
             <td>名前</td>
@@ -24,7 +24,7 @@
           </tr>
         </table>
       </div>
-      <div id="my_supplement_edit" style="display: none;">
+      <div class="edit-hide-display" style="display: none;">
          <%= form_with(model: @my_supplement, local: true, url: customer_my_supplement_path, method: :put) do |f| %>
           <%= render "form", f:f %>
           <% end %>

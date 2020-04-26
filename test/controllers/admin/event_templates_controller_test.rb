@@ -30,5 +30,4 @@ class Admin::EventTemplatesControllerTest < ActionDispatch::IntegrationTest
     get admin_event_templates_update_url
     assert_response :success
   end
-
 end

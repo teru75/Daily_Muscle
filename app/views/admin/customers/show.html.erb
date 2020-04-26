@@ -7,8 +7,8 @@
           <%= attachment_image_tag @customer, :profile_image,  :size =>'80x80', format: 'jpeg''jpg''svg''png',fallback: "avator.svg" %>
         </div>
         <div class="col-xs-4">
-          <button onclick="display()" class="btn btn-success">編集する</button>
-          <div id="admin-customer">
+          <button class="btn btn-success edit-display-btn">編集する</button>
+          <div class="base-display">
             <table class="table table-striped table-bordered">
               <tr>
                 <td width="50%">名前</td>
@@ -41,7 +41,7 @@
             </table>
           </div>
 
-          <div id="admin-customer-edit" style="display: none;">
+          <div class="edit-hide-display" style="display: none;">
             <%= form_with(model:@customer, local: true, url: admin_customer_path(@customer), method: :put) do |f| %>
             <table class="table table-striped table-bordered">
               <tr>
@@ -82,12 +82,10 @@
           <% @customer.my_menus.each do |menu| %>
             <div style="margin-right: 20px; width: 200px;">
               <table class="table table-striped table-bordered">
-                <tr class="info">
-                  <th>
-                    <%= menu.theme %>
-                  </th>
-                </tr>
                 <% menu.my_menu_items.each do |item| %>
+                <tr>
+                  <td><%= menu.part_i18n %></td>
+                </tr>
                 <tr>
                   <td>
                   <%= item.name %>

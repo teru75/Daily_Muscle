@@ -19,6 +19,7 @@ class Admin::CustomersController < ApplicationController
   end
 
   private
+
   def admin_customer_params
     params.require(:customer).permit(:is_deleted, :is_data_available)
   end

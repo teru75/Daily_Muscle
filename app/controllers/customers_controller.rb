@@ -1,8 +1,8 @@
 class CustomersController < ApplicationController
   before_action :authenticate_customer!
   def show
-     @customer = Customer.find(params[:id])
-     @events = @customer.events
+    @customer = Customer.find(params[:id])
+    @events = @customer.events
   end
 
   def edit
@@ -26,15 +26,16 @@ class CustomersController < ApplicationController
 
   def hide
     @customer = Customer.find(params[:id])
-    #is_deletedカラムにフラグを立てる(defaultはfalse)
+    # is_deletedカラムにフラグを立てる(defaultはfalse)
     @customer.update(is_deleted: true)
-    #ログアウトさせる
+    # ログアウトさせる
     reset_session
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
   end
 
   private
+
   def customer_params
     params.require(:customer).permit(:name, :email, :profile_image, :is_data_available)
   end

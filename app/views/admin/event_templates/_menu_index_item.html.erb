@@ -2,7 +2,7 @@
     <table class="table table-striped table-bordered">
       <tr class="info">
         <th width="60%">
-          <%= link_to admin_event_template_path(menu) do %>
+          <%= link_to admin_event_template_path(menu), data: {"turbolinks" => false} do %>
           <%= menu.theme %>
           <% end %>
         </th>
