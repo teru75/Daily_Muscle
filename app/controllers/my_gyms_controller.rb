@@ -11,7 +11,7 @@ class MyGymsController < ApplicationController
 
     if @my_gym.save
       flash[:success] = "マイジムを登録しました！"
-       redirect_to customer_my_gym_path(@my_gym.customer_id, @my_gym)
+       redirect_to customer_my_gyms_path(@my_gym.customer_id)
     else
       @customer =Customer.find(current_customer.id)
       render :new
@@ -21,12 +21,6 @@ class MyGymsController < ApplicationController
   def index
     @customer = Customer.find(params[:customer_id])
   end
-
-  def show
-    @customer = Customer.find(params[:customer_id])
-    @my_gym = @customer.my_gyms.find(params[:id])
-  end
-
 
   def update
     @my_gym = MyGym.find(params[:id])

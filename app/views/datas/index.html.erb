@@ -2,18 +2,15 @@
   <div class="row" style="margin-bottom: 50px; ">
     <h1 class="page-header">データ</h1>
     <div class="col-xs-7">
-      <%= form_with(url: "/customers/#{@customer.id}/datas", local:true, method: :get) do |f| %>
-      <%= f.select :name, options_for_select(["ベンチプレス", "デッドリフト", "スクワット"]), include_blank:"選択してください" %>
-      <%= f.submit "表示" %>
-      <% end %>
+      <div style="width: 200px; margin: 0 auto;">
+        <%= form_with(url: "/customers/#{@customer.id}/datas", local:true, method: :get) do |f| %>
+        <%= f.collection_select :name, @customer.my_menu_items, :name, :name, include_blank:"選択してください", class:"form-control" %>
+          <%= f.submit "表示", class:"btn btn-success" %>
+        <% end %>
+      </div>
       <canvas id="myChart" width="200" height="100"></canvas>
     </div>
-
-    <div class="col-xs-offset-1 col-xs-4" style="border: 2px solid #eee; background-color: #eeeaec; margin-top: 20px;">
-      <div class="customer-profile" style="width:50%; margin: 70px auto; ">
-      <div class="profile-image" style="width: 27%; margin: 20px auto;">
       <%= render "customers/customer_form", customer: @customer %>
-    </div>
   </div>
 </div>
 <script>

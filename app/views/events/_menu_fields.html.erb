@@ -9,7 +9,7 @@
       </label>
     </div>
 
-      <label>メニュー</label>
+    <label>メニュー</label>
     <div id="menuPulldown">
       <%= f.collection_select :name, @customer.my_menu_items, :name, :name, include_blank:"選択してください", class:"form-control" %>
 

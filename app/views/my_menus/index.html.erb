@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row my-menu-content">
     <h1 class="page-header">マイメニュー　一覧</h1>
-    <div class="col-xs-8">
+    <div class="col-xs-7">
       <div>
         <div style="margin-bottom: 20px;">
           <% if @customer == current_customer %>
@@ -13,9 +13,7 @@
       <div>
         <h4>全身</h4>
         <div class="my-menu-item">
-          <% @whole_bodys.each do |menu| %>
-          <%= render "my_menus/menu_index_item", menu: menu %>
-          <% end %>
+          <%= render "my_menus/menu_index_item", whole_bodys: @whole_bodys %>
         </div>
       </div>
       <% end %>
@@ -24,9 +22,7 @@
       <div>
         <h4>上半身</h4>
         <div class="my-menu-item">
-          <% @upper_bodys.each do |menu| %>
-          <%= render "my_menus/menu_index_item", menu: menu %>
-          <% end %>
+          <%= render "my_menus/menu_index_item", whole_bodys: @upper_bodys %>
         </div>
       </div>
       <% end %>
@@ -35,9 +31,7 @@
       <div>
         <h4>胸</h4>
         <div class="my-menu-item">
-          <% @breasts.each do |menu| %>
-          <%= render "my_menus/menu_index_item", menu: menu %>
-          <% end %>
+          <%= render "my_menus/menu_index_item", whole_bodys: @breasts %>
         </div>
       </div>
       <% end %>
@@ -46,9 +40,7 @@
       <div>
         <h4>腕</h4>
         <div class="my-menu-item">
-          <% @arms.each do |menu| %>
-          <%= render "my_menus/menu_index_item", menu: menu %>
-          <% end %>
+          <%= render "my_menus/menu_index_item", whole_bodys: @arms %>
         </div>
       </div>
       <% end %>
@@ -57,9 +49,7 @@
       <div>
         <h4>肩</h4>
         <div class="my-menu-item">
-          <% @shoulders.each do |menu| %>
-          <%= render "my_menus/menu_index_item", menu: menu %>
-          <% end %>
+          <%= render "my_menus/menu_index_item", whole_bodys: @shoulders %>
         </div>
       </div>
       <% end %>
@@ -68,9 +58,7 @@
       <div>
         <h4>背中</h4>
         <div class="my-menu-item">
-          <% @backs.each do |menu| %>
-          <%= render "my_menus/menu_index_item", menu: menu %>
-          <% end %>
+          <%= render "my_menus/menu_index_item", whole_bodys: @backs %>
         </div>
       </div>
       <% end %>
@@ -79,9 +67,7 @@
       <div>
         <h4>下半身</h4>
         <div class="my-menu-item">
-          <% @lower_bodys.each do |menu| %>
-          <%= render "my_menus/menu_index_item", menu: menu %>
-          <% end %>
+          <%= render "my_menus/menu_index_item", whole_bodys: @backs %>
         </div>
       </div>
       <% end %>
@@ -90,19 +76,12 @@
       <div>
         <h4>体幹</h4>
         <div class="my-menu-item">
-          <% @trunks.each do |menu| %>
-          <%= render "my_menus/menu_index_item", menu: menu %>
-          <% end %>
+          <%= render "my_menus/menu_index_item", whole_bodys: @trunks %>
         </div>
       </div>
+
       <% end %>
     </div>
-
-    <div class="col-xs-4" style="border: 2px solid #eee; background-color: #eeeaec;">
-      <div class="customer-profile" style="width:70%; margin: 70px auto; ">
-        <div class="profile-image" style="width: 40%; margin: 20px auto;">
-          <%= render "customers/customer_form", customer: @customer %>
-    </div>
-
+  <%= render "customers/customer_form", customer: @customer %>
   </div>
 </div>

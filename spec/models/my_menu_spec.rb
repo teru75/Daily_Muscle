@@ -16,18 +16,7 @@ RSpec.describe 'MyMenuモデルのテスト', type: :model do
         expect(my_menu.valid?).to eq false;
       end
     end
-
-    context 'themeカラム' do
-      it '空欄でないこと' do
-        my_menu.theme = ''
-        expect(my_menu.valid?).to eq false;
-      end
-      it '100文字以下であること' do
-        my_menu.theme = Faker::Lorem.characters(number:101)
-        expect(my_menu.valid?).to eq false;
-      end
-    end
-
+    
   end
   describe 'アソシエーションのテスト' do
     context 'MyMenuItemモデルとの関係' do

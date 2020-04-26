@@ -18,40 +18,12 @@
 //= require moment
 //= require fullcalendar
 //= require cocoon
-//= require chartkick
-//= require Chart.bundle
 //= require bootstrap-sprockets
 //= require_tree .
 
 
 // マイメニューを編集する記述
 var display=function() {
-  if(document.getElementById('my_menu') != null) {
-    //切り替える対象の状態を取得
-    var edit = document.getElementById('my_menu_edit');
-    var menu = document.getElementById('my_menu');
-    var title = document.getElementById('my_menu-title');
-    //取得した情報からスタイルについての状態のみをstateに代入
-    state=edit.style.display;
-    //デバッグ用にlogに出力
-    console.log(state);
-    //非表示中のときの処理
-    if(state=="none"){
-         //スタイルを表示(inline)に切り替え
-         edit.setAttribute("style","display:block");
-         menu.setAttribute("style","display:none");
-         title.textContent = 'マイメニュー編集';
-        //デバッグ用にinlineをlogに出力
-        console.log("block");
-    }else{
-         //スタイルを非表示(none)に切り替え
-        edit.setAttribute("style","display:none");
-        menu.setAttribute("style","display:block");
-        title.textContent = 'マイメニュー詳細';
-        //デバッグ用にnoneをlogに出力
-        console.log("none");
-    }
-  }
   //マイサプリメントを編集する記述
   if(document.getElementById('my_supplement') != null) {
     var edit = document.getElementById('my_supplement_edit');
@@ -63,7 +35,7 @@ var display=function() {
     console.log(state);
     //非表示中のときの処理
     if(state=="none"){
-         //スタイルを表示(inline)に切り替え
+         //スタイルを表示(block)に切り替え
          edit.setAttribute("style","display:block");
          menu.setAttribute("style","display:none");
          title.textContent = 'マイサプリメント編集';
@@ -74,33 +46,6 @@ var display=function() {
         edit.setAttribute("style","display:none");
         menu.setAttribute("style","display:block");
         title.textContent = 'マイサプリメント詳細';
-        //デバッグ用にnoneをlogに出力
-        console.log("none");
-    }
-  }
-
-  //マイジムを編集する記述
-  if(document.getElementById('my_gym') != null) {
-    var edit = document.getElementById('my_gym_edit');
-    var menu = document.getElementById('my_gym');
-    var title = document.getElementById('my_gym-title');
-    //取得した情報からスタイルについての状態のみをstateに代入
-    state=edit.style.display;
-    //デバッグ用にlogに出力
-    console.log(state);
-    //非表示中のときの処理
-    if(state=="none"){
-         //スタイルを表示(inline)に切り替え
-         edit.setAttribute("style","display:block");
-         menu.setAttribute("style","display:none");
-         title.textContent = 'マイジム編集';
-        //デバッグ用にinlineをlogに出力
-        console.log("block");
-    }else{
-         //スタイルを非表示(none)に切り替え
-        edit.setAttribute("style","display:none");
-        menu.setAttribute("style","display:block");
-        title.textContent = 'マイジム詳細';
         //デバッグ用にnoneをlogに出力
         console.log("none");
     }
@@ -118,7 +63,7 @@ var display=function() {
     console.log(state);
     //非表示中のときの処理
     if(state=="none"){
-         //スタイルを表示(inline)に切り替え
+         //スタイルを表示(block)に切り替え
          edit.setAttribute("style","display:block");
          introduction.setAttribute("style","display:block", "margin-top: 45px");
          menu.setAttribute("style","display:none");
@@ -147,7 +92,7 @@ var display=function() {
     console.log(state);
     //非表示中のときの処理
     if(state=="none"){
-         //スタイルを表示(inline)に切り替え
+         //スタイルを表示(block)に切り替え
          edit.setAttribute("style","display:block");
          menu.setAttribute("style","display:none");
          title.textContent = '会員編集';
@@ -174,7 +119,7 @@ var display=function() {
     console.log(state);
     //非表示中のときの処理
     if(state=="none"){
-         //スタイルを表示(inline)に切り替え
+         //スタイルを表示(block)に切り替え
          edit.setAttribute("style","display:block");
          menu.setAttribute("style","display:none");
          title.textContent = 'メニュー編集';
@@ -192,3 +137,16 @@ var display=function() {
 }
 
 
+$(window).load(function() {
+  $('.bg-slider').bgSwitcher({
+    images: [ 'assets/dread.jpg', 'assets/santoukin.jpg', 'assets/sideraise.jpg',  'assets/buttleroap.jpg', 'assets/burbel.jpg'], // 切り替える背景画像を指定
+    interval: 4000, // 背景画像を切り替える間隔を指定 3000=3秒
+    loop: true, // 切り替えを繰り返すか指定 true=繰り返す　false=繰り返さない
+    shuffle: false, // 背景画像の順番をシャッフルするか指定 true=する　false=しない
+    effect: "fade", // エフェクトの種類をfade,blind,clip,slide,drop,hideから指定
+    duration: 2000, // エフェクトの時間を指定します。
+    easing: "swing" // エフェクトのイージングをlinear,swingから指定
+
+  });
+
+});
