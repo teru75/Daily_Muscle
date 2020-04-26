@@ -1,6 +1,5 @@
 class EventTemplatesController < ApplicationController
   def index
-    @customer = Customer.find(current_customer.id)
     @event_template = EventTemplate.where(is_enabled: true)
     @whole_bodys = @event_template.where(part: :whole_body)
     @upper_bodys = @event_template.where(part: :upper_body)

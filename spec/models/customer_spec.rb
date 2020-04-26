@@ -79,11 +79,5 @@ RSpec.describe 'Customerモデルのテスト', type: :model do
         expect(Customer.reflect_on_association(:event_likes).macro).to eq :has_many
       end
     end
-
-    context 'MyMenuLikeモデルとの関係' do
-      it '1:Nとなっている' do
-        expect(Customer.reflect_on_association(:my_menu_likes).macro).to eq :has_many
-      end
-    end
   end
 end

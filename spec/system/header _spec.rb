@@ -65,20 +65,24 @@ describe 'ヘッダーのテスト' do
         home_link = find_all('a')[0].native.inner_text
         expect(home_link).to match(/Daily Muscle/)
       end
-      it '新規作成リンクが表示される' do
+      it 'マイページリンクが表示される' do
         event_link = find_all('a')[1].native.inner_text
-        expect(event_link).to match(/新規作成/)
+        expect(event_link).to match(/マイページ/)
+      end
+      it '筋トレログ登録リンクが表示される' do
+        event_link = find_all('a')[2].native.inner_text
+        expect(event_link).to match(/筋トレログ登録/)
       end
       it 'タイムラインリンクが表示される' do
-        events_link = find_all('a')[2].native.inner_text
+        events_link = find_all('a')[3].native.inner_text
         expect(events_link).to match(/タイムライン/)
       end
-      it 'テンプレートリンクが表示される' do
-        templates_link = find_all('a')[3].native.inner_text
-        expect(templates_link).to match(/テンプレート/)
+      it '筋トレテンプレートリンクが表示される' do
+        templates_link = find_all('a')[4].native.inner_text
+        expect(templates_link).to match(/筋トレテンプレート/)
       end
       it 'ログアウトリンクが表示される' do
-        logout_link = find_all('a')[4].native.inner_text
+        logout_link = find_all('a')[5].native.inner_text
         expect(logout_link).to match(/ログアウト/)
       end
     end
@@ -86,32 +90,38 @@ describe 'ヘッダーのテスト' do
     context 'ヘッダーのリンクを確認' do
       subject { current_path }
 
-      it '会員詳細画面に遷移する' do
+      it 'トップ画面に遷移する' do
         home_link = find_all('a')[0].native.inner_text
+        home_link = home_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        click_link home_link
+        is_expected.to eq('/')
+      end
+      it 'マイページ画面に遷移する' do
+        home_link = find_all('a')[1].native.inner_text
         home_link = home_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link home_link
         is_expected.to eq('/customers/' + customer.id.to_s)
       end
-      it 'トレーニング作成画面に遷移する' do
-        event_link = find_all('a')[1].native.inner_text
+      it 'トレーニング登録画面に遷移する' do
+        event_link = find_all('a')[2].native.inner_text
         event_link = event_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link event_link
         is_expected.to eq('/events/new')
       end
       it 'タイムライン画面に遷移する' do
-        events_link = find_all('a')[2].native.inner_text
+        events_link = find_all('a')[3].native.inner_text
         events_link = events_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link events_link
         is_expected.to eq('/events')
       end
-      it 'テンプレート一覧画面に遷移する' do
-        event_templates_link = find_all('a')[3].native.inner_text
+      it '筋トレテンプレート一覧画面に遷移する' do
+        event_templates_link = find_all('a')[4].native.inner_text
         event_templates_link = event_templates_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link event_templates_link
         is_expected.to eq('/event_templates')
       end
       it 'ログアウト する' do
-        logout_link = find_all('a')[4].native.inner_text
+        logout_link = find_all('a')[5].native.inner_text
         logout_link = logout_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link logout_link
         expect(page).to have_content 'ログアウトしました。'
@@ -136,20 +146,24 @@ describe 'ヘッダーのテスト' do
         home_link = find_all('a')[0].native.inner_text
         expect(home_link).to match(/Daily Muscle/)
       end
-      it 'テンプレート一覧リンクが表示される' do
+      it 'トップリンクが表示される' do
         templates_link = find_all('a')[1].native.inner_text
+        expect(templates_link).to match(/トップ/)
+      end
+      it 'テンプレート一覧リンクが表示される' do
+        templates_link = find_all('a')[2].native.inner_text
         expect(templates_link).to match(/テンプレート一覧/)
       end
       it '会員トレーニング一覧リンクが表示される' do
-        events_link = find_all('a')[2].native.inner_text
+        events_link = find_all('a')[3].native.inner_text
         expect(events_link).to match(/会員トレーニング一覧/)
       end
       it '会員一覧が表示される' do
-        customers_link = find_all('a')[3].native.inner_text
+        customers_link = find_all('a')[4].native.inner_text
         expect(customers_link).to match(/会員一覧/)
       end
       it 'ログアウトリンクが表示される' do
-        logout_link = find_all('a')[4].native.inner_text
+        logout_link = find_all('a')[5].native.inner_text
         expect(logout_link).to match(/ログアウト/)
       end
     end
@@ -157,32 +171,38 @@ describe 'ヘッダーのテスト' do
     context 'ヘッダーのリンクを確認' do
       subject { current_path }
 
-      it '管理者トップ画面に遷移する' do
+      it 'トップ画面に遷移する' do
         home_link = find_all('a')[0].native.inner_text
+        home_link = home_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        click_link home_link
+        is_expected.to eq('/')
+      end
+      it '管理者ホーム画面に遷移する' do
+        home_link = find_all('a')[1].native.inner_text
         home_link = home_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link home_link
         is_expected.to eq('/admin/homes/top')
       end
       it 'テンプレート一覧画面に遷移する' do
-        templates_link = find_all('a')[1].native.inner_text
+        templates_link = find_all('a')[2].native.inner_text
         templates_link = templates_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link templates_link
         is_expected.to eq('/admin/event_templates')
       end
       it '会員トレーニング一覧画面に遷移する' do
-        events_link = find_all('a')[2].native.inner_text
+        events_link = find_all('a')[3].native.inner_text
         events_link = events_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link events_link
         is_expected.to eq('/admin/events')
       end
       it '会員一覧画面に遷移する' do
-        customers_link = find_all('a')[3].native.inner_text
+        customers_link = find_all('a')[4].native.inner_text
         customers_link = customers_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link customers_link
         is_expected.to eq('/admin/customers')
       end
       it 'ログアウト する' do
-        logout_link = find_all('a')[4].native.inner_text
+        logout_link = find_all('a')[5].native.inner_text
         logout_link = logout_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link logout_link
         expect(page).to have_content 'ログアウトしました。'

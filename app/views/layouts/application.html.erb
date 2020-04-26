@@ -31,6 +31,7 @@
           <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"nav-item-customer" %></li>
           <li></li>
           <% elsif admin_signed_in? %>
+          <li><%= link_to "トップ", admin_homes_top_path, class:"nav-item-customer" %></li>
           <li><%= link_to "テンプレート一覧", admin_event_templates_path, class:"nav-item-customer"%></li>
           <li><%= link_to "会員トレーニング一覧", admin_events_path, class:"nav-item-customer" %></li>
           <li><%= link_to "会員一覧", admin_customers_path, class:"nav-item-customer" %></li>

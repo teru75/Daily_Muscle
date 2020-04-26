@@ -23,11 +23,11 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
 
-  resources :customers, only: [:show, :edit, :update, :index] do
+  resources :customers, only: [:show, :edit, :update] do
     resources :my_menus, only: [:index, :new, :create]
     resources :my_menu_items, only: [:destroy]
     resources :my_supplements, only: [:index, :new, :show, :create, :update, :destroy]
-    resources :my_gyms, only: [:index, :new, :create, :update, :destroy]
+    resources :my_gyms, only: [:index, :new, :create, :destroy]
     resource :relationships, only: [:create, :destroy]
     get 'follows' => 'relationships#follower', as: 'follows'
     get 'followers' => 'relationships#followed', as: 'followers'
@@ -42,6 +42,4 @@ Rails.application.routes.draw do
   end
 
   resources :event_templates, only: [:index, :show]
-  resources :groups, only: [:new, :create, :index, :show, :update]
-  resources :group_customers, only: [:destroy]
 end
