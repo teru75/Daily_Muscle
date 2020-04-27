@@ -5,5 +5,4 @@ class EventTemplatesControllerTest < ActionDispatch::IntegrationTest
     get event_templates_index_url
     assert_response :success
   end
-
 end

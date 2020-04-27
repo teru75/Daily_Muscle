@@ -1,2 +1,140 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<div class="container">
+  <div class="row" style="margin-bottom: 50px;">
+    <div class="col-xs-12">
+      <h1 class="page-header " id="admin-customer-title" style="width: 90%;">会員詳細</h1>
+      <div class="row">
+        <div class="col-xs-5" style="text-align: center;">
+          <%= attachment_image_tag @customer, :profile_image,  :size =>'80x80', format: 'jpeg''jpg''svg''png',fallback: "avator.svg" %>
+        </div>
+        <div class="col-xs-4">
+          <button class="btn btn-success edit-display-btn">編集する</button>
+          <div class="base-display">
+            <table class="table table-striped table-bordered">
+              <tr>
+                <td width="50%">名前</td>
+                <td><%= @customer.name %></td>
+              </tr>
+              <tr>
+                <td>メールアドレス</td>
+                <td><%= @customer.email %></td>
+              </tr>
+              <tr>
+                <td>会員ステータス</td>
+                <td>
+                  <% if @customer.is_deleted == true %>
+                    退会済み
+                  <% else %>
+                    有効
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <td>データ公開ステータス</td>
+                <td>
+                  <% if @customer.is_data_available == true %>
+                    公開を許可
+                  <% else %>
+                  公開を許可しない
+                  <% end %>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="edit-hide-display" style="display: none;">
+            <%= form_with(model:@customer, local: true, url: admin_customer_path(@customer), method: :put) do |f| %>
+            <table class="table table-striped table-bordered">
+              <tr>
+                <td width="50%">名前</td>
+                <td><%= @customer.name %></td>
+              </tr>
+              <tr>
+                <td>メールアドレス</td>
+                <td><%= @customer.email %></td>
+              </tr>
+              <tr>
+                <td>会員ステータス</td>
+                <td>
+                  <%= f.radio_button :is_deleted, false %> 有効
+                  <%= f.radio_button :is_deleted, true %> 退会済み
+                 </td>
+              </tr>
+              <tr>
+                <td>データ公開ステータス</td>
+                <td>
+                  <%= f.radio_button :is_data_available, true %> データ公開を許可
+                  <%= f.radio_button :is_data_available, false %> データ公開を許可しない
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2"><%= f.submit " 保存する", class:"btn btn-info" %></td>
+              </tr>
+            </table>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <h3>マイメニュー</h3>
+          <div class="admin-my-index">
+          <% @customer.my_menus.each do |menu| %>
+            <div style="margin-right: 20px; width: 200px;">
+              <table class="table table-striped table-bordered">
+                <% menu.my_menu_items.each do |item| %>
+                <tr>
+                  <td><%= menu.part_i18n %></td>
+                </tr>
+                <tr>
+                  <td>
+                  <%= item.name %>
+                  </td>
+                </tr>
+                <% end %>
+              </table>
+            </div>
+          <% end %>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+          <h3>マイサプリメント</h3>
+          <div class="admin-my-index">
+          <% @customer.my_supplements.each do |supplement| %>
+          <div style="margin-right: 20px; width: 200px;">
+            <table class="table table-striped table-bordered">
+              <tr class="info">
+                <td><%= supplement.name %></td>
+              <tr>
+                <td><%= supplement.genre %></td>
+              </tr>
+              <tr>
+                <td><%= supplement.brand %></td>
+              </tr>
+              </tr>
+            </table>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+        <div class="col-xs-12">
+          <h3>マイジム</h3>
+          <div class="admin-my-index">
+          <% @customer.my_gyms.each do |gym| %>
+          <div style="margin-right: 20px; width: 200px;">
+            <table class="table table-striped table-bordered">
+              <tr>
+                <td><%= gym.name %></td>
+              </tr>
+            </table>
+          </div>
+          <% end %>
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </div>
+</div>

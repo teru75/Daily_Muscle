@@ -1,0 +1,28 @@
+<div style="margin-right: 20px; width: 200px;">
+    <table class="table table-striped table-bordered">
+      <tr class="info">
+        <th width="60%">
+          <%= link_to admin_event_template_path(menu), data: {"turbolinks" => false} do %>
+          <%= menu.theme %>
+          <% end %>
+        </th>
+        <td style="text-align: center;"><span class="part-category"><%= menu.part_i18n %></span></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="warning">
+          <% if menu.is_enabled == true %>
+          有効
+          <% else %>
+          無効
+          <% end %>
+        </td>
+      </tr>
+      <% menu.menu_templates.each do |item| %>
+      <tr>
+        <td colspan="2">
+        <%= item.name %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+</div>

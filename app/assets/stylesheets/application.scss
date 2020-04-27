@@ -1,0 +1,240 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require fullcalendar
+ */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+
+
+  /*  ページ全体のcss*/
+  body{
+  padding-top: 50px;
+  }
+
+ footer{
+  position: relative;
+  text-align: center;
+  height: 100px;
+  width: 100%;
+  line-height: 100px;
+  background-color: #464950;
+  color: #7e8189;
+  }
+
+  footer p{
+  font-size: 15px;
+  }
+
+  .title{
+  font-weight: 400;
+  }
+
+
+  /* フラッシュメッセージのcss */
+  .alert{
+  margin-bottom: 0px;
+  }
+
+
+  /* トップページのcss */
+ .bg-slider{
+  background-size: cover;
+  background-position: 50% 10%;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  color: white;
+  margin-bottom: 50px;
+ }
+
+ .start-content{
+  text-align: center;
+  height: 350px;
+  background-color: #f6f6f6;
+  padding-top: 20px;
+ }
+
+ .about-title{
+ font-size: 35px;
+ line-height: 1.5;
+ font-weight: bold;
+ }
+
+.about-content{
+  margin-bottom: 50px;
+}
+
+ .about-content p{
+ color: #666666;
+ font-size: 15px;
+ }
+
+ .start-content p{
+ color: #666666;
+ }
+
+
+/* ヘッダーの調整 */
+
+.navbar-brand{
+ color: white;
+  text-decoration:none;
+ transition:0.5s;
+}
+
+
+.nav-item{
+  text-align: center;
+}
+
+.nav-item-customer{
+  color: rgba(255,255,255,0.7);
+  text-decoration:none;
+  transition:0.5s;
+  display: block;
+  padding: 0px 20px;
+
+}
+
+.nav-iten-customer:hover{
+  background:#ff3300;
+}
+
+
+.nav-text{
+  font-size: 13px;
+}
+
+.navbar{
+  margin-bottom: 0px;
+ }
+
+ .navbar-nav > li{
+ margin-right: 30px;
+ }
+
+
+
+
+/* 新規登録,ログインのcss */
+.signup-content{
+  text-align: center;
+  background-color: #eee;
+}
+
+.signup-form{
+  width: 100%;
+  color: #34373a;
+  background-color: white;
+  padding: 30px 100px;
+}
+
+.signin-form{
+  width: 100%;
+  color: #34373a;
+  background-color: white;
+  padding: 30px 50px;
+}
+
+ .start-item{
+  display: flex;
+  justify-content: space-around;
+ }
+
+.field{
+  margin-bottom: 20px;
+}
+
+.login-top-form{
+  margin-top: 20px;
+}
+
+.login-btn{
+  background-color:#ff7b63;
+  color: white;
+}
+
+
+
+/* 会員詳細ページのcss */
+.customer-show-content div{
+  border-bottom: 1px solid #eee;
+  height :100px;
+}
+
+.customer-show-item h3{
+  line-height: 100px;
+}
+
+.table .table-customer-name {
+  color: black;
+  vertical-align: middle;
+}
+
+.table .follow-btn{
+  text-align :center;
+}
+
+.calendar-title{
+  display: inline-block;
+  padding: 5px 8px;
+  background-color: #88cb7f;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+
+
+
+/* マイ系のcss */
+.part-category{
+  display: inline-block;
+  padding: 5px 8px;
+  background-color: #acabab;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 13px;
+}
+
+.password-box{
+  text-align: center;
+}
+
+.my-menu-item{
+  border-bottom: 3px solid #eee;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+
+.my-menu-content{
+  margin-bottom: 50px;
+}
+
+
+ /* 管理者会員機能のcss */
+
+.admin-my-index{
+ border-bottom: 3px solid #eee;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+}

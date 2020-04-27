@@ -1,0 +1,10 @@
+<tr class="nested-fields">
+  <td colspan="2"><%= f.label :name, "メニュー" %>
+    <div style="width: 300px; margin: 0 auto;">
+      <%= f.text_field :name, class:"form-control" %>
+      <%= f.hidden_field :customer_id, :value => @customer.id %>
+    </div>
+  <%= link_to_remove_association "メニューを削除", f %>
+  </td>
+</tr>
+

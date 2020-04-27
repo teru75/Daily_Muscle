@@ -1,2 +1,100 @@
-<h1>Admin::EventTemplates#index</h1>
-<p>Find me in app/views/admin/event_templates/index.html.erb</p>
+<div class="container" style="min-height: 500px;">
+  <div class="row my-menu-content">
+    <div class="col-xs-8">
+      <div>
+        <h3>メニューテンプレート　一覧</h3>
+        <div style="margin-bottom: 20px;">
+          <span><%= link_to "新規登録する",new_admin_event_template_path, class:" btn btn-primary" %></span>
+        </div>
+      </div>
+      <% if @whole_bodys.exists? %>
+      <div>
+        <h4>全身</h4>
+        <div class="my-menu-item">
+          <% @whole_bodys.each do |menu| %>
+          <%= render "menu_index_item", menu: menu %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @upper_bodys.exists? %>
+      <div>
+        <h4>上半身</h4>
+        <div class="my-menu-item">
+          <% @upper_bodys.each do |menu| %>
+          <%= render "menu_index_item", menu: menu %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @breasts.exists? %>
+      <div>
+        <h4>胸</h4>
+        <div class="my-menu-item">
+          <% @breasts.each do |menu| %>
+          <%= render "menu_index_item", menu: menu %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @arms.exists? %>
+      <div>
+        <h4>腕</h4>
+        <div class="my-menu-item">
+          <% @arms.each do |menu| %>
+          <%= render "menu_index_item", menu: menu %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @shoulders.exists? %>
+      <div>
+        <h4>肩</h4>
+        <div class="my-menu-item">
+          <% @shoulders.each do |menu| %>
+          <%= render "menu_index_item", menu: menu %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @backs.exists? %>
+      <div>
+        <h4>背中</h4>
+        <div class="my-menu-item">
+          <% @backs.each do |menu| %>
+          <%= render "menu_index_item", menu: menu %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @lower_bodys.exists? %>
+      <div>
+        <h4>下半身</h4>
+        <div class="my-menu-item">
+          <% @lower_bodys.each do |menu| %>
+          <%= render "menu_index_item", menu: menu %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+
+      <% if @trunks.exists? %>
+      <div>
+        <h4>体幹</h4>
+        <div class="my-menu-item">
+          <% @trunks.each do |menu| %>
+          <%= render "menu_index_item", menu: menu %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

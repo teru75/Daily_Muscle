@@ -35,5 +35,4 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
     get events_destroy_url
     assert_response :success
   end
-
 end

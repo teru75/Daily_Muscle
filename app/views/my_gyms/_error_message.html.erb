@@ -1,0 +1,12 @@
+<div class="row">
+  <% if my_gym.errors.any? %>
+    <div class="error_explanation">
+      <h2><%= my_gym.errors.count %>件のエラーがありました。</h2>
+      <ul>
+        <% my_gym.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>

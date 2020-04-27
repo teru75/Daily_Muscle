@@ -10,5 +10,4 @@ class Admin::EventsControllerTest < ActionDispatch::IntegrationTest
     get admin_events_index_url
     assert_response :success
   end
-
 end

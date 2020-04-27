@@ -1,2 +1,17 @@
-<h1>Admin::EventTemplates#new</h1>
-<p>Find me in app/views/admin/event_templates/new.html.erb</p>
+<div class="container" style="min-height: 500px;">
+  <%= render "error_message", event_template: @event_template %>
+  <div class="row" style="margin: 30px 0px;">
+    <div class="col-xs-7">
+      <h1>メニューテンプレート</h1>
+      <h3>新規登録</h3>
+      <%= form_with(model: @event_template, local: true, url: admin_event_templates_path) do |f| %>
+          <%= render "form", f:f %>
+      
+    </div>
+    <div class="col-xs-5" style="margin-top: 20px;">
+      <%= f.label :introduction, "説明文" %>
+      <%= f.text_area :introduction, class:"form-control" %>
+      <% end %>
+    </div>
+  </div>
+</div>

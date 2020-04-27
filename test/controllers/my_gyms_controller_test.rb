@@ -5,5 +5,4 @@ class MyGymsControllerTest < ActionDispatch::IntegrationTest
     get my_gyms_index_url
     assert_response :success
   end
-
 end

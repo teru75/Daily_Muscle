@@ -1,0 +1,35 @@
+<div class="container" style="min-height: 500px;">
+  <div class="row">
+    <div class="col-xs-offset-2 col-xs-8">
+      <h1 class="page-header">フォロ一覧</h1>
+      <table class="table table-striped table-bordered">
+        <tr>
+          <th>画像</th>
+          <th>名前</th>
+          <th>フォロー数</th>
+          <th>フォロワー数</th>
+          <th></th>
+        </tr>
+        <% @customers.each do |customer| %>
+        <tr>
+          <td><%= link_to customer_path(customer) do %>
+              <%= attachment_image_tag customer, :profile_image,  :size =>'40x40', format: 'jpeg''jpg''svg''png',fallback: "avator.svg" %>
+            <% end %>
+          </td>
+          <td width="30%">
+            <%= link_to customer_path(customer) do %>
+            <%= customer.name %>
+            <% end %>
+          </td>
+          <td id="following-<%= customer.id%>"><%= render "relationships/following_count", customer: customer %></td>
+          <td id="follower-<%= customer.id %>"><%= render "relationships/follower_count", customer: customer %></td>
+          <td style="text-align: center; vertical-align: middle;" id="follow-<%= customer.id %>">
+            <%= render "relationships/follow", customer: customer %>
+          </td>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

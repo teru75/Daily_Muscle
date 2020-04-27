@@ -1,2 +1,22 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<div class="container" style="min-height: 500px;">
+  <%= render "error_message", event: @event %>
+  <div class="row" style="margin-bottom: 50px;">
+    <h1 class="page-header" id="event-title">筋トレログ詳細</h1>
+    <div class="col-xs-7" style="margin-bottom: 50px;">
+      <div style="margin-bottom: 30px;">
+        <% if @event.customer_id == current_customer.id %>
+          <button class="btn btn-success edit-display-btn">編集する</button>
+          <%= link_to "削除する", event_path(@event), class:"btn btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" %>
+        <% end %>
+        <%= link_to "タイムラインへ戻る", events_path, class:"btn btn-info" %>
+      </div>
+      <div class="base-display">
+        <%= render "event_table", event: @event %>
+      </div>
+      <div class="edit-hide-display" style="display: none;">
+        <%= render 'form', event: @event %>
+      </div>
+    </div>
+      <%= render "customers/customer_form", customer: @event.customer %>
+  </div>
+</div>

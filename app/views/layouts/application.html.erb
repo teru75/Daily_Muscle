@@ -4,12 +4,52 @@
     <title>DailyMuscle</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="js/jquery.bgswitcher.js"></script>
   </head>
 
-  <body>
+  <nav class="navbar navbar-fixed-top" style="background-image: linear-gradient(120deg,#ff63ce,#fda52d);">
+    <div class="container-fruid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to "Daily Muscle", root_path, class:"navbar-brand",data: {"turbolinks" => false} %>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarEexample">
+        <ul class="nav navbar-nav navbar-right nav-item">
+          <% if customer_signed_in? %>
+          <li><%= link_to "マイページ", customer_path(current_customer), class:"nav-item-customer" %></li>
+          <li><%= link_to "筋トレログ登録", new_event_path, class:"nav-item-customer"%></li>
+          <li><%= link_to "タイムライン", events_path, class:"nav-item-customer" %></li>
+          <li><%= link_to "筋トレテンプレート", event_templates_path, class:"nav-item-customer" %></li>
+          <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"nav-item-customer" %></li>
+          <li></li>
+          <% elsif admin_signed_in? %>
+          <li><%= link_to "トップ", admin_homes_top_path, class:"nav-item-customer" %></li>
+          <li><%= link_to "テンプレート一覧", admin_event_templates_path, class:"nav-item-customer"%></li>
+          <li><%= link_to "会員トレーニング一覧", admin_events_path, class:"nav-item-customer" %></li>
+          <li><%= link_to "会員一覧", admin_customers_path, class:"nav-item-customer" %></li>
+          <li><%= link_to "ログアウト", destroy_admin_session_path, class:"nav-item-customer", method: :delete %></li>
+          <% elsif current_page?(new_admin_session_path) %>
+          <% else %>
+          <li><%= link_to "筋トレテンプレートを見る", event_templates_path, class:"nav-item-customer" %></li>
+          <li><%=link_to "新規登録", new_customer_registration_path, class:"nav-item-customer" %></li>
+          <li><%= link_to "ログイン", new_customer_session_path, class:"nav-item-customer" %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <%= render 'layouts/flash_messages' %>
+  <body >
     <%= yield %>
   </body>
+  <footer>
+    © 2020 Daily Muscle All Rights Reserved
+  </footer>
 </html>

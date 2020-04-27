@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_09_135340) do
+ActiveRecord::Schema.define(version: 2020_04_25_092809) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2020_04_09_135340) do
   end
 
   create_table "customers", force: :cascade do |t|
-    t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -36,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_04_09_135340) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "profile_image_id"
-    t.index ["email"], name: "index_customers_on_email", unique: true
+    t.string "email", default: "", null: false
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
@@ -51,6 +50,9 @@ ActiveRecord::Schema.define(version: 2020_04_09_135340) do
     t.integer "part"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "theme"
+    t.boolean "is_enabled", default: true, null: false
+    t.text "introduction"
   end
 
   create_table "events", force: :cascade do |t|
@@ -62,26 +64,9 @@ ActiveRecord::Schema.define(version: 2020_04_09_135340) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "group_customers", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "group_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_group_customers_on_customer_id"
-    t.index ["group_id"], name: "index_group_customers_on_group_id"
-  end
-
-  create_table "groups", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "introduction"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "menu_templates", force: :cascade do |t|
     t.integer "event_template_id"
     t.string "name"
-    t.boolean "status", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -105,18 +90,11 @@ ActiveRecord::Schema.define(version: 2020_04_09_135340) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "my_menu_likes", force: :cascade do |t|
     t.integer "customer_id"
-    t.integer "my_menu_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "my_menus", force: :cascade do |t|
     t.integer "customer_id"
-    t.string "theme"
     t.integer "part"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

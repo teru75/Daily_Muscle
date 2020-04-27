@@ -1,0 +1,13 @@
+<div class="container" style="min-height: 500px;">
+  <%= render "error_message", my_supplement: @my_supplement %>
+  <div class="row" style="margin-bottom: 50px;">
+    <h1 class="page-header">マイサプリメント</h1>
+    <div class="col-xs-7">
+      <h3>新規登録</h3>
+      <%= form_with(model: @my_supplement, local: true, url: customer_my_supplements_path) do |f| %>
+          <%= render "form", f:f %>
+      <% end %>
+    </div>
+    <%= render "customers/customer_form", customer: @customer %>
+  </div>
+</div>
