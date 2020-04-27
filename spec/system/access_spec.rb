@@ -11,6 +11,7 @@ RSpec.describe 'Access', type: :system do
     let!(:my_supplement) { create(:my_supplement, customer: customer) }
     let!(:event_template) { create(:event_template) }
     let!(:menu_template) { create(:menu_template, event_template: event_template) }
+
     describe 'ログインしていない場合' do
       context '筋トレログ投稿関連のURLにアクセス' do
         it '作成画面に遷移できない' do
@@ -64,6 +65,17 @@ RSpec.describe 'Access', type: :system do
         end
       end
 
+      context 'フォロー関連のURLにアクセス' do
+        it 'フォロー一覧画面に遷移できない' do
+          visit customer_follows_path(customer.id)
+          expect(current_path).to eq('/customers/sign_in')
+        end
+        it 'フォロワー一覧画面に遷移できない' do
+          visit customer_followers_path(customer.id)
+          expect(current_path).to eq('/customers/sign_in')
+        end
+      end
+
       context 'データ関連のURLにアクセス' do
         it '一覧画面に遷移できない' do
           visit customer_datas_path(customer.id)
@@ -107,12 +119,13 @@ RSpec.describe 'Access', type: :system do
     end
   end
 
-  describe '管理者権限のテスト'  do
+  describe '管理者権限のテスト' do
     let!(:admin) { create(:admin) }
     let!(:customer) { create(:customer) }
     let!(:event) { create(:event, customer: customer) }
     let!(:event_template) { create(:event_template) }
     let!(:menu_template) { create(:menu_template, event_template: event_template) }
+
     describe 'ログインしていない場合にユーザー関連のURLにアクセス' do
       context '筋トレテンプレート関連のURLにアクセス' do
         it '一覧画面に遷移できない' do

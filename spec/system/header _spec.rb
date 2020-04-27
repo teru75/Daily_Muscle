@@ -11,14 +11,18 @@ describe 'ヘッダーのテスト' do
 
       it 'タイトルとリンクが表示される' do
         home_link = find_all('a')[0].native.inner_text
-        expect(home_link).to match(//)
+        expect(home_link).to match(/Daily Muscle/)
+      end
+      it '筋トレテンプレートリンクが表示される' do
+        event_template_link = find_all('a')[1].native.inner_text
+        expect(event_template_link).to match(/筋トレテンプレートを見る/)
       end
       it '新規登録リンクが表示される' do
-        signup_link = find_all('a')[1].native.inner_text
+        signup_link = find_all('a')[2].native.inner_text
         expect(signup_link).to match(/新規登録/)
       end
       it 'ログインリンクが表示される' do
-        login_link = find_all('a')[2].native.inner_text
+        login_link = find_all('a')[3].native.inner_text
         expect(login_link).to match(/ログイン/)
       end
     end
@@ -33,14 +37,20 @@ describe 'ヘッダーのテスト' do
         click_link home_link
         is_expected.to eq(root_path)
       end
+      it '筋トレテンプレート画面に遷移する' do
+        event_templates_link = find_all('a')[1].native.inner_text
+        event_templates_link = event_templates_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        click_link event_templates_link
+        is_expected.to eq(event_templates_path)
+      end
       it '新規登録画面に遷移する' do
-        signup_link = find_all('a')[1].native.inner_text
+        signup_link = find_all('a')[2].native.inner_text
         signup_link = signup_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link signup_link
         is_expected.to eq(new_customer_registration_path)
       end
       it 'ログイン画面に遷移する' do
-        login_link = find_all('a')[2].native.inner_text
+        login_link = find_all('a')[3].native.inner_text
         login_link = login_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link login_link
         is_expected.to eq(new_customer_session_path)
