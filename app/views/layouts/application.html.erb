@@ -22,8 +22,8 @@
       <div class="collapse navbar-collapse" id="navbarEexample">
         <ul class="nav navbar-nav navbar-right nav-item">
           <% if customer_signed_in? %>
-          <li><%= link_to "マイページ", customer_path(current_customer), class:"nav-item-customer" %></li>
-          <li><%= link_to "筋トレログ登録", new_event_path, class:"nav-item-customer"%></li>
+          <li><%= link_to "マイページ", customer_path(current_customer), class:"nav-item-customer", data: {"turbolinks" => false} %></li>
+          <li><%= link_to "筋トレログ登録", new_event_path, class:"nav-item-customer", data: {"turbolinks" => false}%></li>
           <li><%= link_to "タイムライン", events_path, class:"nav-item-customer" %></li>
           <li><%= link_to "筋トレテンプレート", event_templates_path, class:"nav-item-customer" %></li>
           <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"nav-item-customer" %></li>

@@ -19,10 +19,10 @@
 
     <div class="menus" style="border: 3px solid #eee; margin: 10px 0px;">
       <%= f.fields_for :menus do |m| %>
-        <%= render "menu_fields", f: m %>
+        <%= render "menu_fields",f: m  %>
       <% end %>
       <div class="links" style="padding: 5px;">
-        <%= link_to_add_association "メニューを追加", f, :menus %>
+        <%= link_to_add_association "メニューを追加", f, :menus, id:"menu-link" %>
       </div>
     </div>
 
@@ -32,35 +32,35 @@
   <% end %>
 </div>
 <script>
-  var a = 1;
-  $(function(){
-
-    $(document).on('inview', '.dummy1', function() {
-      console.log('inview');
-      var pulldown = $('#menuPulldown').attr('id', 'pulldown' + a);
-      var form = $('#menuForm').attr('id', 'form' + a);
-
-      var  pulldownradio = $('#method1').attr('id', 'pulldownMethod' + a);
-      var formradio = $('#method2').attr('id', 'formMethod' + a);
-      $('input[name="menuMethod"]').attr('name', 'method' + a);
-      console.log(pulldownradio);
-      a++;
-      // dummy1 を削除
-      console.log(a);
-      $(pulldownradio).on('click',function() {
-        console.log('pulldownradio');
-        $(form).hide();
-        $(form).find('input').prop("disabled", true);
-        $(pulldown).find('select').prop("disabled", false);
-        $(pulldown).show();
-      });
-      $(formradio).on('click', function(){
-        console.log('formradio');
-        $(pulldown).hide();
-        $(form).show();
-        $(form).find('input').prop("disabled", false);
-        $(pulldown).find('select').prop("disabled", true);
-      });
+    $('.menuMethod').on('click', togglepullDown);
+    
+    $('.menus').on('cocoon:after-insert',function(){
+      console.log($('.menuMethod:last'))
+      $('.menuMethod:last').on('click', togglepullDown);
     });
-  });
+
+    function togglepullDown(){
+      //$('.nested-fields').css('background-color', 'red')
+        var form = $(this).closest('.menu-method').find('.menuForm')
+        var pulldown = $(this).closest('.menu-method').find('.menuPulldown');
+
+         $(form).toggleClass('switch');
+      // formがswitchを持っていれば
+            if($(form).hasClass('switch')){
+              $(pulldown).hide();
+              $(pulldown).find('select').prop("disabled", true);
+              console.log(pulldown);
+              $(form).show();
+              $(form).find('input').prop("disabled", false);
+            //formがswitchを持っていなければ
+            }else{
+
+              //要素の表示を切り替える
+              $(form).hide();
+              $(form).find('input').prop("disabled", true);
+              $(pulldown).show();
+              $(pulldown).find('select').prop("disabled", false);
+
+            }
+    };
 </script>
