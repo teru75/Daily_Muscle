@@ -79,22 +79,19 @@
         <div class="col-xs-12">
           <h3>マイメニュー</h3>
           <div class="admin-my-index">
-          <% @customer.my_menus.each do |menu| %>
             <div style="margin-right: 20px; width: 200px;">
               <table class="table table-striped table-bordered">
+              <% @customer.my_menus.each do |menu| %>
                 <% menu.my_menu_items.each do |item| %>
-                <tr>
-                  <td><%= menu.part_i18n %></td>
-                </tr>
                 <tr>
                   <td>
                   <%= item.name %>
                   </td>
                 </tr>
                 <% end %>
+              <% end %>
               </table>
             </div>
-          <% end %>
           </div>
         </div>
 
@@ -122,17 +119,17 @@
         <div class="col-xs-12">
           <h3>マイジム</h3>
           <div class="admin-my-index">
-          <% @customer.my_gyms.each do |gym| %>
-          <div style="margin-right: 20px; width: 200px;">
-            <table class="table table-striped table-bordered">
-              <tr>
-                <td><%= gym.name %></td>
-              </tr>
-            </table>
+            <% @customer.my_gyms.each do |gym| %>
+            <div style="margin-right: 20px; width: 200px;">
+              <table class="table table-striped table-bordered">
+                <tr>
+                  <td><%= gym.name %></td>
+                </tr>
+              </table>
+            </div>
+            <% end %>
           </div>
-          <% end %>
         </div>
-      </div>
 
       </div>
     </div>
