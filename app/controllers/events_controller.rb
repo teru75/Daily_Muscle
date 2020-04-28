@@ -10,7 +10,15 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.customer_id = current_customer.id
-
+    unless menus_and_reps_exists?(@event)
+      flash[:alert] = "空欄または不正な値があります。"
+      @customer = Customer.find(current_customer.id)
+      @event = Event.new
+      @menu = @event.menus.build
+      @reps = @menu.reps.build
+      render :new
+      return
+    end
     if @event.save
       flash[:success] = "トレーニングを保存しました！"
       redirect_to event_path(@event)
@@ -23,6 +31,7 @@ class EventsController < ApplicationController
       render :new
     end
   end
+  
 
   def show
     @customer = Customer.find(current_customer.id)
@@ -48,12 +57,36 @@ class EventsController < ApplicationController
       flash[:danger] = "他アカウントの編集はできません。"
       redirect_to customer_path(current_customer)
     end
+    unless menus_and_reps_exists?(@event)
+      flash[:alert] = "空欄または不正な値があります。"
+      @customer = Customer.find(current_customer.id)
+      @event = Event.find(params[:id])
+      render :show
+      return
+    end
     if @event.update(event_params)
       flash[:success] = "トレーニングの編集が完了しました！"
       redirect_to event_path(@event)
     else
+      flash[:alert] = "空欄または不正な値があります。"
+      @customer = Customer.find(current_customer.id)
+      @event = Event.find(params[:id])
       render :show
     end
+  end
+
+  def menus_and_reps_exists?(event)
+    # eventが少なくとも一つ以上のmenuを持っているのを確認する。空だった場合は処理を停止
+    if event.menus.blank?
+      return false
+    end
+    # eventのmenuが少なくとも一つ以上のrepを持っているのを確認する。空だった場合は処理を停止
+    event.menus.each do |menu|
+      if menu.reps.blank?
+        return false
+      end
+    end
+    return true
   end
 
   def destroy
@@ -73,8 +106,8 @@ class EventsController < ApplicationController
     params.require(:event).permit(:part, :start, :end,
                                   menus_attributes:
                                   [
-                                    :id, :name, :_destroy, reps_attributes:
-                                  [:id, :weight, :count, :set_count, :_destroy],
+                                     :id, :name, :_destroy,
+                                     reps_attributes:[:id, :weight, :count, :set_count, :_destroy]
                                   ])
   end
 end
