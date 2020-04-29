@@ -24,14 +24,14 @@
     <td colspan="2"><%= event.part_i18n %></td>
   </tr>
   <tr>
-    <th>メニュー</th>
+    <th bgcolor="#fff">メニュー</th>
     <th>重さ</th>
     <th>回数</th>
     <th>セット数</th>
   </tr>
   <% event.menus.each do |menu| %>
   <tr>
-    <th rowspan="<%=menu.reps.size%>"><%= menu.name %></th>
+    <th rowspan="<%=menu.reps.size%>" style="vertical-align: middle;" bgcolor="#fff"><%= menu.name %></th>
     <% menu.reps.each do |rep| %>
     <td><%= rep.weight %>kg</td>
     <td><%= rep.count %></td>

@@ -35,13 +35,12 @@
     $('.menuMethod').on('click', togglepullDown);
     
     $('.menus').on('cocoon:after-insert',function(){
-      console.log($('.menuMethod:last'))
       $('.menuMethod:last').on('click', togglepullDown);
     });
 
     function togglepullDown(){
       //$('.nested-fields').css('background-color', 'red')
-        var form = $(this).closest('.menu-method').find('.menuForm')
+        var form = $(this).closest('.menu-method').find('.menuForm');
         var pulldown = $(this).closest('.menu-method').find('.menuPulldown');
 
          $(form).toggleClass('switch');
@@ -49,7 +48,6 @@
             if($(form).hasClass('switch')){
               $(pulldown).hide();
               $(pulldown).find('select').prop("disabled", true);
-              console.log(pulldown);
               $(form).show();
               $(form).find('input').prop("disabled", false);
             //formがswitchを持っていなければ
