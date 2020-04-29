@@ -12,7 +12,7 @@ class DatasController < ApplicationController
     if params[:name].blank?
     @events = @customer.events.joins(:menus).order(start: "ASC").last(5)
     else
-    @events = @customer.events.joins(:menus).where("menus.name == ?", params[:name]).order(start: "ASC").last(5)
+    @events = @customer.events.joins(:menus).where(menus:{name: params[:name]}).order(start: "ASC").last(5)
     end
     @events.each do |event|
       event.menus.each do |menu|
