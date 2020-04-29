@@ -24,7 +24,7 @@ class MyMenusController < ApplicationController
     @whole_bodys = @customer.my_menus.where(part: :whole_body)
     @upper_bodys = @customer.my_menus.where(part: :upper_body)
     @arms = @customer.my_menus.where(part: :arm)
-    @shoulders = @customer.my_menus.where(part: :sholders)
+    @shoulders = @customer.my_menus.where(part: :shoulder)
     @breasts = @customer.my_menus.where(part: :breast)
     @backs = @customer.my_menus.where(part: :back)
     @lower_bodys = @customer.my_menus.where(part: :lower_body)
