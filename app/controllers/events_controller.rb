@@ -20,6 +20,14 @@ class EventsController < ApplicationController
       return
     end
     if @event.save
+      current_customer.events.each do |event|
+        event.menus.each do |menu|
+          unless MyMenuItem.exists?(name: menu.name)
+            my_menu = MyMenu.find_by(customer_id: current_customer.id, part: @event.part )
+            MyMenuItem.create(name: menu.name, my_menu_id: my_menu.id, customer_id: current_customer.id)
+          end
+        end
+      end
       flash[:success] = "トレーニングを保存しました！"
       redirect_to event_path(@event)
     else
@@ -57,14 +65,18 @@ class EventsController < ApplicationController
       flash[:danger] = "他アカウントの編集はできません。"
       redirect_to customer_path(current_customer)
     end
-    unless menus_and_reps_exists?(@event)
-      flash[:alert] = "空欄または不正な値があります。"
-      @customer = Customer.find(current_customer.id)
-      @event = Event.find(params[:id])
-      render :show
-      return
-    end
     if @event.update(event_params)
+      current_customer.events.each do |event|
+        event.menus.each do |menu|
+          unless MyMenuItem.exists?(name: menu.name)
+            my_menu = MyMenu.find_by(customer_id: current_customer.id, part: @event.part )
+            MyMenuItem.create(name: menu.name, my_menu_id: my_menu.id, customer_id: current_customer.id)
+          end
+          unless Rep.exists?(menu_id: menu.id)
+          Rep.create(menu_id: menu.id, weight: 0, count: 0, set_count: 0)
+          end
+        end
+      end
       flash[:success] = "トレーニングの編集が完了しました！"
       redirect_to event_path(@event)
     else
