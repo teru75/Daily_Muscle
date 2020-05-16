@@ -22,8 +22,8 @@ class EventsController < ApplicationController
     if @event.save
       current_customer.events.each do |event|
         event.menus.each do |menu|
-          unless MyMenuItem.exists?(name: menu.name)
-            my_menu = MyMenu.find_by(customer_id: current_customer.id, part: @event.part )
+          unless MyMenuItem.exists?(name: menu.name, customer_id: current_customer.id)
+            my_menu = MyMenu.find_or_create_by(customer_id: current_customer.id, part: @event.part)
             MyMenuItem.create(name: menu.name, my_menu_id: my_menu.id, customer_id: current_customer.id)
           end
         end
@@ -68,8 +68,8 @@ class EventsController < ApplicationController
     if @event.update(event_params)
       current_customer.events.each do |event|
         event.menus.each do |menu|
-          unless MyMenuItem.exists?(name: menu.name)
-            my_menu = MyMenu.find_by(customer_id: current_customer.id, part: @event.part )
+          unless MyMenuItem.exists?(name: menu.name, customer_id: current_customer.id)
+            my_menu = MyMenu.find_or_create_by(customer_id: current_customer.id, part: @event.part )
             MyMenuItem.create(name: menu.name, my_menu_id: my_menu.id, customer_id: current_customer.id)
           end
           unless Rep.exists?(menu_id: menu.id)
