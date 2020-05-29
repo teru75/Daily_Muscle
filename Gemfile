@@ -83,7 +83,7 @@ gem 'momentjs-rails'
 # 親子孫テーブル一括保存
 gem 'cocoon'
 gem 'enum_help'
-gem 'kaminari', '~> 1.1.1'
+gem 'kaminari', '~> 1.2.1'
 gem 'font-awesome-sass', '~> 5.4.1'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
